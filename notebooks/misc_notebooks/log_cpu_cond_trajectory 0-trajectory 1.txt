@@ -1,0 +1,1227 @@
+2024-01-29 14:52:21,737 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 14:52:21,739 Trying Gaussian
+2024-01-29 14:54:04,792 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 14:54:04,795 Trying Gaussian
+2024-01-29 14:54:21,101 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 14:54:21,117 Trying Gaussian
+2024-01-29 14:55:43,434 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 14:55:43,439 Trying Gaussian
+2024-01-29 14:57:33,159 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 14:57:33,167 Trying Gaussian
+2024-01-29 14:57:44,018 WAIC=2670558.0000, took 10 sec
+2024-01-29 14:57:44,431 Gaussian (WAIC = 2670558.0000)
+2024-01-29 14:57:44,431 These variables are independent
+2024-01-29 14:57:44,432 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 14:57:44,433 Trying Gaussian
+2024-01-29 14:57:54,968 WAIC=226008016.0000, took 10 sec
+2024-01-29 14:57:55,058 Gaussian (WAIC = 226008016.0000)
+2024-01-29 14:57:55,058 These variables are independent
+2024-01-29 14:57:55,059 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 14:57:55,059 Trying Gaussian
+2024-01-29 14:58:04,298 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 14:58:04,305 Trying Gaussian
+2024-01-29 14:58:25,607 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 14:58:25,609 Trying Gaussian
+2024-01-29 14:58:36,612 WAIC=478196.2188, took 10 sec
+2024-01-29 14:58:36,784 Gaussian (WAIC = 478196.2188)
+2024-01-29 14:58:36,784 These variables are independent
+2024-01-29 14:58:36,787 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 14:58:36,787 Trying Gaussian
+2024-01-29 14:58:47,548 WAIC=11278843117568.0000, took 10 sec
+2024-01-29 14:58:47,717 Gaussian (WAIC = 11278843117568.0000)
+2024-01-29 14:58:47,717 These variables are independent
+2024-01-29 14:58:47,721 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 14:58:47,722 Trying Gaussian
+2024-01-29 14:58:58,841 WAIC=16666241007616.0000, took 11 sec
+2024-01-29 14:58:59,009 Gaussian (WAIC = 16666241007616.0000)
+2024-01-29 14:58:59,010 These variables are independent
+2024-01-29 14:58:59,012 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 14:58:59,013 Trying Gaussian
+2024-01-29 14:59:09,939 WAIC=16415138512896.0000, took 10 sec
+2024-01-29 14:59:10,097 Gaussian (WAIC = 16415138512896.0000)
+2024-01-29 14:59:10,097 These variables are independent
+2024-01-29 14:59:10,100 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 14:59:10,100 Trying Gaussian
+2024-01-29 15:02:49,690 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 15:02:49,710 Trying Gaussian
+2024-01-29 15:03:00,367 WAIC=5768907063296.0000, took 10 sec
+2024-01-29 15:03:00,603 Gaussian (WAIC = 5768907063296.0000)
+2024-01-29 15:03:00,603 These variables are independent
+2024-01-29 15:03:00,604 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 15:03:00,604 Trying Gaussian
+2024-01-29 15:03:30,776 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 15:03:30,778 Trying Gaussian
+2024-01-29 15:03:41,644 WAIC=87487456.0000, took 10 sec
+2024-01-29 15:03:41,834 Gaussian (WAIC = 87487456.0000)
+2024-01-29 15:03:41,834 These variables are independent
+2024-01-29 15:03:41,837 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 15:03:41,837 Trying Gaussian
+2024-01-29 15:03:52,284 WAIC=11252133789696.0000, took 10 sec
+2024-01-29 15:03:52,425 Gaussian (WAIC = 11252133789696.0000)
+2024-01-29 15:03:52,425 These variables are independent
+2024-01-29 15:03:52,426 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 15:03:52,427 Trying Gaussian
+2024-01-29 15:04:00,517 Training does not look promissing!
+2024-01-29 15:04:00,536 WAIC=67.6638, took 8 sec
+2024-01-29 15:04:00,631 Gaussian (WAIC = 67.6638)
+2024-01-29 15:04:00,631 These variables are independent
+2024-01-29 15:04:00,633 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 15:04:00,633 Trying Gaussian
+2024-01-29 15:04:10,979 WAIC=5216318521344.0000, took 10 sec
+2024-01-29 15:04:11,080 Gaussian (WAIC = 5216318521344.0000)
+2024-01-29 15:04:11,080 These variables are independent
+2024-01-29 15:04:11,082 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 15:04:11,082 Trying Gaussian
+2024-01-29 15:04:22,977 WAIC=-0.8061, took 11 sec
+2024-01-29 15:04:23,164 Gaussian (WAIC = -0.8061)
+2024-01-29 15:04:23,164 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 15:05:07,400 WAIC=-0.8258, took 44 sec
+2024-01-29 15:05:07,577 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -0.8258)
+2024-01-29 15:05:07,577 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 15:05:48,438 WAIC=-0.9104, took 40 sec
+2024-01-29 15:05:48,641 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.9104)
+2024-01-29 15:05:48,647 tensor([False,  True, False, False,  True, False])
+2024-01-29 15:05:48,647 tensor([False,  True, False, False, False, False])
+2024-01-29 15:05:48,647 Symmetric: Gaussian
+2024-01-29 15:05:48,649 No need to swap the last one, as we already tried that model
+2024-01-29 15:05:48,649 Re-running reduced model...
+2024-01-29 15:05:48,649 Trying GaussianClayton180°
+2024-01-29 15:05:56,582 Training does not look promissing!
+2024-01-29 15:05:56,614 WAIC=20.4848, took 7 sec
+2024-01-29 15:05:56,709 GaussianClayton180° (WAIC = 20.4848)
+2024-01-29 15:05:56,709 Trying FrankClayton180°
+2024-01-29 15:06:11,670 WAIC=-0.7062, took 14 sec
+2024-01-29 15:06:11,812 Frank is better than Gauss
+2024-01-29 15:06:11,815 Trying Clayton180°
+2024-01-29 15:06:21,215 WAIC=-0.7525, took 9 sec
+2024-01-29 15:06:21,318 Final model: Clayton180°
+2024-01-29 15:08:53,555 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 15:08:53,562 Trying Gaussian
+2024-01-29 15:09:04,140 WAIC=210866688.0000, took 10 sec
+2024-01-29 15:09:04,324 Gaussian (WAIC = 210866688.0000)
+2024-01-29 15:09:04,324 These variables are independent
+2024-01-29 15:09:04,325 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 15:09:04,326 Trying Gaussian
+2024-01-29 15:09:15,541 WAIC=6745261867008.0000, took 11 sec
+2024-01-29 15:09:15,748 Gaussian (WAIC = 6745261867008.0000)
+2024-01-29 15:09:15,749 These variables are independent
+2024-01-29 15:09:15,753 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 15:09:15,754 Trying Gaussian
+2024-01-29 15:09:26,399 WAIC=14827695112192.0000, took 10 sec
+2024-01-29 15:09:26,495 Gaussian (WAIC = 14827695112192.0000)
+2024-01-29 15:09:26,495 These variables are independent
+2024-01-29 15:09:26,496 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 15:09:26,496 Trying Gaussian
+2024-01-29 15:09:37,149 WAIC=3716275240960.0000, took 10 sec
+2024-01-29 15:09:37,254 Gaussian (WAIC = 3716275240960.0000)
+2024-01-29 15:09:37,255 These variables are independent
+2024-01-29 15:09:37,256 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 15:09:37,256 Trying Gaussian
+2024-01-29 15:09:48,009 WAIC=-0.8049, took 10 sec
+2024-01-29 15:09:48,109 Gaussian (WAIC = -0.8049)
+2024-01-29 15:09:48,109 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 15:10:30,789 WAIC=-0.8191, took 42 sec
+2024-01-29 15:10:30,988 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -0.8191)
+2024-01-29 15:10:30,988 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 15:11:12,594 WAIC=-0.9178, took 41 sec
+2024-01-29 15:11:12,775 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.9178)
+2024-01-29 15:11:12,779 tensor([False,  True, False, False,  True, False])
+2024-01-29 15:11:12,780 tensor([False,  True, False, False, False, False])
+2024-01-29 15:11:12,780 Symmetric: Gaussian
+2024-01-29 15:11:12,780 No need to swap the last one, as we already tried that model
+2024-01-29 15:11:12,780 Re-running reduced model...
+2024-01-29 15:11:12,780 Trying GaussianClayton180°
+2024-01-29 15:11:18,350 Training does not look promissing!
+2024-01-29 15:11:18,382 WAIC=17.7195, took 5 sec
+2024-01-29 15:11:18,489 GaussianClayton180° (WAIC = 17.7195)
+2024-01-29 15:11:18,489 Trying FrankClayton180°
+2024-01-29 15:11:33,826 WAIC=-0.6937, took 15 sec
+2024-01-29 15:11:33,941 Frank is better than Gauss
+2024-01-29 15:11:33,943 Trying Clayton180°
+2024-01-29 15:11:42,784 WAIC=-0.7640, took 8 sec
+2024-01-29 15:11:42,879 Final model: Clayton180°
+2024-01-29 15:13:20,518 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 15:13:20,526 Trying Gaussian
+2024-01-29 15:13:30,880 WAIC=7569353216.0000, took 10 sec
+2024-01-29 15:13:31,044 Gaussian (WAIC = 7569353216.0000)
+2024-01-29 15:13:31,044 These variables are independent
+2024-01-29 15:13:31,046 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 15:13:31,046 Trying Gaussian
+2024-01-29 15:13:41,605 WAIC=10712666603520.0000, took 10 sec
+2024-01-29 15:13:41,776 Gaussian (WAIC = 10712666603520.0000)
+2024-01-29 15:13:41,776 These variables are independent
+2024-01-29 15:13:41,778 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 15:13:41,778 Trying Gaussian
+2024-01-29 15:13:52,363 WAIC=193516535808.0000, took 10 sec
+2024-01-29 15:13:52,527 Gaussian (WAIC = 193516535808.0000)
+2024-01-29 15:13:52,528 These variables are independent
+2024-01-29 15:13:52,529 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 15:13:52,530 Trying Gaussian
+2024-01-29 15:14:03,695 WAIC=6833523130368.0000, took 11 sec
+2024-01-29 15:14:03,853 Gaussian (WAIC = 6833523130368.0000)
+2024-01-29 15:14:03,853 These variables are independent
+2024-01-29 15:14:03,855 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 15:14:03,855 Trying Gaussian
+2024-01-29 15:14:15,073 WAIC=-0.8038, took 11 sec
+2024-01-29 15:14:15,179 Gaussian (WAIC = -0.8038)
+2024-01-29 15:14:15,179 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 15:14:59,268 WAIC=-0.8218, took 44 sec
+2024-01-29 15:14:59,464 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -0.8218)
+2024-01-29 15:14:59,464 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 15:15:40,953 WAIC=-0.9202, took 41 sec
+2024-01-29 15:15:41,087 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.9202)
+2024-01-29 15:15:41,091 tensor([False,  True, False, False,  True, False])
+2024-01-29 15:15:41,094 tensor([False,  True, False, False, False, False])
+2024-01-29 15:15:41,095 Symmetric: Gaussian
+2024-01-29 15:15:41,095 No need to swap the last one, as we already tried that model
+2024-01-29 15:15:41,095 Re-running reduced model...
+2024-01-29 15:15:41,095 Trying GaussianClayton180°
+2024-01-29 15:15:46,855 Training does not look promissing!
+2024-01-29 15:15:46,886 WAIC=17.4861, took 5 sec
+2024-01-29 15:15:46,987 GaussianClayton180° (WAIC = 17.4861)
+2024-01-29 15:15:46,988 Trying FrankClayton180°
+2024-01-29 15:16:01,245 WAIC=-0.7281, took 14 sec
+2024-01-29 15:16:01,407 Frank is better than Gauss
+2024-01-29 15:16:01,409 Trying Clayton180°
+2024-01-29 15:16:10,190 WAIC=-0.7440, took 8 sec
+2024-01-29 15:16:10,281 Final model: Clayton180°
+2024-01-29 15:16:10,282 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 15:16:10,282 Trying Gaussian
+2024-01-29 15:16:20,592 WAIC=11254060023808.0000, took 10 sec
+2024-01-29 15:16:20,751 Gaussian (WAIC = 11254060023808.0000)
+2024-01-29 15:16:20,752 These variables are independent
+2024-01-29 15:16:20,753 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 15:16:20,753 Trying Gaussian
+2024-01-29 15:16:31,021 WAIC=25154107211776.0000, took 10 sec
+2024-01-29 15:16:31,116 Gaussian (WAIC = 25154107211776.0000)
+2024-01-29 15:16:31,116 These variables are independent
+2024-01-29 15:16:31,118 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 15:16:31,118 Trying Gaussian
+2024-01-29 15:16:41,498 WAIC=7105809481728.0000, took 10 sec
+2024-01-29 15:16:41,658 Gaussian (WAIC = 7105809481728.0000)
+2024-01-29 15:16:41,658 These variables are independent
+2024-01-29 15:16:41,660 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 15:16:41,660 Trying Gaussian
+2024-01-29 15:16:52,806 WAIC=-0.8044, took 11 sec
+2024-01-29 15:16:52,954 Gaussian (WAIC = -0.8044)
+2024-01-29 15:16:52,954 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 15:17:35,842 WAIC=-0.7825, took 42 sec
+2024-01-29 15:17:36,046 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -0.7825)
+2024-01-29 15:17:36,046 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 15:18:16,675 WAIC=-0.9455, took 40 sec
+2024-01-29 15:18:16,841 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.9455)
+2024-01-29 15:18:16,845 tensor([False,  True, False, False,  True, False])
+2024-01-29 15:18:16,845 tensor([ True,  True, False, False, False, False])
+2024-01-29 15:18:16,845 Symmetric: IndependenceGaussian
+2024-01-29 15:18:16,845 No need to swap the last one, as we already tried that model
+2024-01-29 15:18:16,845 Re-running reduced model...
+2024-01-29 15:18:16,845 Trying GaussianClayton180°
+2024-01-29 15:18:21,523 Training does not look promissing!
+2024-01-29 15:18:21,557 WAIC=19.4750, took 4 sec
+2024-01-29 15:18:21,681 GaussianClayton180° (WAIC = 19.4750)
+2024-01-29 15:18:21,682 Trying FrankClayton180°
+2024-01-29 15:18:36,804 WAIC=-0.6944, took 15 sec
+2024-01-29 15:18:36,982 Frank is better than Gauss
+2024-01-29 15:18:36,985 Trying Clayton180°
+2024-01-29 15:18:45,904 WAIC=-0.7229, took 8 sec
+2024-01-29 15:18:46,063 Final model: Clayton180°
+2024-01-29 15:18:46,064 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 15:18:46,064 Trying Gaussian
+2024-01-29 15:18:56,251 WAIC=10062840987648.0000, took 10 sec
+2024-01-29 15:18:56,345 Gaussian (WAIC = 10062840987648.0000)
+2024-01-29 15:18:56,345 These variables are independent
+2024-01-29 15:18:56,347 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 15:18:56,347 Trying Gaussian
+2024-01-29 15:19:06,778 WAIC=12295191134208.0000, took 10 sec
+2024-01-29 15:19:06,947 Gaussian (WAIC = 12295191134208.0000)
+2024-01-29 15:19:06,947 These variables are independent
+2024-01-29 15:19:06,949 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 15:19:06,949 Trying Gaussian
+2024-01-29 15:19:17,383 WAIC=-0.6464, took 10 sec
+2024-01-29 15:19:17,475 Gaussian (WAIC = -0.6464)
+2024-01-29 15:19:17,475 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 15:19:59,813 WAIC=-0.5985, took 42 sec
+2024-01-29 15:20:00,020 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -0.5985)
+2024-01-29 15:20:00,020 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 15:20:40,322 WAIC=-0.8815, took 40 sec
+2024-01-29 15:20:40,501 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.8815)
+2024-01-29 15:20:40,505 tensor([False, False, False, False,  True, False])
+2024-01-29 15:20:40,505 tensor([ True,  True, False, False, False, False])
+2024-01-29 15:20:40,505 Symmetric: IndependenceGaussian
+2024-01-29 15:20:40,505 No need to swap the last one, as we already tried that model
+2024-01-29 15:20:40,505 Re-running reduced model...
+2024-01-29 15:20:40,505 Trying Clayton180°
+2024-01-29 15:20:49,342 WAIC=-0.6812, took 8 sec
+2024-01-29 15:20:49,437 Clayton180° (WAIC = -0.6812)
+2024-01-29 15:20:49,437 Trying Clayton180°
+2024-01-29 15:20:58,262 WAIC=-0.6889, took 8 sec
+2024-01-29 15:20:58,368 Frank is better than Gauss
+2024-01-29 15:20:58,370 Nothing to reduce
+2024-01-29 15:20:58,370 Final model: Clayton180°
+2024-01-29 15:20:58,371 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 15:20:58,371 Trying Gaussian
+2024-01-29 15:21:09,516 WAIC=-1.1727, took 11 sec
+2024-01-29 15:21:09,683 Gaussian (WAIC = -1.1727)
+2024-01-29 15:21:09,683 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 15:21:37,837 Training does not look promissing!
+2024-01-29 15:21:37,951 WAIC=20.3820, took 28 sec
+2024-01-29 15:21:38,131 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = 20.3820)
+2024-01-29 15:21:38,131 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 15:22:18,011 WAIC=-1.7180, took 39 sec
+2024-01-29 15:22:18,180 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -1.7180)
+2024-01-29 15:22:18,184 tensor([False,  True,  True, False,  True, False])
+2024-01-29 15:22:18,184 tensor([False,  True, False, False, False, False])
+2024-01-29 15:22:18,184 Symmetric: Gaussian
+2024-01-29 15:22:18,184 Trying GaussianGumbel180°Clayton180°
+2024-01-29 15:22:28,025 Training does not look promissing!
+2024-01-29 15:22:28,072 WAIC=20.0141, took 9 sec
+2024-01-29 15:22:28,164 No need to swap the last one, as we already tried that model
+2024-01-29 15:22:28,164 Re-running reduced model...
+2024-01-29 15:22:28,164 Trying GaussianClayton0°Clayton180°
+2024-01-29 15:22:37,162 Training does not look promissing!
+2024-01-29 15:22:37,208 WAIC=16.9300, took 9 sec
+2024-01-29 15:22:37,299 GaussianClayton0°Clayton180° (WAIC = 16.9300)
+2024-01-29 15:22:37,299 Trying FrankClayton0°Clayton180°
+2024-01-29 15:22:55,493 WAIC=-1.3998, took 18 sec
+2024-01-29 15:22:55,676 Frank is better than Gauss
+2024-01-29 15:22:55,679 Nothing to reduce
+2024-01-29 15:22:55,679 Final model: FrankClayton0°Clayton180°
+2024-01-29 15:22:55,679 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 15:22:55,680 Trying Gaussian
+2024-01-29 15:23:06,652 WAIC=-0.5750, took 10 sec
+2024-01-29 15:23:06,803 Gaussian (WAIC = -0.5750)
+2024-01-29 15:23:06,803 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 15:23:50,672 WAIC=-0.4904, took 43 sec
+2024-01-29 15:23:50,868 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -0.4904)
+2024-01-29 15:23:50,868 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 15:24:33,578 WAIC=-0.6033, took 42 sec
+2024-01-29 15:24:33,784 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.6033)
+2024-01-29 15:24:33,788 tensor([False,  True, False, False,  True,  True])
+2024-01-29 15:24:33,788 tensor([False,  True, False, False,  True, False])
+2024-01-29 15:24:33,788 Symmetric: Gaussian
+2024-01-29 15:24:33,788 Trying GaussianGumbel0°Clayton270°
+2024-01-29 15:24:55,349 WAIC=-0.4733, took 21 sec
+2024-01-29 15:24:55,566 No need to swap the last one, as we already tried that model
+2024-01-29 15:24:55,566 Re-running reduced model...
+2024-01-29 15:24:55,566 Trying GaussianClayton180°Clayton270°
+2024-01-29 15:25:15,912 WAIC=-0.6788, took 20 sec
+2024-01-29 15:25:16,078 GaussianClayton180°Clayton270° (WAIC = -0.6788)
+2024-01-29 15:25:16,079 Trying FrankClayton180°Clayton270°
+2024-01-29 15:25:34,677 WAIC=-0.7013, took 18 sec
+2024-01-29 15:25:34,861 Frank is better than Gauss
+2024-01-29 15:25:34,864 Trying Clayton180°Clayton270°
+2024-01-29 15:25:49,731 WAIC=-0.6312, took 14 sec
+2024-01-29 15:25:49,842 Reducing the model, even though the WAIC gets worse.
+2024-01-29 15:25:49,843 Final model: Clayton180°Clayton270°
+2024-01-29 15:25:49,843 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 15:25:49,843 Trying Gaussian
+2024-01-29 15:26:00,781 WAIC=-0.6926, took 10 sec
+2024-01-29 15:26:00,897 Gaussian (WAIC = -0.6926)
+2024-01-29 15:26:00,897 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 15:26:45,538 WAIC=-0.5738, took 44 sec
+2024-01-29 15:26:45,726 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -0.5738)
+2024-01-29 15:26:45,726 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 15:27:26,189 WAIC=-0.5902, took 40 sec
+2024-01-29 15:27:26,296 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.5902)
+2024-01-29 15:27:26,297 Trying Frank
+2024-01-29 15:27:35,419 WAIC=-0.1852, took 9 sec
+2024-01-29 15:27:35,523 Nothing to reduce
+2024-01-29 15:27:35,523 Final model: Gaussian
+2024-01-29 15:42:07,338 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 15:42:07,352 Trying Gaussian
+2024-01-29 15:42:18,092 WAIC=1278.6823, took 10 sec
+2024-01-29 15:42:18,317 Gaussian (WAIC = 1278.6823)
+2024-01-29 15:42:18,317 These variables are independent
+2024-01-29 15:42:18,319 Selecting trajectory 0-trajectory 2 on cpu
+2024-01-29 15:42:18,319 Trying Gaussian
+2024-01-29 15:42:28,897 WAIC=10080769540096.0000, took 10 sec
+2024-01-29 15:42:29,081 Gaussian (WAIC = 10080769540096.0000)
+2024-01-29 15:42:29,081 These variables are independent
+2024-01-29 15:42:29,083 Selecting trajectory 0-trajectory 3 on cpu
+2024-01-29 15:42:29,083 Trying Gaussian
+2024-01-29 15:42:39,255 WAIC=10727846838272.0000, took 10 sec
+2024-01-29 15:42:39,349 Gaussian (WAIC = 10727846838272.0000)
+2024-01-29 15:42:39,349 These variables are independent
+2024-01-29 15:42:39,350 Selecting trajectory 0-trajectory 4 on cpu
+2024-01-29 15:42:39,351 Trying Gaussian
+2024-01-29 15:42:49,669 WAIC=12792256004096.0000, took 10 sec
+2024-01-29 15:42:49,878 Gaussian (WAIC = 12792256004096.0000)
+2024-01-29 15:42:49,878 These variables are independent
+2024-01-29 15:42:49,879 Selecting trajectory 0-trajectory 5 on cpu
+2024-01-29 15:42:49,880 Trying Gaussian
+2024-01-29 15:43:01,862 WAIC=-0.8039, took 11 sec
+2024-01-29 15:43:02,057 Gaussian (WAIC = -0.8039)
+2024-01-29 15:43:02,057 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 15:43:47,057 WAIC=-0.8224, took 44 sec
+2024-01-29 15:43:47,265 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -0.8224)
+2024-01-29 15:43:47,265 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 15:44:28,699 WAIC=-0.9878, took 41 sec
+2024-01-29 15:44:28,835 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.9878)
+2024-01-29 15:44:28,840 tensor([False,  True, False, False,  True, False])
+2024-01-29 15:44:28,842 tensor([False,  True, False, False, False, False])
+2024-01-29 15:44:28,842 Symmetric: Gaussian
+2024-01-29 15:44:28,842 No need to swap the last one, as we already tried that model
+2024-01-29 15:44:28,842 Re-running reduced model...
+2024-01-29 15:44:28,842 Trying GaussianClayton180°
+2024-01-29 15:44:37,111 Training does not look promissing!
+2024-01-29 15:44:37,147 WAIC=28.5740, took 8 sec
+2024-01-29 15:44:37,333 GaussianClayton180° (WAIC = 28.5740)
+2024-01-29 15:44:37,334 Trying FrankClayton180°
+2024-01-29 15:44:53,019 WAIC=-0.7118, took 15 sec
+2024-01-29 15:44:53,231 Frank is better than Gauss
+2024-01-29 15:44:53,234 Trying Clayton180°
+2024-01-29 15:45:02,822 WAIC=-0.7635, took 9 sec
+2024-01-29 15:45:02,996 Final model: Clayton180°
+2024-01-29 15:45:02,997 Selecting trajectory 1-trajectory 2 on cpu
+2024-01-29 15:45:02,998 Trying Gaussian
+2024-01-29 15:45:13,776 WAIC=172837142528.0000, took 10 sec
+2024-01-29 15:45:13,895 Gaussian (WAIC = 172837142528.0000)
+2024-01-29 15:45:13,895 These variables are independent
+2024-01-29 15:45:13,897 Selecting trajectory 1-trajectory 3 on cpu
+2024-01-29 15:45:13,897 Trying Gaussian
+2024-01-29 15:45:24,931 WAIC=9520816324608.0000, took 11 sec
+2024-01-29 15:45:25,101 Gaussian (WAIC = 9520816324608.0000)
+2024-01-29 15:45:25,101 These variables are independent
+2024-01-29 15:45:25,103 Selecting trajectory 1-trajectory 4 on cpu
+2024-01-29 15:45:25,104 Trying Gaussian
+2024-01-29 15:45:35,403 WAIC=2997939601408.0000, took 10 sec
+2024-01-29 15:45:35,603 Gaussian (WAIC = 2997939601408.0000)
+2024-01-29 15:45:35,603 These variables are independent
+2024-01-29 15:45:35,604 Selecting trajectory 1-trajectory 5 on cpu
+2024-01-29 15:45:35,605 Trying Gaussian
+2024-01-29 15:45:46,093 WAIC=-0.8035, took 10 sec
+2024-01-29 15:45:46,185 Gaussian (WAIC = -0.8035)
+2024-01-29 15:45:46,185 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 15:46:29,660 WAIC=-0.8222, took 43 sec
+2024-01-29 15:46:29,826 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -0.8222)
+2024-01-29 15:46:29,826 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 15:47:14,605 WAIC=-0.9870, took 44 sec
+2024-01-29 15:47:14,875 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.9870)
+2024-01-29 15:47:14,879 tensor([False,  True, False, False,  True, False])
+2024-01-29 15:47:14,880 tensor([False,  True, False, False, False, False])
+2024-01-29 15:47:14,880 Symmetric: Gaussian
+2024-01-29 15:47:14,881 No need to swap the last one, as we already tried that model
+2024-01-29 15:47:14,881 Re-running reduced model...
+2024-01-29 15:47:14,881 Trying GaussianClayton180°
+2024-01-29 15:47:19,966 Training does not look promissing!
+2024-01-29 15:47:20,002 WAIC=9.4203, took 5 sec
+2024-01-29 15:47:20,155 GaussianClayton180° (WAIC = 9.4203)
+2024-01-29 15:47:20,156 Trying FrankClayton180°
+2024-01-29 15:47:35,608 WAIC=-0.7039, took 15 sec
+2024-01-29 15:47:35,791 Frank is better than Gauss
+2024-01-29 15:47:35,794 Trying Clayton180°
+2024-01-29 15:47:45,364 WAIC=-0.7425, took 9 sec
+2024-01-29 15:47:45,562 Final model: Clayton180°
+2024-01-29 15:47:45,563 Selecting trajectory 2-trajectory 3 on cpu
+2024-01-29 15:47:45,564 Trying Gaussian
+2024-01-29 15:47:56,677 WAIC=14980623630336.0000, took 11 sec
+2024-01-29 15:47:56,881 Gaussian (WAIC = 14980623630336.0000)
+2024-01-29 15:47:56,881 These variables are independent
+2024-01-29 15:47:56,883 Selecting trajectory 2-trajectory 4 on cpu
+2024-01-29 15:47:56,883 Trying Gaussian
+2024-01-29 15:48:08,034 WAIC=11538918277120.0000, took 11 sec
+2024-01-29 15:48:08,217 Gaussian (WAIC = 11538918277120.0000)
+2024-01-29 15:48:08,217 These variables are independent
+2024-01-29 15:48:08,221 Selecting trajectory 2-trajectory 5 on cpu
+2024-01-29 15:48:08,222 Trying Gaussian
+2024-01-29 15:48:19,395 WAIC=-0.6454, took 11 sec
+2024-01-29 15:48:19,535 Gaussian (WAIC = -0.6454)
+2024-01-29 15:48:19,535 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 15:49:02,811 WAIC=-0.6262, took 43 sec
+2024-01-29 15:49:03,001 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -0.6262)
+2024-01-29 15:49:03,001 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 15:49:45,496 WAIC=-0.7862, took 42 sec
+2024-01-29 15:49:45,660 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.7862)
+2024-01-29 15:49:45,664 tensor([False,  True, False, False,  True, False])
+2024-01-29 15:49:45,665 tensor([ True,  True, False, False, False, False])
+2024-01-29 15:49:45,666 Symmetric: IndependenceGaussian
+2024-01-29 15:49:45,666 No need to swap the last one, as we already tried that model
+2024-01-29 15:49:45,666 Re-running reduced model...
+2024-01-29 15:49:45,666 Trying GaussianClayton180°
+2024-01-29 15:49:50,882 Training does not look promissing!
+2024-01-29 15:49:50,915 WAIC=10.4596, took 5 sec
+2024-01-29 15:49:51,013 GaussianClayton180° (WAIC = 10.4596)
+2024-01-29 15:49:51,014 Trying FrankClayton180°
+2024-01-29 15:50:06,019 WAIC=-0.6472, took 15 sec
+2024-01-29 15:50:06,205 Frank is better than Gauss
+2024-01-29 15:50:06,208 Trying Clayton180°
+2024-01-29 15:50:15,693 WAIC=-0.6910, took 9 sec
+2024-01-29 15:50:15,894 Final model: Clayton180°
+2024-01-29 15:50:15,895 Selecting trajectory 3-trajectory 4 on cpu
+2024-01-29 15:50:15,895 Trying Gaussian
+2024-01-29 15:50:26,603 WAIC=-1.1779, took 10 sec
+2024-01-29 15:50:26,789 Gaussian (WAIC = -1.1779)
+2024-01-29 15:50:26,789 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 15:50:51,952 Training does not look promissing!
+2024-01-29 15:50:52,066 WAIC=8.6834, took 25 sec
+2024-01-29 15:50:52,248 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = 8.6834)
+2024-01-29 15:50:52,248 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 15:51:33,401 WAIC=-1.7639, took 41 sec
+2024-01-29 15:51:33,562 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -1.7639)
+2024-01-29 15:51:33,566 tensor([False,  True,  True, False, False,  True])
+2024-01-29 15:51:33,566 tensor([False,  True, False, False, False, False])
+2024-01-29 15:51:33,566 Symmetric: Gaussian
+2024-01-29 15:51:33,566 Trying GaussianGumbel180°Clayton270°
+2024-01-29 15:51:42,323 Training does not look promissing!
+2024-01-29 15:51:42,368 WAIC=6.1649, took 8 sec
+2024-01-29 15:51:42,464 No need to swap the last one, as we already tried that model
+2024-01-29 15:51:42,464 Re-running reduced model...
+2024-01-29 15:51:42,464 Trying GaussianClayton0°Clayton270°
+2024-01-29 15:51:52,174 Training does not look promissing!
+2024-01-29 15:51:52,220 WAIC=15.1835, took 9 sec
+2024-01-29 15:51:52,383 GaussianClayton0°Clayton270° (WAIC = 15.1835)
+2024-01-29 15:51:52,384 Trying FrankClayton0°Clayton270°
+2024-01-29 15:52:11,931 WAIC=-1.2372, took 19 sec
+2024-01-29 15:52:12,111 Frank is better than Gauss
+2024-01-29 15:52:12,114 Nothing to reduce
+2024-01-29 15:52:12,114 Final model: FrankClayton0°Clayton270°
+2024-01-29 15:52:12,115 Selecting trajectory 3-trajectory 5 on cpu
+2024-01-29 15:52:12,115 Trying Gaussian
+2024-01-29 15:52:23,222 WAIC=-0.5663, took 11 sec
+2024-01-29 15:52:23,409 Gaussian (WAIC = -0.5663)
+2024-01-29 15:52:23,409 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 15:53:06,063 WAIC=-0.4721, took 42 sec
+2024-01-29 15:53:06,230 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -0.4721)
+2024-01-29 15:53:06,230 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 15:53:48,542 WAIC=-0.6171, took 42 sec
+2024-01-29 15:53:48,734 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.6171)
+2024-01-29 15:53:48,739 tensor([False, False, False, False,  True,  True])
+2024-01-29 15:53:48,739 tensor([False,  True, False, False,  True, False])
+2024-01-29 15:53:48,739 Symmetric: Gaussian
+2024-01-29 15:53:48,739 Trying GaussianGumbel0°Clayton270°
+2024-01-29 15:54:08,610 WAIC=-0.4959, took 19 sec
+2024-01-29 15:54:08,806 No need to swap the last one, as we already tried that model
+2024-01-29 15:54:08,807 Re-running reduced model...
+2024-01-29 15:54:08,807 Trying Clayton180°Clayton270°
+2024-01-29 15:54:22,901 WAIC=-0.6343, took 14 sec
+2024-01-29 15:54:23,081 Clayton180°Clayton270° (WAIC = -0.6343)
+2024-01-29 15:54:23,081 Trying Clayton180°Clayton270°
+2024-01-29 15:54:37,060 WAIC=-0.6335, took 13 sec
+2024-01-29 15:54:37,245 Nothing to reduce
+2024-01-29 15:54:37,245 Final model: Clayton180°Clayton270°
+2024-01-29 15:54:37,246 Selecting trajectory 4-trajectory 5 on cpu
+2024-01-29 15:54:37,246 Trying Gaussian
+2024-01-29 15:54:48,156 WAIC=-0.6936, took 10 sec
+2024-01-29 15:54:48,380 Gaussian (WAIC = -0.6936)
+2024-01-29 15:54:48,380 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 15:55:34,394 WAIC=-0.5746, took 46 sec
+2024-01-29 15:55:34,608 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -0.5746)
+2024-01-29 15:55:34,609 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 15:56:17,119 WAIC=-0.5925, took 42 sec
+2024-01-29 15:56:17,253 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.5925)
+2024-01-29 15:56:17,254 Trying Frank
+2024-01-29 15:56:26,459 WAIC=-0.1852, took 9 sec
+2024-01-29 15:56:26,555 Nothing to reduce
+2024-01-29 15:56:26,555 Final model: Gaussian
+2024-01-29 16:23:06,364 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 16:23:06,398 Trying Gaussian
+2024-01-29 16:23:17,211 WAIC=443.1425, took 10 sec
+2024-01-29 16:23:17,727 Gaussian (WAIC = 443.1425)
+2024-01-29 16:23:17,728 These variables are independent
+2024-01-29 16:23:17,730 Selecting trajectory 0-trajectory 2 on cpu
+2024-01-29 16:23:17,730 Trying Gaussian
+2024-01-29 16:23:28,199 WAIC=11953859723264.0000, took 10 sec
+2024-01-29 16:23:28,313 Gaussian (WAIC = 11953859723264.0000)
+2024-01-29 16:23:28,313 These variables are independent
+2024-01-29 16:23:28,314 Selecting trajectory 0-trajectory 3 on cpu
+2024-01-29 16:23:28,315 Trying Gaussian
+2024-01-29 16:23:38,644 WAIC=8049955700736.0000, took 10 sec
+2024-01-29 16:23:38,761 Gaussian (WAIC = 8049955700736.0000)
+2024-01-29 16:23:38,761 These variables are independent
+2024-01-29 16:23:38,762 Selecting trajectory 0-trajectory 4 on cpu
+2024-01-29 16:23:38,762 Trying Gaussian
+2024-01-29 16:23:49,117 WAIC=17141229158400.0000, took 10 sec
+2024-01-29 16:23:49,267 Gaussian (WAIC = 17141229158400.0000)
+2024-01-29 16:23:49,267 These variables are independent
+2024-01-29 16:23:49,269 Selecting trajectory 0-trajectory 5 on cpu
+2024-01-29 16:23:49,269 Trying Gaussian
+2024-01-29 16:24:00,722 WAIC=-0.8043, took 11 sec
+2024-01-29 16:24:00,938 Gaussian (WAIC = -0.8043)
+2024-01-29 16:24:00,938 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 16:24:45,088 WAIC=-0.8181, took 44 sec
+2024-01-29 16:24:45,272 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -0.8181)
+2024-01-29 16:24:45,272 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 16:25:25,151 WAIC=-0.9177, took 39 sec
+2024-01-29 16:25:25,324 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.9177)
+2024-01-29 16:25:25,328 tensor([False,  True, False, False,  True, False])
+2024-01-29 16:25:25,332 tensor([False,  True, False, False, False, False])
+2024-01-29 16:25:25,332 Symmetric: Gaussian
+2024-01-29 16:25:25,332 No need to swap the last one, as we already tried that model
+2024-01-29 16:25:25,332 Re-running reduced model...
+2024-01-29 16:25:25,332 Trying GaussianClayton180°
+2024-01-29 16:25:31,458 Training does not look promissing!
+2024-01-29 16:25:31,489 WAIC=26.1501, took 6 sec
+2024-01-29 16:25:31,582 GaussianClayton180° (WAIC = 26.1501)
+2024-01-29 16:25:31,583 Trying FrankClayton180°
+2024-01-29 16:25:45,826 WAIC=-0.7149, took 14 sec
+2024-01-29 16:25:45,927 Frank is better than Gauss
+2024-01-29 16:25:45,929 Trying Clayton180°
+2024-01-29 16:25:54,690 WAIC=-0.7372, took 8 sec
+2024-01-29 16:25:54,820 Final model: Clayton180°
+2024-01-29 16:25:54,821 Selecting trajectory 1-trajectory 2 on cpu
+2024-01-29 16:25:54,821 Trying Gaussian
+2024-01-29 16:26:05,433 WAIC=11193198575616.0000, took 10 sec
+2024-01-29 16:26:05,614 Gaussian (WAIC = 11193198575616.0000)
+2024-01-29 16:26:05,614 These variables are independent
+2024-01-29 16:26:05,615 Selecting trajectory 1-trajectory 3 on cpu
+2024-01-29 16:26:05,616 Trying Gaussian
+2024-01-29 16:26:16,701 WAIC=4578989834240.0000, took 11 sec
+2024-01-29 16:26:16,906 Gaussian (WAIC = 4578989834240.0000)
+2024-01-29 16:26:16,906 These variables are independent
+2024-01-29 16:26:16,908 Selecting trajectory 1-trajectory 4 on cpu
+2024-01-29 16:26:16,908 Trying Gaussian
+2024-01-29 16:26:27,945 WAIC=4545856929792.0000, took 11 sec
+2024-01-29 16:26:28,093 Gaussian (WAIC = 4545856929792.0000)
+2024-01-29 16:26:28,093 These variables are independent
+2024-01-29 16:26:28,095 Selecting trajectory 1-trajectory 5 on cpu
+2024-01-29 16:26:28,095 Trying Gaussian
+2024-01-29 16:26:39,235 WAIC=-0.8050, took 11 sec
+2024-01-29 16:26:39,343 Gaussian (WAIC = -0.8050)
+2024-01-29 16:26:39,344 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 16:27:22,771 WAIC=-0.8048, took 43 sec
+2024-01-29 16:27:22,968 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -0.8048)
+2024-01-29 16:27:22,968 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 16:28:03,720 WAIC=-0.9041, took 40 sec
+2024-01-29 16:28:03,924 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.9041)
+2024-01-29 16:28:03,928 tensor([False,  True, False, False,  True, False])
+2024-01-29 16:28:03,928 tensor([False,  True, False, False, False, False])
+2024-01-29 16:28:03,929 Symmetric: Gaussian
+2024-01-29 16:28:03,929 No need to swap the last one, as we already tried that model
+2024-01-29 16:28:03,929 Re-running reduced model...
+2024-01-29 16:28:03,929 Trying GaussianClayton180°
+2024-01-29 16:28:08,697 Training does not look promissing!
+2024-01-29 16:28:08,728 WAIC=13.9745, took 4 sec
+2024-01-29 16:28:08,898 GaussianClayton180° (WAIC = 13.9745)
+2024-01-29 16:28:08,899 Trying FrankClayton180°
+2024-01-29 16:28:24,243 WAIC=-0.7106, took 15 sec
+2024-01-29 16:28:24,414 Frank is better than Gauss
+2024-01-29 16:28:24,416 Trying Clayton180°
+2024-01-29 16:28:33,596 WAIC=-0.7525, took 9 sec
+2024-01-29 16:28:33,693 Final model: Clayton180°
+2024-01-29 16:28:33,694 Selecting trajectory 2-trajectory 3 on cpu
+2024-01-29 16:28:33,694 Trying Gaussian
+2024-01-29 16:28:44,067 WAIC=6431526354944.0000, took 10 sec
+2024-01-29 16:28:44,164 Gaussian (WAIC = 6431526354944.0000)
+2024-01-29 16:28:44,164 These variables are independent
+2024-01-29 16:28:44,165 Selecting trajectory 2-trajectory 4 on cpu
+2024-01-29 16:28:44,166 Trying Gaussian
+2024-01-29 16:28:54,890 WAIC=11178780655616.0000, took 10 sec
+2024-01-29 16:28:55,050 Gaussian (WAIC = 11178780655616.0000)
+2024-01-29 16:28:55,051 These variables are independent
+2024-01-29 16:28:55,052 Selecting trajectory 2-trajectory 5 on cpu
+2024-01-29 16:28:55,053 Trying Gaussian
+2024-01-29 16:29:05,698 WAIC=-0.6423, took 10 sec
+2024-01-29 16:29:05,794 Gaussian (WAIC = -0.6423)
+2024-01-29 16:29:05,794 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 16:29:47,398 WAIC=-0.6066, took 41 sec
+2024-01-29 16:29:47,588 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -0.6066)
+2024-01-29 16:29:47,588 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 16:30:28,287 WAIC=-0.7228, took 40 sec
+2024-01-29 16:30:28,446 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.7228)
+2024-01-29 16:30:28,450 tensor([False,  True, False, False,  True, False])
+2024-01-29 16:30:28,450 tensor([ True,  True, False, False, False, False])
+2024-01-29 16:30:28,450 Symmetric: IndependenceGaussian
+2024-01-29 16:30:28,450 No need to swap the last one, as we already tried that model
+2024-01-29 16:30:28,450 Re-running reduced model...
+2024-01-29 16:30:28,450 Trying GaussianClayton180°
+2024-01-29 16:30:33,031 Training does not look promissing!
+2024-01-29 16:30:33,062 WAIC=8.3489, took 4 sec
+2024-01-29 16:30:33,156 GaussianClayton180° (WAIC = 8.3489)
+2024-01-29 16:30:33,157 Trying FrankClayton180°
+2024-01-29 16:30:47,627 WAIC=-0.6398, took 14 sec
+2024-01-29 16:30:47,754 Frank is better than Gauss
+2024-01-29 16:30:47,756 Trying Clayton180°
+2024-01-29 16:30:57,487 WAIC=-0.7022, took 9 sec
+2024-01-29 16:30:57,682 Final model: Clayton180°
+2024-01-29 16:30:57,682 Selecting trajectory 3-trajectory 4 on cpu
+2024-01-29 16:30:57,683 Trying Gaussian
+2024-01-29 16:31:08,770 WAIC=-1.1736, took 11 sec
+2024-01-29 16:31:08,929 Gaussian (WAIC = -1.1736)
+2024-01-29 16:31:08,929 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 16:31:35,907 Training does not look promissing!
+2024-01-29 16:31:36,015 WAIC=12.6840, took 27 sec
+2024-01-29 16:31:36,208 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = 12.6840)
+2024-01-29 16:31:36,208 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 16:32:17,787 WAIC=-1.7665, took 41 sec
+2024-01-29 16:32:17,976 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -1.7665)
+2024-01-29 16:32:17,980 tensor([False,  True,  True, False, False, False])
+2024-01-29 16:32:17,980 tensor([False,  True, False, False, False, False])
+2024-01-29 16:32:17,980 Symmetric: Gaussian
+2024-01-29 16:32:17,980 No need to swap the last one, as we already tried that model
+2024-01-29 16:32:17,980 Re-running reduced model...
+2024-01-29 16:32:17,980 Trying GaussianClayton0°
+2024-01-29 16:32:34,371 WAIC=-1.4881, took 16 sec
+2024-01-29 16:32:34,545 GaussianClayton0° (WAIC = -1.4881)
+2024-01-29 16:32:34,545 Trying FrankClayton0°
+2024-01-29 16:32:48,635 WAIC=-1.1210, took 14 sec
+2024-01-29 16:32:48,731 Nothing to reduce
+2024-01-29 16:32:48,731 Final model: GaussianClayton0°
+2024-01-29 16:32:48,733 Selecting trajectory 3-trajectory 5 on cpu
+2024-01-29 16:32:48,733 Trying Gaussian
+2024-01-29 16:32:59,359 WAIC=-0.5776, took 10 sec
+2024-01-29 16:32:59,456 Gaussian (WAIC = -0.5776)
+2024-01-29 16:32:59,456 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 16:33:42,575 WAIC=-0.4854, took 43 sec
+2024-01-29 16:33:42,858 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -0.4854)
+2024-01-29 16:33:42,859 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 16:34:24,574 WAIC=-0.6570, took 41 sec
+2024-01-29 16:34:24,895 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.6570)
+2024-01-29 16:34:24,899 tensor([False, False, False, False,  True,  True])
+2024-01-29 16:34:24,899 tensor([False,  True, False, False,  True, False])
+2024-01-29 16:34:24,899 Symmetric: Gaussian
+2024-01-29 16:34:24,899 Trying GaussianGumbel0°Clayton270°
+2024-01-29 16:34:46,402 WAIC=-0.4718, took 21 sec
+2024-01-29 16:34:46,584 No need to swap the last one, as we already tried that model
+2024-01-29 16:34:46,584 Re-running reduced model...
+2024-01-29 16:34:46,584 Trying Clayton180°Clayton270°
+2024-01-29 16:35:01,193 WAIC=-0.6294, took 14 sec
+2024-01-29 16:35:01,369 Clayton180°Clayton270° (WAIC = -0.6294)
+2024-01-29 16:35:01,369 Trying Clayton180°Clayton270°
+2024-01-29 16:35:16,061 WAIC=-0.6316, took 14 sec
+2024-01-29 16:35:16,263 Frank is better than Gauss
+2024-01-29 16:35:16,266 Nothing to reduce
+2024-01-29 16:35:16,266 Final model: Clayton180°Clayton270°
+2024-01-29 16:35:16,266 Selecting trajectory 4-trajectory 5 on cpu
+2024-01-29 16:35:16,266 Trying Gaussian
+2024-01-29 16:35:27,255 WAIC=-0.6930, took 10 sec
+2024-01-29 16:35:27,367 Gaussian (WAIC = -0.6930)
+2024-01-29 16:35:27,367 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 16:36:11,203 WAIC=-0.5747, took 43 sec
+2024-01-29 16:36:11,374 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -0.5747)
+2024-01-29 16:36:11,374 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 16:36:53,222 WAIC=-0.5807, took 41 sec
+2024-01-29 16:36:53,386 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.5807)
+2024-01-29 16:36:53,387 Trying Frank
+2024-01-29 16:37:03,136 WAIC=-0.1840, took 9 sec
+2024-01-29 16:37:03,309 Nothing to reduce
+2024-01-29 16:37:03,309 Final model: Gaussian
+2024-01-29 16:41:02,035 No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+2024-01-29 16:41:33,676 No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+2024-01-29 16:43:47,824 No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+2024-01-29 16:45:14,601 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 16:45:14,612 Trying Gaussian
+2024-01-29 16:45:16,653 Converged in 500 steps! (Relative!)
+2024-01-29 16:45:16,675 WAIC=-1.2826, took 2 sec
+2024-01-29 16:45:17,120 Gaussian (WAIC = -1.2826)
+2024-01-29 16:45:17,120 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 16:48:26,982 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 16:48:26,985 Trying Gaussian
+2024-01-29 16:48:31,082 Converged in 1100 steps! (Relative!)
+2024-01-29 16:48:31,101 WAIC=-1.2784, took 4 sec
+2024-01-29 16:48:31,304 Gaussian (WAIC = -1.2784)
+2024-01-29 16:48:31,304 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 16:49:14,051 WAIC=-1.2758, took 42 sec
+2024-01-29 16:49:14,229 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -1.2758)
+2024-01-29 16:49:14,229 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 16:49:55,322 WAIC=-1.2751, took 41 sec
+2024-01-29 16:49:55,536 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -1.2751)
+2024-01-29 16:49:55,537 Trying Frank
+2024-01-29 16:50:04,992 WAIC=-0.4536, took 9 sec
+2024-01-29 16:50:05,160 Nothing to reduce
+2024-01-29 16:50:05,160 Final model: Gaussian
+2024-01-29 16:50:05,160 Selecting trajectory 0-trajectory 2 on cpu
+2024-01-29 16:50:05,160 Trying Gaussian
+2024-01-29 16:50:06,210 Converged in 300 steps! (Relative!)
+2024-01-29 16:50:06,229 WAIC=-1.5704, took 1 sec
+2024-01-29 16:50:06,338 Gaussian (WAIC = -1.5704)
+2024-01-29 16:50:06,338 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 16:50:50,289 WAIC=-1.7091, took 43 sec
+2024-01-29 16:50:50,503 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -1.7091)
+2024-01-29 16:50:50,503 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 16:51:33,575 WAIC=-1.7194, took 43 sec
+2024-01-29 16:51:33,796 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -1.7194)
+2024-01-29 16:51:33,800 tensor([False,  True, False, False, False, False])
+2024-01-29 16:51:33,805 tensor([False,  True, False, False, False, False])
+2024-01-29 16:51:33,805 Symmetric: Gaussian
+2024-01-29 16:51:33,805 Re-running reduced model...
+2024-01-29 16:51:33,805 Trying Gaussian
+2024-01-29 16:51:35,003 Converged in 300 steps! (Relative!)
+2024-01-29 16:51:35,023 WAIC=-1.5674, took 1 sec
+2024-01-29 16:51:35,154 Gaussian (WAIC = -1.5674)
+2024-01-29 16:51:35,154 Trying Frank
+2024-01-29 16:51:44,860 WAIC=-0.5064, took 9 sec
+2024-01-29 16:51:45,110 Nothing to reduce
+2024-01-29 16:51:45,110 Final model: Gaussian
+2024-01-29 16:51:45,110 Selecting trajectory 0-trajectory 3 on cpu
+2024-01-29 16:51:45,110 Trying Gaussian
+2024-01-29 16:51:55,684 WAIC=4173601439744.0000, took 10 sec
+2024-01-29 16:51:55,817 Gaussian (WAIC = 4173601439744.0000)
+2024-01-29 16:51:55,817 These variables are independent
+2024-01-29 16:51:55,819 Selecting trajectory 0-trajectory 4 on cpu
+2024-01-29 16:51:55,819 Trying Gaussian
+2024-01-29 16:52:06,375 WAIC=23387223097344.0000, took 10 sec
+2024-01-29 16:52:06,568 Gaussian (WAIC = 23387223097344.0000)
+2024-01-29 16:52:06,568 These variables are independent
+2024-01-29 16:52:06,570 Selecting trajectory 0-trajectory 5 on cpu
+2024-01-29 16:52:06,570 Trying Gaussian
+2024-01-29 16:52:07,637 Converged in 300 steps! (Relative!)
+2024-01-29 16:52:07,656 WAIC=-2.0582, took 1 sec
+2024-01-29 16:52:07,768 Gaussian (WAIC = -2.0582)
+2024-01-29 16:52:07,768 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 16:52:31,194 Training does not look promissing!
+2024-01-29 16:52:31,303 WAIC=16.2139, took 23 sec
+2024-01-29 16:52:31,483 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = 16.2139)
+2024-01-29 16:52:31,484 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 16:52:51,108 Training does not look promissing!
+2024-01-29 16:52:51,213 WAIC=11.2388, took 19 sec
+2024-01-29 16:52:51,321 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = 11.2388)
+2024-01-29 16:52:51,321 Trying Frank
+2024-01-29 16:53:00,461 WAIC=-0.5356, took 9 sec
+2024-01-29 16:53:00,572 Nothing to reduce
+2024-01-29 16:53:00,572 Final model: Gaussian
+2024-01-29 16:53:00,572 Selecting trajectory 1-trajectory 2 on cpu
+2024-01-29 16:53:00,572 Trying Gaussian
+2024-01-29 16:53:01,972 Converged in 400 steps! (Relative!)
+2024-01-29 16:53:01,990 WAIC=-2.0282, took 1 sec
+2024-01-29 16:53:02,098 Gaussian (WAIC = -2.0282)
+2024-01-29 16:53:02,098 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 16:53:23,117 Converged in 1500 steps! (Relative!)
+2024-01-29 16:53:23,228 WAIC=-2.0505, took 21 sec
+2024-01-29 16:53:23,430 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -2.0505)
+2024-01-29 16:53:23,430 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 16:54:05,391 WAIC=-2.2629, took 41 sec
+2024-01-29 16:54:05,549 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -2.2629)
+2024-01-29 16:54:05,553 tensor([False,  True, False, False, False, False])
+2024-01-29 16:54:05,553 tensor([False,  True,  True, False, False, False])
+2024-01-29 16:54:05,553 Symmetric: Gaussian
+2024-01-29 16:54:05,555 No need to swap the last one, as we already tried that model
+2024-01-29 16:54:05,555 Re-running reduced model...
+2024-01-29 16:54:05,555 Trying Gaussian
+2024-01-29 16:54:07,332 Converged in 500 steps! (Relative!)
+2024-01-29 16:54:07,351 WAIC=-2.0270, took 1 sec
+2024-01-29 16:54:07,465 Gaussian (WAIC = -2.0270)
+2024-01-29 16:54:07,466 Trying Frank
+2024-01-29 16:55:00,402 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 16:55:00,412 Trying Gaussian
+2024-01-29 16:55:02,125 Converged in 400 steps! (Relative!)
+2024-01-29 16:55:02,166 WAIC=-1.2805, took 1 sec
+2024-01-29 16:55:02,384 Gaussian (WAIC = -1.2805)
+2024-01-29 16:55:02,384 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 16:55:46,866 WAIC=-1.2750, took 44 sec
+2024-01-29 16:55:47,029 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -1.2750)
+2024-01-29 16:55:47,029 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 16:56:27,300 WAIC=-1.2747, took 40 sec
+2024-01-29 16:56:27,486 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -1.2747)
+2024-01-29 16:56:27,487 Trying Frank
+2024-01-29 16:56:36,669 WAIC=-0.4471, took 9 sec
+2024-01-29 16:56:36,782 Nothing to reduce
+2024-01-29 16:56:36,782 Final model: Gaussian
+2024-01-29 16:56:36,787 Selecting trajectory 0-trajectory 2 on cpu
+2024-01-29 16:56:36,787 Trying Gaussian
+2024-01-29 16:56:38,191 Converged in 400 steps! (Relative!)
+2024-01-29 16:56:38,209 WAIC=-1.5707, took 1 sec
+2024-01-29 16:56:38,319 Gaussian (WAIC = -1.5707)
+2024-01-29 16:56:38,319 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 16:57:21,154 WAIC=-1.5489, took 42 sec
+2024-01-29 16:57:21,366 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -1.5489)
+2024-01-29 16:57:21,367 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 16:58:01,609 WAIC=-1.7164, took 40 sec
+2024-01-29 16:58:01,836 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -1.7164)
+2024-01-29 16:58:01,840 tensor([False,  True, False, False, False, False])
+2024-01-29 16:58:01,841 tensor([False,  True, False, False,  True, False])
+2024-01-29 16:58:01,841 Symmetric: Gaussian
+2024-01-29 16:58:01,841 No need to swap the last one, as we already tried that model
+2024-01-29 16:58:01,841 Re-running reduced model...
+2024-01-29 16:58:01,841 Trying Gaussian
+2024-01-29 16:58:03,346 Converged in 400 steps! (Relative!)
+2024-01-29 16:58:03,365 WAIC=-1.5700, took 1 sec
+2024-01-29 16:58:03,476 Gaussian (WAIC = -1.5700)
+2024-01-29 16:58:03,476 Trying Frank
+2024-01-29 16:58:13,137 WAIC=-0.5099, took 9 sec
+2024-01-29 16:58:13,333 Nothing to reduce
+2024-01-29 16:58:13,333 Final model: Gaussian
+2024-01-29 16:58:13,335 Selecting trajectory 0-trajectory 3 on cpu
+2024-01-29 16:58:13,335 Trying Gaussian
+2024-01-29 16:58:24,294 WAIC=178806439936.0000, took 10 sec
+2024-01-29 16:58:24,487 Gaussian (WAIC = 178806439936.0000)
+2024-01-29 16:58:24,488 These variables are independent
+2024-01-29 16:58:24,490 Selecting trajectory 0-trajectory 4 on cpu
+2024-01-29 16:58:24,490 Trying Gaussian
+2024-01-29 16:58:35,627 WAIC=24992519553024.0000, took 11 sec
+2024-01-29 16:58:35,859 Gaussian (WAIC = 24992519553024.0000)
+2024-01-29 16:58:35,859 These variables are independent
+2024-01-29 16:58:35,862 Selecting trajectory 0-trajectory 5 on cpu
+2024-01-29 16:58:35,862 Trying Gaussian
+2024-01-29 16:58:37,338 Converged in 400 steps! (Relative!)
+2024-01-29 16:58:37,357 WAIC=-2.0557, took 1 sec
+2024-01-29 16:58:37,520 Gaussian (WAIC = -2.0557)
+2024-01-29 16:58:37,520 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 16:58:54,811 Converged in 1200 steps! (Relative!)
+2024-01-29 16:58:54,925 WAIC=-2.0116, took 17 sec
+2024-01-29 16:58:55,130 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -2.0116)
+2024-01-29 16:58:55,130 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 16:59:35,957 WAIC=52.8791, took 40 sec
+2024-01-29 16:59:36,180 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = 52.8791)
+2024-01-29 16:59:36,180 Trying Frank
+2024-01-29 16:59:45,659 WAIC=-0.5335, took 9 sec
+2024-01-29 16:59:45,838 Nothing to reduce
+2024-01-29 16:59:45,839 Final model: Gaussian
+2024-01-29 16:59:45,841 Selecting trajectory 1-trajectory 2 on cpu
+2024-01-29 16:59:45,842 Trying Gaussian
+2024-01-29 16:59:50,065 Training does not look promissing!
+2024-01-29 16:59:50,086 WAIC=13.1823, took 4 sec
+2024-01-29 16:59:50,226 Gaussian (WAIC = 13.1823)
+2024-01-29 16:59:50,226 These variables are independent
+2024-01-29 16:59:50,228 Selecting trajectory 1-trajectory 3 on cpu
+2024-01-29 16:59:50,229 Trying Gaussian
+2024-01-29 16:59:51,845 Converged in 400 steps! (Relative!)
+2024-01-29 16:59:51,864 WAIC=-1.4893, took 1 sec
+2024-01-29 16:59:52,058 Gaussian (WAIC = -1.4893)
+2024-01-29 16:59:52,059 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 17:00:24,483 Converged in 2200 steps! (Relative!)
+2024-01-29 17:00:24,593 WAIC=-1.4808, took 32 sec
+2024-01-29 17:00:24,789 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -1.4808)
+2024-01-29 17:00:24,789 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 17:01:07,034 WAIC=-1.4831, took 42 sec
+2024-01-29 17:01:07,256 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -1.4831)
+2024-01-29 17:01:07,257 Trying Frank
+2024-01-29 17:01:16,973 WAIC=-0.4889, took 9 sec
+2024-01-29 17:01:17,100 Nothing to reduce
+2024-01-29 17:01:17,100 Final model: Gaussian
+2024-01-29 17:01:17,103 Selecting trajectory 1-trajectory 4 on cpu
+2024-01-29 17:01:17,103 Trying Gaussian
+2024-01-29 17:01:28,769 WAIC=351665061888.0000, took 11 sec
+2024-01-29 17:01:29,015 Gaussian (WAIC = 351665061888.0000)
+2024-01-29 17:01:29,015 These variables are independent
+2024-01-29 17:01:29,018 Selecting trajectory 1-trajectory 5 on cpu
+2024-01-29 17:01:29,019 Trying Gaussian
+2024-01-29 17:01:30,732 Converged in 400 steps! (Relative!)
+2024-01-29 17:01:30,753 WAIC=-1.5003, took 1 sec
+2024-01-29 17:01:30,975 Gaussian (WAIC = -1.5003)
+2024-01-29 17:01:30,976 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 17:02:16,430 WAIC=-1.4912, took 45 sec
+2024-01-29 17:02:16,648 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -1.4912)
+2024-01-29 17:02:16,648 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 17:04:09,340 WAIC=-1.4911, took 112 sec
+2024-01-29 17:04:09,770 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -1.4911)
+2024-01-29 17:04:09,791 Trying Frank
+2024-01-29 17:04:20,150 WAIC=-0.5515, took 10 sec
+2024-01-29 17:04:20,345 Nothing to reduce
+2024-01-29 17:04:20,345 Final model: Gaussian
+2024-01-29 17:04:20,352 Selecting trajectory 2-trajectory 3 on cpu
+2024-01-29 17:04:20,352 Trying Gaussian
+2024-01-29 17:04:39,609 Training does not look promissing!
+2024-01-29 17:04:39,627 WAIC=9.5022, took 19 sec
+2024-01-29 17:04:39,819 Gaussian (WAIC = 9.5022)
+2024-01-29 17:04:39,819 These variables are independent
+2024-01-29 17:04:39,821 Selecting trajectory 2-trajectory 4 on cpu
+2024-01-29 17:04:39,821 Trying Gaussian
+2024-01-29 17:04:51,346 WAIC=16386777677824.0000, took 11 sec
+2024-01-29 17:04:51,544 Gaussian (WAIC = 16386777677824.0000)
+2024-01-29 17:04:51,544 These variables are independent
+2024-01-29 17:04:51,547 Selecting trajectory 2-trajectory 5 on cpu
+2024-01-29 17:04:51,548 Trying Gaussian
+2024-01-29 17:04:52,720 Converged in 300 steps! (Relative!)
+2024-01-29 17:04:52,741 WAIC=-1.9497, took 1 sec
+2024-01-29 17:04:52,863 Gaussian (WAIC = -1.9497)
+2024-01-29 17:04:52,863 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 17:05:01,515 Training does not look promissing!
+2024-01-29 17:05:01,624 WAIC=4.9663, took 8 sec
+2024-01-29 17:05:01,821 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = 4.9663)
+2024-01-29 17:05:01,821 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 17:05:11,047 Training does not look promissing!
+2024-01-29 17:05:11,152 WAIC=4.4017, took 9 sec
+2024-01-29 17:05:11,260 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = 4.4017)
+2024-01-29 17:05:11,260 Trying Frank
+2024-01-29 17:21:38,361 WAIC=-0.5882, took 987 sec
+2024-01-29 17:21:38,556 Nothing to reduce
+2024-01-29 17:21:38,556 Final model: Gaussian
+2024-01-29 17:21:38,557 Selecting trajectory 3-trajectory 4 on cpu
+2024-01-29 17:21:38,558 Trying Gaussian
+2024-01-29 17:21:39,556 Converged in 300 steps! (Relative!)
+2024-01-29 17:21:39,574 WAIC=-2.5833, took 1 sec
+2024-01-29 17:21:39,683 Gaussian (WAIC = -2.5833)
+2024-01-29 17:21:39,683 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 17:24:28,979 Training does not look promissing!
+2024-01-29 17:24:29,115 WAIC=23.3683, took 169 sec
+2024-01-29 17:24:29,470 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = 23.3683)
+2024-01-29 17:24:29,471 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 17:24:38,588 Training does not look promissing!
+2024-01-29 17:24:38,713 WAIC=-2.3704, took 9 sec
+2024-01-29 17:24:38,946 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -2.3704)
+2024-01-29 17:24:38,947 Trying Frank
+2024-01-29 17:24:50,653 WAIC=-0.5915, took 11 sec
+2024-01-29 17:24:50,964 Nothing to reduce
+2024-01-29 17:24:50,964 Final model: Gaussian
+2024-01-29 17:24:50,970 Selecting trajectory 3-trajectory 5 on cpu
+2024-01-29 17:24:50,970 Trying Gaussian
+2024-01-29 17:24:52,114 Converged in 300 steps! (Relative!)
+2024-01-29 17:24:52,135 WAIC=-1.9718, took 1 sec
+2024-01-29 17:24:52,280 Gaussian (WAIC = -1.9718)
+2024-01-29 17:24:52,281 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 17:25:38,025 WAIC=-2.1846, took 45 sec
+2024-01-29 17:25:38,287 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -2.1846)
+2024-01-29 17:25:38,287 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 17:26:20,353 WAIC=-2.3359, took 42 sec
+2024-01-29 17:26:20,564 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -2.3359)
+2024-01-29 17:26:20,568 tensor([False,  True,  True, False, False, False])
+2024-01-29 17:26:20,573 tensor([False,  True,  True, False, False, False])
+2024-01-29 17:26:20,573 Symmetric: Gaussian
+2024-01-29 17:26:20,573 No need to swap the last one, as we already tried that model
+2024-01-29 17:26:20,573 Re-running reduced model...
+2024-01-29 17:26:20,573 Trying GaussianClayton0°
+2024-01-29 17:26:24,694 Converged in 800 steps! (Relative!)
+2024-01-29 17:26:24,726 WAIC=-1.9774, took 4 sec
+2024-01-29 17:26:24,834 GaussianClayton0° (WAIC = -1.9774)
+2024-01-29 17:26:24,835 Trying FrankClayton0°
+2024-01-29 17:26:39,223 WAIC=-2.1054, took 14 sec
+2024-01-29 17:26:39,425 Frank is better than Gauss
+2024-01-29 17:26:39,427 Trying Clayton0°
+2024-01-29 17:26:43,251 Converged in 1300 steps! (Relative!)
+2024-01-29 17:26:43,262 WAIC=-1.8122, took 3 sec
+2024-01-29 17:26:43,370 Reducing the model, even though the WAIC gets worse.
+2024-01-29 17:26:43,371 Final model: Clayton0°
+2024-01-29 17:26:43,373 Selecting trajectory 4-trajectory 5 on cpu
+2024-01-29 17:26:43,374 Trying Gaussian
+2024-01-29 17:26:44,423 Converged in 300 steps! (Relative!)
+2024-01-29 17:26:44,441 WAIC=-2.0861, took 1 sec
+2024-01-29 17:26:44,550 Gaussian (WAIC = -2.0861)
+2024-01-29 17:26:44,550 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 17:27:10,303 Converged in 1800 steps! (Relative!)
+2024-01-29 17:27:10,414 WAIC=-2.0792, took 25 sec
+2024-01-29 17:27:10,613 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -2.0792)
+2024-01-29 17:27:10,613 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 17:28:27,363 Selecting trajectory 4-trajectory 5 on cpu
+2024-01-29 17:28:27,365 Trying Gaussian
+2024-01-29 17:28:28,509 Converged in 300 steps! (Relative!)
+2024-01-29 17:28:28,530 WAIC=-2.0892, took 1 sec
+2024-01-29 17:28:28,793 Gaussian (WAIC = -2.0892)
+2024-01-29 17:28:28,793 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 17:29:08,445 Selecting trajectory 0-trajectory 1 on cpu
+2024-01-29 17:29:08,447 Trying Gaussian
+2024-01-29 17:29:10,347 Converged in 500 steps! (Relative!)
+2024-01-29 17:29:10,366 WAIC=-1.2824, took 1 sec
+2024-01-29 17:29:10,595 Gaussian (WAIC = -1.2824)
+2024-01-29 17:29:10,595 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 17:30:00,498 WAIC=-1.2749, took 49 sec
+2024-01-29 17:30:00,987 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -1.2749)
+2024-01-29 17:30:00,987 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 17:30:44,185 WAIC=-1.2762, took 43 sec
+2024-01-29 17:30:44,403 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -1.2762)
+2024-01-29 17:30:44,413 Trying Frank
+2024-01-29 17:30:54,271 WAIC=-0.4571, took 9 sec
+2024-01-29 17:30:54,504 Nothing to reduce
+2024-01-29 17:30:54,504 Final model: Gaussian
+2024-01-29 17:30:54,511 Selecting trajectory 0-trajectory 2 on cpu
+2024-01-29 17:30:54,512 Trying Gaussian
+2024-01-29 17:30:58,147 Converged in 1000 steps! (Relative!)
+2024-01-29 17:30:58,165 WAIC=-1.7036, took 3 sec
+2024-01-29 17:30:58,313 Gaussian (WAIC = -1.7036)
+2024-01-29 17:30:58,314 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 17:31:42,254 WAIC=-1.7154, took 43 sec
+2024-01-29 17:31:42,450 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -1.7154)
+2024-01-29 17:31:42,450 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 17:32:23,693 WAIC=-1.7158, took 41 sec
+2024-01-29 17:32:23,896 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -1.7158)
+2024-01-29 17:32:23,900 tensor([False,  True, False, False, False, False])
+2024-01-29 17:32:23,903 tensor([False,  True, False, False, False, False])
+2024-01-29 17:32:23,903 Symmetric: Gaussian
+2024-01-29 17:32:23,903 Re-running reduced model...
+2024-01-29 17:32:23,903 Trying Gaussian
+2024-01-29 17:32:24,971 Converged in 300 steps! (Relative!)
+2024-01-29 17:32:24,991 WAIC=-1.5699, took 1 sec
+2024-01-29 17:32:25,109 Gaussian (WAIC = -1.5699)
+2024-01-29 17:32:25,109 Trying Frank
+2024-01-29 17:32:34,697 WAIC=-0.5155, took 9 sec
+2024-01-29 17:32:34,943 Nothing to reduce
+2024-01-29 17:32:34,943 Final model: Gaussian
+2024-01-29 17:32:34,949 Selecting trajectory 0-trajectory 3 on cpu
+2024-01-29 17:32:34,949 Trying Gaussian
+2024-01-29 17:32:45,614 WAIC=10928342958080.0000, took 10 sec
+2024-01-29 17:32:45,824 Gaussian (WAIC = 10928342958080.0000)
+2024-01-29 17:32:45,824 These variables are independent
+2024-01-29 17:32:45,827 Selecting trajectory 0-trajectory 4 on cpu
+2024-01-29 17:32:45,827 Trying Gaussian
+2024-01-29 17:32:56,759 WAIC=19932911763456.0000, took 10 sec
+2024-01-29 17:32:56,956 Gaussian (WAIC = 19932911763456.0000)
+2024-01-29 17:32:56,956 These variables are independent
+2024-01-29 17:32:56,958 Selecting trajectory 0-trajectory 5 on cpu
+2024-01-29 17:32:56,959 Trying Gaussian
+2024-01-29 17:32:58,408 Converged in 400 steps! (Relative!)
+2024-01-29 17:32:58,427 WAIC=-2.0557, took 1 sec
+2024-01-29 17:32:58,536 Gaussian (WAIC = -2.0557)
+2024-01-29 17:32:58,536 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 17:33:41,621 WAIC=-2.0810, took 43 sec
+2024-01-29 17:33:41,826 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -2.0810)
+2024-01-29 17:33:41,826 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 17:34:04,695 Training does not look promissing!
+2024-01-29 17:34:04,803 WAIC=34.9708, took 22 sec
+2024-01-29 17:34:04,995 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = 34.9708)
+2024-01-29 17:34:04,999 tensor([False,  True,  True, False, False, False])
+2024-01-29 17:34:05,002 tensor([False,  True, False, False, False, False])
+2024-01-29 17:34:05,003 Symmetric: Gaussian
+2024-01-29 17:34:05,003 No need to swap the last one, as we already tried that model
+2024-01-29 17:34:05,003 Re-running reduced model...
+2024-01-29 17:34:05,003 Trying GaussianGumbel180°
+2024-01-29 17:34:13,594 Training does not look promissing!
+2024-01-29 17:34:13,629 WAIC=42.9339, took 8 sec
+2024-01-29 17:34:13,831 GaussianGumbel180° (WAIC = 42.9339)
+2024-01-29 17:34:13,832 Trying FrankGumbel180°
+2024-01-29 17:34:29,627 WAIC=-1.8743, took 15 sec
+2024-01-29 17:34:29,930 Frank is better than Gauss
+2024-01-29 17:34:29,934 Trying Gumbel180°
+2024-01-29 17:34:39,582 WAIC=-1.8856, took 9 sec
+2024-01-29 17:34:39,753 Final model: Gumbel180°
+2024-01-29 17:34:39,755 Selecting trajectory 1-trajectory 2 on cpu
+2024-01-29 17:34:39,756 Trying Gaussian
+2024-01-29 17:34:40,835 Converged in 300 steps! (Relative!)
+2024-01-29 17:34:40,853 WAIC=-2.0203, took 1 sec
+2024-01-29 17:34:40,973 Gaussian (WAIC = -2.0203)
+2024-01-29 17:34:40,973 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 17:35:15,664 Converged in 2400 steps! (Relative!)
+2024-01-29 17:35:15,776 WAIC=-2.2598, took 34 sec
+2024-01-29 17:35:15,978 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -2.2598)
+2024-01-29 17:35:15,978 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 17:35:44,566 Converged in 1900 steps! (Relative!)
+2024-01-29 17:35:44,687 WAIC=-2.2698, took 28 sec
+2024-01-29 17:35:44,981 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -2.2698)
+2024-01-29 17:35:44,985 tensor([False,  True, False, False, False, False])
+2024-01-29 17:35:44,987 tensor([False,  True, False, False, False, False])
+2024-01-29 17:35:44,987 Symmetric: Gaussian
+2024-01-29 17:35:44,987 Re-running reduced model...
+2024-01-29 17:35:44,987 Trying Gaussian
+2024-01-29 17:35:48,956 Training does not look promissing!
+2024-01-29 17:35:48,976 WAIC=21.0153, took 3 sec
+2024-01-29 17:35:49,196 Gaussian (WAIC = 21.0153)
+2024-01-29 17:35:49,198 Trying Frank
+2024-01-29 17:35:58,394 WAIC=-0.5388, took 9 sec
+2024-01-29 17:35:58,583 Frank is better than Gauss
+2024-01-29 17:35:58,586 Nothing to reduce
+2024-01-29 17:35:58,586 Final model: Frank
+2024-01-29 17:35:58,589 Selecting trajectory 1-trajectory 3 on cpu
+2024-01-29 17:35:58,589 Trying Gaussian
+2024-01-29 17:36:00,014 Converged in 400 steps! (Relative!)
+2024-01-29 17:36:00,041 WAIC=-1.4912, took 1 sec
+2024-01-29 17:36:00,242 Gaussian (WAIC = -1.4912)
+2024-01-29 17:36:00,242 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 17:36:25,009 Converged in 1800 steps! (Relative!)
+2024-01-29 17:36:25,121 WAIC=-1.4755, took 24 sec
+2024-01-29 17:36:25,348 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -1.4755)
+2024-01-29 17:36:25,348 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 17:36:46,771 Converged in 1600 steps! (Relative!)
+2024-01-29 17:36:46,877 WAIC=-1.4755, took 21 sec
+2024-01-29 17:36:47,104 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -1.4755)
+2024-01-29 17:36:47,104 Trying Frank
+2024-01-29 17:36:56,279 WAIC=-0.4912, took 9 sec
+2024-01-29 17:36:56,466 Nothing to reduce
+2024-01-29 17:36:56,466 Final model: Gaussian
+2024-01-29 17:36:56,469 Selecting trajectory 1-trajectory 4 on cpu
+2024-01-29 17:36:56,469 Trying Gaussian
+2024-01-29 17:37:06,992 WAIC=27472718462976.0000, took 10 sec
+2024-01-29 17:37:07,166 Gaussian (WAIC = 27472718462976.0000)
+2024-01-29 17:37:07,166 These variables are independent
+2024-01-29 17:37:07,168 Selecting trajectory 1-trajectory 5 on cpu
+2024-01-29 17:37:07,169 Trying Gaussian
+2024-01-29 17:37:08,975 Converged in 500 steps! (Relative!)
+2024-01-29 17:37:09,006 WAIC=-1.4991, took 1 sec
+2024-01-29 17:37:09,389 Gaussian (WAIC = -1.4991)
+2024-01-29 17:37:09,389 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 17:37:51,727 Converged in 2900 steps! (Relative!)
+2024-01-29 17:37:51,843 WAIC=-1.4899, took 42 sec
+2024-01-29 17:37:52,070 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -1.4899)
+2024-01-29 17:37:52,070 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 17:38:20,458 Converged in 2100 steps! (Relative!)
+2024-01-29 17:38:20,567 WAIC=-1.4876, took 28 sec
+2024-01-29 17:38:20,768 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -1.4876)
+2024-01-29 17:38:20,778 Trying Frank
+2024-01-29 17:38:30,218 WAIC=-0.5603, took 9 sec
+2024-01-29 17:38:30,462 Nothing to reduce
+2024-01-29 17:38:30,462 Final model: Gaussian
+2024-01-29 17:38:30,468 Selecting trajectory 2-trajectory 3 on cpu
+2024-01-29 17:38:30,468 Trying Gaussian
+2024-01-29 17:38:32,693 Converged in 600 steps! (Relative!)
+2024-01-29 17:38:32,712 WAIC=-1.8279, took 2 sec
+2024-01-29 17:38:32,910 Gaussian (WAIC = -1.8279)
+2024-01-29 17:38:32,910 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 17:38:44,884 Training does not look promissing!
+2024-01-29 17:38:44,993 WAIC=26.2641, took 12 sec
+2024-01-29 17:38:45,181 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = 26.2641)
+2024-01-29 17:38:45,181 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 17:38:56,729 Training does not look promissing!
+2024-01-29 17:38:56,833 WAIC=14.2431, took 11 sec
+2024-01-29 17:38:56,960 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = 14.2431)
+2024-01-29 17:38:56,960 Trying Frank
+2024-01-29 17:39:06,180 WAIC=-0.5372, took 9 sec
+2024-01-29 17:39:06,306 Nothing to reduce
+2024-01-29 17:39:06,306 Final model: Gaussian
+2024-01-29 17:39:06,308 Selecting trajectory 2-trajectory 4 on cpu
+2024-01-29 17:39:06,309 Trying Gaussian
+2024-01-29 17:39:16,624 WAIC=29014123085824.0000, took 10 sec
+2024-01-29 17:39:16,739 Gaussian (WAIC = 29014123085824.0000)
+2024-01-29 17:39:16,739 These variables are independent
+2024-01-29 17:39:16,745 Selecting trajectory 2-trajectory 5 on cpu
+2024-01-29 17:39:16,745 Trying Gaussian
+2024-01-29 17:39:18,607 Converged in 500 steps! (Relative!)
+2024-01-29 17:39:18,627 WAIC=-1.9563, took 1 sec
+2024-01-29 17:39:18,837 Gaussian (WAIC = -1.9563)
+2024-01-29 17:39:18,837 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 17:39:28,557 Training does not look promissing!
+2024-01-29 17:39:28,668 WAIC=2.0433, took 9 sec
+2024-01-29 17:39:28,853 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = 2.0433)
+2024-01-29 17:39:28,854 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 17:39:37,974 Training does not look promissing!
+2024-01-29 17:39:38,084 WAIC=5.1953, took 9 sec
+2024-01-29 17:39:38,197 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = 5.1953)
+2024-01-29 17:39:38,198 Trying Frank
+2024-01-29 17:39:47,708 WAIC=-0.5896, took 9 sec
+2024-01-29 17:39:47,928 Nothing to reduce
+2024-01-29 17:39:47,928 Final model: Gaussian
+2024-01-29 17:39:47,930 Selecting trajectory 3-trajectory 4 on cpu
+2024-01-29 17:39:47,930 Trying Gaussian
+2024-01-29 17:39:49,006 Converged in 300 steps! (Relative!)
+2024-01-29 17:39:49,026 WAIC=-2.5814, took 1 sec
+2024-01-29 17:39:49,148 Gaussian (WAIC = -2.5814)
+2024-01-29 17:39:49,148 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 17:39:57,328 Training does not look promissing!
+2024-01-29 17:39:57,440 WAIC=3.9255, took 8 sec
+2024-01-29 17:39:57,561 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = 3.9255)
+2024-01-29 17:39:57,561 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 17:40:04,081 Training does not look promissing!
+2024-01-29 17:40:04,188 WAIC=4.8602, took 6 sec
+2024-01-29 17:40:04,343 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = 4.8602)
+2024-01-29 17:40:04,344 Trying Frank
+2024-01-29 17:40:13,651 WAIC=-0.5790, took 9 sec
+2024-01-29 17:40:13,767 Nothing to reduce
+2024-01-29 17:40:13,767 Final model: Gaussian
+2024-01-29 17:40:13,769 Selecting trajectory 3-trajectory 5 on cpu
+2024-01-29 17:40:13,769 Trying Gaussian
+2024-01-29 17:40:15,216 Converged in 400 steps! (Relative!)
+2024-01-29 17:40:15,235 WAIC=-1.9688, took 1 sec
+2024-01-29 17:40:15,360 Gaussian (WAIC = -1.9688)
+2024-01-29 17:40:15,360 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 17:40:58,650 WAIC=-2.1874, took 43 sec
+2024-01-29 17:40:58,874 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -2.1874)
+2024-01-29 17:40:58,874 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 17:41:39,786 WAIC=-2.3658, took 40 sec
+2024-01-29 17:41:40,004 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -2.3658)
+2024-01-29 17:41:40,008 tensor([False,  True,  True, False, False, False])
+2024-01-29 17:41:40,012 tensor([False,  True,  True, False, False, False])
+2024-01-29 17:41:40,012 Symmetric: Gaussian
+2024-01-29 17:41:40,012 No need to swap the last one, as we already tried that model
+2024-01-29 17:41:40,012 Re-running reduced model...
+2024-01-29 17:41:40,012 Trying GaussianClayton0°
+2024-01-29 17:41:45,419 Converged in 1000 steps! (Relative!)
+2024-01-29 17:41:45,453 WAIC=-1.9841, took 5 sec
+2024-01-29 17:41:45,570 GaussianClayton0° (WAIC = -1.9841)
+2024-01-29 17:41:45,571 Trying FrankClayton0°
+2024-01-29 17:42:00,277 WAIC=-1.8969, took 14 sec
+2024-01-29 17:42:00,498 Nothing to reduce
+2024-01-29 17:42:00,498 Final model: GaussianClayton0°
+2024-01-29 17:42:00,502 Selecting trajectory 4-trajectory 5 on cpu
+2024-01-29 17:42:00,502 Trying Gaussian
+2024-01-29 17:42:01,590 Converged in 300 steps! (Relative!)
+2024-01-29 17:42:01,610 WAIC=-2.0906, took 1 sec
+2024-01-29 17:42:01,742 Gaussian (WAIC = -2.0906)
+2024-01-29 17:42:01,742 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-01-29 17:42:27,364 Converged in 1800 steps! (Relative!)
+2024-01-29 17:42:27,478 WAIC=-2.0775, took 25 sec
+2024-01-29 17:42:27,694 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -2.0775)
+2024-01-29 17:42:27,694 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-01-29 17:42:59,035 Training does not look promissing!
+2024-01-29 17:42:59,143 WAIC=45.6923, took 31 sec
+2024-01-29 17:42:59,365 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = 45.6923)
+2024-01-29 17:42:59,365 Trying Frank
+2024-01-29 17:43:08,803 WAIC=-0.5790, took 9 sec
+2024-01-29 17:43:09,029 Nothing to reduce
+2024-01-29 17:43:09,029 Final model: Gaussian
+2024-01-29 17:45:46,445 No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
