@@ -1,20 +1,14 @@
-# Parametric Copula-GP framework
+# Honours Project: Copula-GPFA framework
 
-This is the GPyTorch-based package that infers copula parameters using a latent Gaussian Process model.
-The package contains 4 copula families (Gaussian, Frank, Clayton, Gumbel) + linear combinations of copulas from same or different families.
-The models are constructed with the greedy or heuristic algorithm and the best model is selected based on WAIC. 
-Both greedy and heuristic algorithms perform well on synthetic data (see tests/integration).
-The bivariate models can be then organised into a C-Vine.
-A number of methods for computing information measures (e.g. vine.entropy, vine.inputMI) are implemented.
-For a complete description of our method, see our paper (link below).
+This is the main directory for the Copula-GPFA framework for neuronal spike data analysis. 
 
-# Installing the package from PyPI
+# Installing Copula-GP from PyPI
 
 ```
 pip install copulagp
 ```
 
-# Installing the package from Github repo
+# Installing Copula-GP from Github repo
 
 In a virtual environment (e.g. [virtualenv](https://pypi.org/project/virtualenv/)), install all the dependencies and the package using the following commands:
 ```
