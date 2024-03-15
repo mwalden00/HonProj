@@ -5,6 +5,7 @@ build/
 *.png
 *.pkl
 *.pdf
+*.csv
 logs
 .ipynb_checkpoints/
 figures/
