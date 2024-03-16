@@ -1,0 +1,12 @@
+2024-03-16 23:50:54,496 Selecting 0-1 on cpu
+2024-03-16 23:50:54,497 Trying Gaussian
+2024-03-16 23:51:19,700 Converged in 300 steps! (Relative!)
+2024-03-16 23:51:20,514 WAIC=-0.2553, took 25 sec
+2024-03-16 23:51:20,591 Gaussian (WAIC = -0.2553)
+2024-03-16 23:51:20,591 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-03-16 23:51:45,677 Selecting 0-2 on cpu
+2024-03-16 23:51:45,678 Trying Gaussian
+2024-03-16 23:52:11,671 Converged in 300 steps! (Relative!)
+2024-03-16 23:52:12,484 WAIC=-0.2657, took 26 sec
+2024-03-16 23:52:12,549 Gaussian (WAIC = -0.2657)
+2024-03-16 23:52:12,549 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
