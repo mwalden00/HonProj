@@ -145,9 +145,8 @@ def infer(bvcopulas, train_x: Tensor, train_y: Tensor, device: torch.device,
 	if device!=torch.device('cpu'):
 		with torch.cuda.device(device):
 			torch.cuda.empty_cache()
-
+	
 	gc.collect()
-
 	return WAIC, model
 
 def load_model(filename, bvcopulas, device: torch.device):

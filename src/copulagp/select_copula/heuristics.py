@@ -10,6 +10,8 @@ from .importance import important_copulas, reduce_model
 def select_with_heuristics(X: torch.Tensor, Y: torch.Tensor, device: torch.device,
     exp_pref: str, path_output: str, name_x: str, name_y: str,
     train_x = None, train_y = None):
+    
+    torch.set_default_device(device)
 
     if exp_pref!='':
         exp_name = f'{exp_pref}_{name_x}-{name_y}'
@@ -62,10 +64,8 @@ def select_with_heuristics(X: torch.Tensor, Y: torch.Tensor, device: torch.devic
 
             if waic_claytons>10:
                 print('Strange WAIC!')
-            
             symmetric_part = which_leader[:2] + which_follow[:2] # + = elementwise_or
             assymetric_part = which_leader[2:] + which_follow[2:]
-
             waic_min = min(waic_claytons,waic_gumbels)
             symmetric_likelihoods = reduce_model(conf.clayton_likelihoods[:2],symmetric_part)
             logging.info("Symmetric: "+get_copula_name_string(symmetric_likelihoods))

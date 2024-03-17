@@ -9,8 +9,8 @@ import copulagp.select_copula as select_copula
 import copulagp.bvcopula as bvcopula
 from copulagp.select_copula import conf as conf_select
 
-def worker(X, Y0, Y1, idxs, layer, device_list, gauss=False, light=False, shuffle=False):
-	# get unique gpu id for cpu id
+def worker(X, Y0, Y1, idxs, layer, device_list, exp_pref, log_dir, gauss=False, light=False, shuffle=False):
+	# get unique gpu id for cpu 
 	cpu_name = multiprocessing.current_process().name
 	cpu_id = (int(cpu_name[cpu_name.find('-') + 1:]) - 1)%len(device_list) # ids will be 8 consequent numbers
 	device_str = device_list[cpu_id]
@@ -40,10 +40,10 @@ def worker(X, Y0, Y1, idxs, layer, device_list, gauss=False, light=False, shuffl
 			# (likelihoods, waic) = select_copula.select_copula_model(X,Y,device(device_str),exp_pref,log_dir,layer,n+layer)
 		t_end = time.time()
 		# print(f'Selection took {int((t_end-t_start)/60)} min')
-		print(store)
-	except RuntimeError as error:
-		print(error)
-		# logging.error(error, exc_info=True)
+		#print(store)		# logging.error(error, exc_info=True)
+	except RunTimeError as err:
+		print(err)
+		logging.error(error, exc_info=True)
 		return -1
 	finally:
 		print(f"{n0}-{n1} {store.name_string} {waic:.4} took {int((t_end-t_start)/60)} min")
@@ -118,7 +118,7 @@ def train_next_tree(X: np.ndarray, Y: np.ndarray,
 	pool = multiprocessing.Pool(len(device_list))
 
 	for i in np.arange(1,NN+1): 
-		results[i-1] = pool.apply_async(worker, (X, Y[:,0], Y[:,i], [0,i],  layer, device_list, gauss, light, shuffle))
+		results[i-1] = pool.apply_async(worker, (X, Y[:,0], Y[:,i], [0,i],  layer, device_list, exp_pref, log_dir, gauss, light, shuffle))
 
 	pool.close()
 	pool.join()  # block at this line until all processes are done

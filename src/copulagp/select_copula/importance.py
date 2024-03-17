@@ -16,6 +16,14 @@ def important_copulas(model):
     return which
 
 def reduce_model(bvcopulas: list, which: Tensor) -> list:
-    assert len(bvcopulas)==len(which)
-    idx = arange(0,len(which))[which]
+    try:
+        assert len(bvcopulas)==len(which)
+    except AssertionError as err:
+        logging.exception(err)
+        raise err
+    try:
+        idx = arange(0,len(which)).to(device=which.device)[which]
+    except err:
+        logging.exception(err)
+        print(err)
     return [bvcopulas[i] for i in idx]
