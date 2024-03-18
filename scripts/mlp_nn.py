@@ -58,8 +58,8 @@ class base_LSTM(nn.Module):
 
         self.linear = nn.Linear(in_features=hidden_dim, out_features=out_dim)
 
-    def forward(self, x):
-        x = self.lstm(x)
+    def forward(self, x, hidden=None):
+        x, _ = self.lstm(x, hidden)
         x = self.linear(x)
         return x
 
