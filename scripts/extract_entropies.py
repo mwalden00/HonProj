@@ -82,7 +82,9 @@ if __name__ == "__main__":
         random_vine = v.CVine(random_model_data, torch.arange(0, 1, 0.01))
 
         H = random_vine.entropy(v=True)
-        H_X = random_vine.entropy(v=True)
+        print("Unparameterized Entropies:", H)
+        H_X = pupil_vine.entropy(v=True)
+        print("Parameterized Entropies:", H_X)
 
         I_Y_X = H.mean() - H_X.mean()
         print("Mutual Info Est. =", I_Y_X)
