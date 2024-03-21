@@ -1,3 +1,4 @@
+import gc
 import torch
 import torch.multiprocessing as mp
 import pandas as pd
@@ -67,7 +68,9 @@ if __name__ == "__main__":
                     torch.arange(0, 1, 1.0 / 1500)
                 )
                 pupil_model_data[i][j] = cop
-        pupil_vine = v.CVine(pupil_model_data, torch.arange(0, 1, 1.0 / 1500), device=device)
+        pupil_vine = v.CVine(
+            pupil_model_data, torch.arange(0, 1, 1.0 / 1500), device=device
+        )
 
         random_model_data = copy.deepcopy(rand_results["models"])
 
@@ -76,11 +79,23 @@ if __name__ == "__main__":
                 cop = cop_data.model_init(device).marginalize(torch.rand(1500))
                 random_model_data[i][j] = cop
         random_vine = v.CVine(random_model_data, torch.rand(1500), device=device)
-        
-        print('Extracting entropies...')
+
+        print("Extracting entropies...")
+
+        gc.collect()
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+
         H = random_vine.entropy(v=True)
+        np.savetxt("./rand_lorenz_entropies.csv", H.cpu().numpy(), delimiter=",")
         print("Unparameterized Entropies:", H)
+
+        gc.collect()
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+
         H_X = pupil_vine.entropy(v=True)
+        np.savetxt("./rand_lorenz_entropies.csv", H_X.cpu().numpy(), delimiter=",")
         print("Parameterized Entropies:", H_X)
 
         I_Y_X = H.mean() - H_X.mean()
