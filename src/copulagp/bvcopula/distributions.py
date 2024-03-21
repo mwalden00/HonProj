@@ -725,6 +725,7 @@ class MixtureCopula(Distribution):
             if c.num_thetas == 0:
                 vals[onehot[i].to(vals.device)] = (samples[...,0][onehot[i].to(samples.device)]).to(vals.device)
             else:
+                print(c)
                 vals[onehot[i].to(vals.device)] = (c(theta_[i,...][onehot[i].to(theta_.device)], 
                                                rotation=self.rotations[i]).ppcf(
                                                 samples[onehot[i].to(samples.device),:]))
