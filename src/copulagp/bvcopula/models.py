@@ -135,7 +135,7 @@ class Pair_CopulaGP:
         """
 
         with torch.no_grad():
-            f = self.__gp_model(X.to(self.device())).rsample(
+            f = self.__gp_model(X.to(self.device)).rsample(
                 torch.Size([self.__particles]).to(self.device)
             )  # TODO particle num to conf
         f = torch.einsum("i...->...i", f)
