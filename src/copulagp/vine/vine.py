@@ -254,7 +254,7 @@ class CVine:
                 # print(layer,layer+n+1, copula.copulas)
                 print(layers[0].device)
                 print(log_prob.device)
-                print(copula.thetas.device)
+                print(copula.theta.device)
                 log_prob += copula.log_prob(layers[-1][..., [n + 1, 0]])
                 next_layer.append(copula.ccdf(layers[-1][..., [n + 1, 0]]).float())
             layers.append(torch.stack(next_layer, dim=-1))
