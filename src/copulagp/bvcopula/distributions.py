@@ -730,9 +730,9 @@ class MixtureCopula(Distribution):
                 print('vals:',vals.device)
                 print('samples:',samples.device)
 
-                vals[onehot[i].to(vals.device)] = (c(theta_[i,...][onehot[i].to(theta_.device)], 
+                vals[onehot[i]] = c(theta_[i,...].cpu()[onehot[i]], 
                                                rotation=self.rotations[i]).ppcf(
-                                                samples[onehot[i].to(samples.device),:].to(theta_.device)))
+                                                samples[onehot[i],:])
         assert torch.all(vals<=1)
         assert torch.all(vals>=0)
         return vals.clamp(0.001,0.999)
