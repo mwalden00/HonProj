@@ -8,6 +8,7 @@ import pickle as pkl
 import copy
 from copulagp.utils import Plot_Fit
 from copulagp import vine as v
+import gc
 
 
 device = "cpu" if not torch.cuda.is_available() else "cuda:0"
@@ -66,20 +67,23 @@ if __name__ == "__main__":
         for i, layer in enumerate(pupil_model_data):
             for j, cop_data in enumerate(layer):
                 cop = cop_data.model_init(device).marginalize(
-                    torch.Tensor(data["X"][:3000])
+                    torch.Tensor(data["X"][:1500])
                 )
                 pupil_model_data[i][j] = cop
         pupil_vine = v.CVine(
-            pupil_model_data, torch.Tensor(data["X"][:3000]), device=device
+            pupil_model_data, torch.Tensor(data["X"][:1500]), device=device
         )
 
         random_model_data = copy.deepcopy(pupil_results["models"])
 
         for i, layer in enumerate(random_model_data):
             for j, cop_data in enumerate(layer):
-                cop = cop_data.model_init(device).marginalize(torch.rand(3000))
+                cop = cop_data.model_init(device).marginalize(torch.rand(1500))
                 random_model_data[i][j] = cop
-        random_vine = v.CVine(random_model_data, torch.rand(3000), device=device)
+        random_vine = v.CVine(random_model_data, torch.rand(1500), device=device)
+        gc.collect()
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
         print("Calculating entropies...")
         H = random_vine.entropy(v=True)
         np.savetxt("./rand_vine_entropies.csv", H.cpu().numpy(), delimiter=",")
