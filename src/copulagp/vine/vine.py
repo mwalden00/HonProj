@@ -253,9 +253,6 @@ class CVine:
             next_layer = []
             for n, copula in enumerate(copulas):
                 # print(layer,layer+n+1, copula.copulas)
-                print(layers[0].device)
-                print(log_prob.device)
-                print(copula.theta.device)
                 log_prob += copula.log_prob(layers[-1][..., [n + 1, 0]])
                 next_layer.append(copula.ccdf(layers[-1][..., [n + 1, 0]]).float())
             layers.append(torch.stack(next_layer, dim=-1))
@@ -304,7 +301,7 @@ class CVine:
                 samples = torch.einsum(
                     "ij...->ji...", samples
                 )  # samples (MC) x inputs (MC) x variables
-                logp = self.log_prob(samples)  # [sample dim, batch dims]
+                logp = self.log_prob(samples.to(self.device))  # [sample dim, batch dims]
                 assert torch.all(logp == logp)
                 assert torch.all(
                     logp.abs() != float("inf")
