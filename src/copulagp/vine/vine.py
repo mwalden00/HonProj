@@ -76,6 +76,7 @@ class CVine:
                 assert model.__class__ == bvcopula.distributions.MixtureCopula
         self.layers = layers
         # ADD CHECK ON WHICH DEVICE EACH MODEL IS?
+        torch.set_default_device(device=device)
         self.device = device
 
     @classmethod
