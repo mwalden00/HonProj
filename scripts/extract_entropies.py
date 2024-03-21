@@ -81,7 +81,7 @@ if __name__ == "__main__":
                 cop = cop_data.model_init(device_list[0]).marginalize(torch.rand(100))
                 random_model_data[i][j] = cop
         random_vine = v.CVine(random_model_data, torch.rand(100))
-
+        print("Calculating entropies...")
         H = random_vine.entropy(v=True)
         np.savetxt("./rand_vine_entropies.csv", H.cpu().numpy(), delimiter=",")
         print("Unparameterized Entropies:", H)

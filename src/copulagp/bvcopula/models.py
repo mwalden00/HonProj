@@ -135,8 +135,8 @@ class Pair_CopulaGP:
         """
 
         with torch.no_grad():
-            f = self.__gp_model(X).rsample(
-                torch.Size([self.__particles])
+            f = self.__gp_model(X.to(self.device())).rsample(
+                torch.Size([self.__particles]).to(self.device)
             )  # TODO particle num to conf
         f = torch.einsum("i...->...i", f)
         onehot = torch.rand(f.shape, device=self.__device).argsort(dim=-1) == 0
