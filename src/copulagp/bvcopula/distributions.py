@@ -719,7 +719,7 @@ class MixtureCopula(Distribution):
         onehot = torch.distributions.one_hot_categorical.OneHotCategorical(
             probs=torch.einsum('i...->...i', mix_)).sample()
         onehot = torch.einsum('...i->i...', onehot) # back to copulas x inputs x samples_size
-        onehot = onehot.type(torch.bool)
+        onehot = onehot.type(torch.bool).cpu()
         
         for i,c in enumerate(self.copulas):
             if c.num_thetas == 0:
