@@ -203,7 +203,7 @@ class GaussianCopula(SingleParamCopulaBase):
         m = 1e-6
         mask_samples = (value[..., 0] > m) & (value[..., 1] > m) & \
                 (value[..., 0] < 1.-m) & (value[..., 1] < 1.-m)
-        mask = mask_theta & mask_samples
+        mask = mask_theta.to(mask_samples.device) & mask_samples
 
         log_prob[..., mask] = (2 * thetas * nrvs[..., 0] * nrvs[..., 1] - thetas**2 \
             * (nrvs[..., 0]**2 + nrvs[..., 1]**2))[..., mask]
