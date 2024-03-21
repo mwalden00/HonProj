@@ -74,7 +74,7 @@ if __name__ == "__main__":
             pupil_model_data, torch.Tensor(data["X"][:1500]), device=device
         )
 
-        random_model_data = copy.deepcopy(pupil_results["models"])
+        random_model_data = copy.deepcopy(rand_results["models"])
 
         for i, layer in enumerate(random_model_data):
             for j, cop_data in enumerate(layer):

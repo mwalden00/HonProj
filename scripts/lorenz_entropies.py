@@ -69,7 +69,7 @@ if __name__ == "__main__":
                 pupil_model_data[i][j] = cop
         pupil_vine = v.CVine(pupil_model_data, torch.arange(0, 1, 1.0 / 1500), device=device)
 
-        random_model_data = copy.deepcopy(lorenz_results["models"])
+        random_model_data = copy.deepcopy(rand_results["models"])
 
         for i, layer in enumerate(random_model_data):
             for j, cop_data in enumerate(layer):
