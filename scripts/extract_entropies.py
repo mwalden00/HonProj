@@ -11,7 +11,6 @@ from copulagp import vine as v
 
 
 device_list = ["cpu" if not torch.cuda.is_available() else "cuda"]
-torch.set_default_device(device_list[0])
 
 if __name__ == "__main__":
     with torch.device(device_list[0]):
