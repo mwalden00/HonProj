@@ -192,9 +192,9 @@ class GaussianCopula(SingleParamCopulaBase):
         log_prob = torch.zeros_like(theta_) # by default 0 and already on a correct device
 
         if safe==True:
-            thetas = (theta_*conf.Gauss_Safe_Theta).cpu()
+            thetas = (theta_*conf.Gauss_Safe_Theta)
         else:
-            thetas = theta_.cpu()
+            thetas = theta_
 
         nrvs = normal.Normal(torch.zeros(1, device=self.theta.device),
             torch.ones(1, device=self.theta.device)).icdf(value.to(self.theta.device))
@@ -794,7 +794,7 @@ class MixtureCopula(Distribution):
                 if (c.__name__ == 'IndependenceCopula'):
                     add = torch.zeros_like(value_[...,0]) # log 1 = 0
                 else:
-                    add = c(self.theta[i], rotation=self.rotations[i]).log_prob(value_,safe=safe).clamp(-float("inf"),88)
+                    add = c(self.theta[i], rotation=self.rotations[i]).log_prob(value_.to(self.theta.device),safe=safe).clamp(-float("inf"),88)
                 # print(self.mix[i].shape,add.shape,probs.shape)
                 if not clayton_only or c.__name__ == 'ClaytonCopula':
                     probs[i] = torch.log(self.mix[i]) + add
