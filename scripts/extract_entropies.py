@@ -67,20 +67,20 @@ if __name__ == "__main__":
         for i, layer in enumerate(pupil_model_data):
             for j, cop_data in enumerate(layer):
                 cop = cop_data.model_init(device).marginalize(
-                    torch.Tensor(data["X"][:1500])
+                    torch.Tensor(data["X"][:7500])
                 )
                 pupil_model_data[i][j] = cop
         pupil_vine = v.CVine(
-            pupil_model_data, torch.Tensor(data["X"][:1500]), device=device
+            pupil_model_data, torch.Tensor(data["X"][:7500]), device=device
         )
 
         random_model_data = copy.deepcopy(pupil_results["models"])
 
         for i, layer in enumerate(random_model_data):
             for j, cop_data in enumerate(layer):
-                cop = cop_data.model_init(device).marginalize(torch.rand(1500))
+                cop = cop_data.model_init(device).marginalize(torch.rand(7500))
                 random_model_data[i][j] = cop
-        random_vine = v.CVine(random_model_data, torch.rand(1500), device=device)
+        random_vine = v.CVine(random_model_data, torch.rand(7500), device=device)
         gc.collect()
         if torch.cuda.is_available():
             torch.cuda.empty_cache()
