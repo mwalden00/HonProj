@@ -192,9 +192,9 @@ class GaussianCopula(SingleParamCopulaBase):
         log_prob = torch.zeros_like(theta_) # by default 0 and already on a correct device
 
         if safe==True:
-            thetas = theta_*conf.Gauss_Safe_Theta
+            thetas = (theta_*conf.Gauss_Safe_Theta).cpu()
         else:
-            thetas = theta_
+            thetas = theta_.cpu()
 
         nrvs = normal.Normal(torch.zeros(1, device=self.theta.device),
             torch.ones(1, device=self.theta.device)).icdf(value.to(self.theta.device))
