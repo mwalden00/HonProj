@@ -9,12 +9,11 @@ from copulagp.utils import Plot_Fit
 from copulagp import vine as v
 
 
-device_list = ["cpu" if not torch.cuda.is_available() else "cuda"]
-torch.set_default_device(device_list[0])
+device = "cpu" if not torch.cuda.is_available() else "cuda"
 
 if __name__ == "__main__":
-    with torch.device(device_list[0]):
-        torch.set_default_device(device_list[0])
+    with torch.device(device):
+        torch.set_default_device(device)
 
         with open("../models/results/lorenz_res.pkl", "rb") as f:
             lorenz_results = pkl.load(f)
@@ -27,12 +26,12 @@ if __name__ == "__main__":
 
         try:
             Plot_Fit(
-                lorenz_results["models"][0][1].model_init(device_list[0]),
+                lorenz_results["models"][0][1].model_init(device),
                 data["X"],
                 data["Y"],
                 "Trajectory 1",
                 "Trajectory 3",
-                device_list[0],
+                device,
             )
         except TypeError:
             pass
@@ -46,12 +45,12 @@ if __name__ == "__main__":
 
         try:
             Plot_Fit(
-                rand_results["models"][0][1].model_init(device_list[0]),
+                rand_results["models"][0][1].model_init(device),
                 np.random.random(*data["X"].shape),
                 data["Y"],
                 "Trajectory 1",
                 "Trajectory 3",
-                device_list[0],
+                device,
             )
         except TypeError:
             pass
@@ -65,7 +64,7 @@ if __name__ == "__main__":
 
         for i, layer in enumerate(pupil_model_data):
             for j, cop_data in enumerate(layer):
-                cop = cop_data.model_init(device_list[0]).marginalize(
+                cop = cop_data.model_init(device).marginalize(
                     torch.arange(0, 1, 1.0 / 1500)
                 )
                 pupil_model_data[i][j] = cop
@@ -75,7 +74,7 @@ if __name__ == "__main__":
 
         for i, layer in enumerate(random_model_data):
             for j, cop_data in enumerate(layer):
-                cop = cop_data.model_init(device_list[0]).marginalize(torch.rand(1500))
+                cop = cop_data.model_init(device).marginalize(torch.rand(1500))
                 random_model_data[i][j] = cop
         random_vine = v.CVine(random_model_data, torch.rand(1500))
 
