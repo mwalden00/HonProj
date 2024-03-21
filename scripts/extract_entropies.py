@@ -10,11 +10,11 @@ from copulagp.utils import Plot_Fit
 from copulagp import vine as v
 
 
-device_list = ["cpu" if not torch.cuda.is_available() else "cuda"]
+device = "cpu" if not torch.cuda.is_available() else "cuda:0"
 
 if __name__ == "__main__":
-    with torch.device(device_list[0]):
-        torch.set_default_device(device_list[0])
+    with torch.device(device):
+        torch.set_default_device(device)
 
         with open("../models/results/pupil_traj_13_res.pkl", "rb") as f:
             pupil_results = pkl.load(f)
@@ -27,12 +27,12 @@ if __name__ == "__main__":
 
         try:
             Plot_Fit(
-                pupil_results["models"][0][1].model_init(device_list[0]),
+                pupil_results["models"][0][1].model_init(device),
                 data["X"],
                 data["Y"],
                 "Trajectory 1",
                 "Trajectory 3",
-                device_list[0],
+                device,
             )
         except TypeError:
             pass
@@ -46,12 +46,12 @@ if __name__ == "__main__":
 
         try:
             Plot_Fit(
-                rand_results["models"][0][1].model_init(device_list[0]),
+                rand_results["models"][0][1].model_init(device),
                 torch.rand(*data["X"].shape),
                 data["Y"],
                 "Trajectory 1",
                 "Trajectory 3",
-                device_list[0],
+                device,
             )
         except TypeError:
             pass
@@ -61,25 +61,23 @@ if __name__ == "__main__":
         )
         plt.savefig("./low_level_random_copula.png")
 
-        X_avged = data["X"].reshape(100, 100).mean(axis=0)
-
         pupil_model_data = copy.deepcopy(pupil_results["models"])
 
         for i, layer in enumerate(pupil_model_data):
             for j, cop_data in enumerate(layer):
-                cop = cop_data.model_init(device_list[0]).marginalize(
-                    torch.Tensor(X_avged)
-                )
+                cop = cop_data.model_init(device).marginalize(torch.Tensor(data["X"]))
                 pupil_model_data[i][j] = cop
-        pupil_vine = v.CVine(pupil_model_data, torch.Tensor(X_avged), device=device_list[0])
+        pupil_vine = v.CVine(
+            pupil_model_data, torch.Tensor(data["X"][:1500]), device=device
+        )
 
         random_model_data = copy.deepcopy(pupil_results["models"])
 
         for i, layer in enumerate(random_model_data):
             for j, cop_data in enumerate(layer):
-                cop = cop_data.model_init(device_list[0]).marginalize(torch.rand(100))
+                cop = cop_data.model_init(device).marginalize(torch.rand(1500))
                 random_model_data[i][j] = cop
-        random_vine = v.CVine(random_model_data, torch.rand(100), device=device_list[0])
+        random_vine = v.CVine(random_model_data, torch.rand(1500), device=device)
         print("Calculating entropies...")
         H = random_vine.entropy(v=True)
         np.savetxt("./rand_vine_entropies.csv", H.cpu().numpy(), delimiter=",")
