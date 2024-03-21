@@ -252,7 +252,7 @@ class CVine:
             next_layer = []
             for n, copula in enumerate(copulas):
                 # print(layer,layer+n+1, copula.copulas)
-                print(layers.device)
+                print(layers[0].device)
                 print(log_prob.device)
                 print(copula.thetas.device)
                 log_prob += copula.log_prob(layers[-1][..., [n + 1, 0]])
