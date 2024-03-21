@@ -725,7 +725,7 @@ class MixtureCopula(Distribution):
             if c.num_thetas == 0:
                 vals[onehot[i]] = samples[...,0][onehot[i]]
             else:
-                vals[onehot[i]] = c(theta_[i,...].cpu()[onehot[i]], 
+                vals[onehot[i]] = c(theta_[i,...][onehot[i]], 
                                                rotation=self.rotations[i]).ppcf(
                                                 samples[onehot[i],:])
         assert torch.all(vals<=1)
