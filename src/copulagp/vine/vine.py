@@ -252,7 +252,7 @@ class CVine:
             next_layer = []
             for n, copula in enumerate(copulas):
                 # print(layer,layer+n+1, copula.copulas)
-                log_prob += copula.log_prob(layers[-1][..., [n + 1, 0]])
+                log_prob += copula.log_prob(layers[-1][..., [n + 1, 0]].to(log_prob.device))
                 next_layer.append(copula.ccdf(layers[-1][..., [n + 1, 0]]).float())
             layers.append(torch.stack(next_layer, dim=-1))
 
