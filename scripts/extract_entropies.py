@@ -1,3 +1,4 @@
+import numpy as np
 import torch
 import torch.multiprocessing as mp
 import pandas as pd
@@ -9,7 +10,7 @@ from copulagp.utils import Plot_Fit
 from copulagp import vine as v
 
 
-device_list = ["cpu" if not torch.cuda.is_available() else "cuda"]
+device_list = ["cpu" if not torch.cuda.is_available() else "cpu"]
 torch.set_default_device(device_list[0])
 
 if __name__ == "__main__":
@@ -61,29 +62,33 @@ if __name__ == "__main__":
         )
         plt.savefig("./low_level_random_copula.png")
 
+        X_avged = data['X'].reshape(100,100).mean(axis=0)
+
         pupil_model_data = copy.deepcopy(pupil_results["models"])
 
         for i, layer in enumerate(pupil_model_data):
             for j, cop_data in enumerate(layer):
                 cop = cop_data.model_init(device_list[0]).marginalize(
-                    torch.arange(0, 1, 0.01)
+                    torch.Tensor(X_avged)
                 )
                 pupil_model_data[i][j] = cop
-        pupil_vine = v.CVine(pupil_model_data, torch.arange(0, 1, 0.01))
+        pupil_vine = v.CVine(pupil_model_data, torch.Tensor(X_avged))
 
         random_model_data = copy.deepcopy(pupil_results["models"])
 
         for i, layer in enumerate(random_model_data):
             for j, cop_data in enumerate(layer):
                 cop = cop_data.model_init(device_list[0]).marginalize(
-                    torch.arange(0, 1, 0.01)
+                    torch.rand(100)
                 )
                 random_model_data[i][j] = cop
-        random_vine = v.CVine(random_model_data, torch.arange(0, 1, 0.01))
+        random_vine = v.CVine(random_model_data, torch.rand(100))
 
         H = random_vine.entropy(v=True)
+        np.savetxt('./rand_vine_entropies.csv',H.cpu().numpy(),delimiter=',')
         print("Unparameterized Entropies:", H)
         H_X = pupil_vine.entropy(v=True)
+        np.savetxt('./pupil_vine_entropies.csv',H_X.cpu().numpy(),delimiter=',')
         print("Parameterized Entropies:", H_X)
 
         I_Y_X = H.mean() - H_X.mean()
