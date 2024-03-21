@@ -723,11 +723,11 @@ class MixtureCopula(Distribution):
         
         for i,c in enumerate(self.copulas):
             if c.num_thetas == 0:
-                vals[onehot[i]] = (samples[...,0][onehot[i]]).to(vals.device)
+                vals[onehot[i].to(vals.device)] = (samples[...,0][onehot[i].to(samples.device)]).to(vals.device)
             else:
-                vals[onehot[i]] = (c(theta_[i,...][onehot[i]], 
+                vals[onehot[i].to(vals.device)] = (c(theta_[i,...][onehot[i].to(theta_.device)], 
                                                rotation=self.rotations[i]).ppcf(
-                                                samples[onehot[i],:])).to(vals.device)
+                                                samples[onehot[i].to(samples.device),:]))
         assert torch.all(vals<=1)
         assert torch.all(vals>=0)
         return vals.clamp(0.001,0.999)
