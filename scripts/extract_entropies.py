@@ -71,7 +71,7 @@ if __name__ == "__main__":
                     torch.Tensor(X_avged)
                 )
                 pupil_model_data[i][j] = cop
-        pupil_vine = v.CVine(pupil_model_data, torch.Tensor(X_avged))
+        pupil_vine = v.CVine(pupil_model_data, torch.Tensor(X_avged), device=device_list[0])
 
         random_model_data = copy.deepcopy(pupil_results["models"])
 
@@ -79,7 +79,7 @@ if __name__ == "__main__":
             for j, cop_data in enumerate(layer):
                 cop = cop_data.model_init(device_list[0]).marginalize(torch.rand(100))
                 random_model_data[i][j] = cop
-        random_vine = v.CVine(random_model_data, torch.rand(100))
+        random_vine = v.CVine(random_model_data, torch.rand(100), device=device_list[0])
         print("Calculating entropies...")
         H = random_vine.entropy(v=True)
         np.savetxt("./rand_vine_entropies.csv", H.cpu().numpy(), delimiter=",")
