@@ -95,7 +95,7 @@ if __name__ == "__main__":
             torch.cuda.empty_cache()
 
         H_X = pupil_vine.entropy(v=True)
-        np.savetxt("./rand_lorenz_entropies.csv", H_X.cpu().numpy(), delimiter=",")
+        np.savetxt("./lorenz_entropies.csv", H_X.cpu().numpy(), delimiter=",")
         print("Parameterized Entropies:", H_X)
 
         I_Y_X = H.mean() - H_X.mean()
