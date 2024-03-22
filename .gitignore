@@ -2,8 +2,8 @@ scripts/Vine*/
 .github
 .DS_store
 build/
+notebooks/*/*.png
 *.pyc
-*.png
 *.pkl
 *.pdf
 *.csv
