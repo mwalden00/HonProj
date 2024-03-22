@@ -72,13 +72,11 @@ if __name__ == "__main__":
             pupil_model_data, torch.arange(0, 1, 1.0 / 1500), device=device
         )
 
-        random_model_data = copy.deepcopy(rand_results["models"])
-
-        for i, layer in enumerate(random_model_data):
+        for i, layer in enumerate(pupil_model_data):
             for j, cop_data in enumerate(layer):
                 cop = cop_data.model_init(device).marginalize(torch.rand(1500))
-                random_model_data[i][j] = cop
-        random_vine = v.CVine(random_model_data, torch.rand(1500), device=device)
+                pupil_model_data[i][j] = cop
+        random_vine = v.CVine(pupil_model_data, torch.rand(1500), device=device)
 
         print("Extracting entropies...")
 
