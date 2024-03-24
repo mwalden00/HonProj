@@ -47,7 +47,6 @@ if __name__ == "__main__":
         Y = data["X"]
 
         for i in range(0, 100, 4):
-            choices = np.random.choice(13, 6, replace=False)
             try:
                 os.mkdir(f"../models/layers/pupil_vine/segments/seg_{i}/")
                 os.mkdir(f"../models/results/pupil_segments/")
@@ -55,10 +54,10 @@ if __name__ == "__main__":
             except:
                 pass
 
-            print(f"\nSelecting Trial {i} with trajectory choices {choices}")
-            np.savetxt(f"./segmented_pupil/choices/choice_i.txt", choices)
+            # print(f"\nSelecting Trial {i} with trajectory choices {choices}")
+            # np.savetxt(f"./segmented_pupil/choices/choice_i.txt", choices)
 
-            X_chosen = np.concatenate(torch.stack(X[i : i + 4]))[:, choices]
+            X_chosen = np.concatenate(torch.stack(X[i : i + 4]))
 
             with open(f"../data/segmented_pupil_copulas/data_{i}_0.pkl", "wb") as f:
                 pkl.dump(
