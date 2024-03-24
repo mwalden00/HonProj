@@ -125,7 +125,13 @@ if __name__ == "__main__":
 
             with open(f"../data/segmented_pupil_copulas/data_{i}_0.pkl", "wb") as f:
                 pkl.dump(
-                    dict([("X", np.concatenate(Y[i : i + 4])), ("Y", X_chosen)]), f
+                    dict(
+                        [
+                            ("X", torch.Tensor(np.concatenate(Y[i : i + 4]))),
+                            ("Y", X_chosen),
+                        ]
+                    ),
+                    f,
                 )
 
             print("Training {i}-th Copula-GP Vine")
