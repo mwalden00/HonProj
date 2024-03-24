@@ -127,8 +127,8 @@ if __name__ == "__main__":
                 pkl.dump(
                     dict(
                         [
-                            ("X", torch.Tensor(np.concatenate(Y[i : i + 4]))),
-                            ("Y", X_chosen),
+                            ("X", np.concatenate(Y[i : i + 4])),
+                            ("Y", X_chosen.cpu().numpy()),
                         ]
                     ),
                     f,
