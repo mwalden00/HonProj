@@ -134,7 +134,7 @@ if __name__ == "__main__":
                     f,
                 )
 
-            print("Training {i}-th Copula-GP Vine")
+            print(f"Training {i}-th Copula-GP Vine")
 
             gc.collect()
             if torch.cuda.is_available():
