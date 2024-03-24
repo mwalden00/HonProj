@@ -22,6 +22,7 @@ else:
     device_list = ["cpu"]
 
 if __name__ == "__main__":
+    mp.set_start_method("spawn")
     with torch.device(device):
 
         with open("../models/results/pupil_traj_13_res.pkl", "rb") as f:
