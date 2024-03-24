@@ -1,0 +1,8 @@
+2024-03-24 15:19:56,541 Selecting 0-1 on cpu
+2024-03-24 15:19:56,541 Trying Gaussian
+2024-03-24 15:20:01,821 Converged in 1200 steps! (Relative!)
+2024-03-24 15:20:01,839 WAIC=-1.4820, took 5 sec
+2024-03-24 15:20:01,900 Gaussian (WAIC = -1.4820)
+2024-03-24 15:20:01,900 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-03-24 15:20:03,921 Selecting 0-2 on cpu
+2024-03-24 15:20:03,922 Trying Gaussian
