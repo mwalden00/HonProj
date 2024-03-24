@@ -46,6 +46,8 @@ if __name__ == "__main__":
         X = pupil_vine.sample().reshape(100, 100, 13)
         Y = data["X"].reshape(100, 100)
 
+        entropies = []
+
         for i in range(0, 100, 4):
             try:
                 os.mkdir(f"../models/layers/pupil_vine/segments/seg_{i}/")
@@ -78,4 +80,17 @@ if __name__ == "__main__":
                 device_list=device_list,
             )
 
+            with open(f"../models/results/pupil_segments/pupil_{i}_res.pkl", "rb") as f:
+                model_data = pkl.load(f)["models"]
+            for i, layer in enumerate(model_data):
+                for j, cop_data in enumerate(layer):
+                    cop = cop_data.model_init(device).marginalize(
+                        torch.Tensor(data["X"][:1500])
+                    )
+                    model_data[i][j] = cop
+            vine = v.CVine(model_data, torch.Tensor(data["X"][:1500]), device=device)
+
+            entropies.append(vine.entropy())
+
             os.remove("../data/segmented_pupil_copulas/*.pkl")
+        print("Mean entropy: ", np.mean(entropies))
