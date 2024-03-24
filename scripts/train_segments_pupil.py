@@ -4,6 +4,7 @@ import torch.multiprocessing as mp
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+import os
 import pickle as pkl
 from copulagp.train import train_vine
 
@@ -36,6 +37,13 @@ if __name__ == "__main__":
     x = x.reshape(100, 100)
 
     for i in range(100):
+        try:
+            os.mkdir(f"../models/layers/pupil_vine/segments/seg_{i}/")
+            os.mkdir(f"../models/results/pupil_segments/")
+            os.mkdir(f"../data/segmented_pupil_copulas/")
+        except err:
+            print(err)
+
         with open(f"../data/segmented_pupil_copulas/data_{i}_0.pkl", "wb") as f:
             pkl.dump(dict([("Y", Y[i]), ("X", x[i])]), f)
 
