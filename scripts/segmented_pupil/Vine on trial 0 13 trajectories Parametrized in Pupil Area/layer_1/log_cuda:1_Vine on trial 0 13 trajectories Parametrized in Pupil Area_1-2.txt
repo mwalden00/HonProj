@@ -1,0 +1,5 @@
+2024-03-24 16:40:43,090 Selecting 1-2 on cuda:1
+2024-03-24 16:40:43,091 Trying Gaussian
+2024-03-24 16:42:16,331 WAIC=-0.0357, took 93 sec
+2024-03-24 16:42:16,437 Gaussian (WAIC = -0.0357)
+2024-03-24 16:42:16,437 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°

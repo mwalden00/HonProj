@@ -24,19 +24,20 @@ if __name__ == "__main__":
     with open("../data/processed/traj_and_pupil_data.pkl", "rb") as f:
         traj_and_pupil_data = pkl.load(f)
 
-    Y = np.concatenate(
+    X = np.concatenate(
         [l[:, :100] for l in traj_and_pupil_data["trajectories"]], axis=1
     )
-    for i, traj in enumerate(Y):
-        Y[i] = NormalizeData(traj)
-    x = NormalizeData(
+    for i, traj in enumerate(X):
+        X[i] = NormalizeData(traj)
+    Y = NormalizeData(
         np.concatenate([l[:100] for l in traj_and_pupil_data["pupil area"]])
     )
 
-    Y = Y.reshape(100, 100, 13)
-    x = x.reshape(100, 100)
+    Y = Y.reshape(100, 100)
+    X = X.reshape(100, 100, 13)
 
-    for i in range(100):
+    for i in range(0,100,4):
+        choices = np.random.choice(13,6,replace=False)
         try:
             os.mkdir(f"../models/layers/pupil_vine/segments/seg_{i}/")
             os.mkdir(f"../models/results/pupil_segments/")
@@ -44,8 +45,13 @@ if __name__ == "__main__":
         except:
             pass
 
+        print(f'\nSelecting Trial {i} with trajectory choices {choices}')
+        np.savetxt(f'./segmented_pupil/choices/choice_i.txt',choices)
+
+        X_chosen = np.concatenate(np.stack(X[i:i+4]))[:,choices]
+
         with open(f"../data/segmented_pupil_copulas/data_{i}_0.pkl", "wb") as f:
-            pkl.dump(dict([("Y", Y[i]), ("X", x[i])]), f)
+            pkl.dump(dict([("X", np.concatenate(Y[i:i+4])), ("Y", X_chosen)]), f)
 
         gc.collect()
         if torch.cuda.is_available():
@@ -57,7 +63,7 @@ if __name__ == "__main__":
             path_final=f"../models/results/pupil_segments/pupil_{i}_res.pkl",
             path_logs=lambda a, b: f"./segmented_pupil/{a}/layer_{b}",
             exp=f"Vine on trial {i} 13 trajectories Parametrized in Pupil Area",
-            light=False,
+            light=True,
             device_list=device_list,
         )
 

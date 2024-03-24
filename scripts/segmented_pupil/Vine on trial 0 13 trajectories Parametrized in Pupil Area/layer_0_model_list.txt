@@ -1,0 +1,11 @@
+0-2 Gumbel180°	-0.9856	435 sec
+0-2 GaussianClayton0°Clayton180°	-0.9547	91 sec
+0-1 Gaussian	-1.1055	111 sec
+0-4 GaussianClayton0°Clayton180°	-0.8935	59 sec
+0-3 GaussianClayton0°	-0.9015	139 sec
+0-5 Gaussian	-1.5349	86 sec
+0-1 Gaussian	-1.1892	101 sec
+0-2 Gaussian	-0.8678	106 sec
+0-3 GaussianClayton0°Clayton180°	-0.9672	97 sec
+0-4 Gaussian	-0.8232	97 sec
+0-5 FrankGaussianClayton0°	-0.8814	142 sec
