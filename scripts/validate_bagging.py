@@ -58,7 +58,7 @@ if __name__ == "__main__":
             print(f"\nSelecting Trial {i} with trajectory choices {choices}")
             np.savetxt(f"./segmented_pupil/choices/choice_i.txt", choices)
 
-            X_chosen = np.concatenate(np.stack(X[i : i + 4]))[:, choices]
+            X_chosen = np.concatenate(torch.stack(X[i : i + 4]))[:, choices]
 
             with open(f"../data/segmented_pupil_copulas/data_{i}_0.pkl", "wb") as f:
                 pkl.dump(
