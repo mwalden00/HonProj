@@ -14,8 +14,8 @@ if torch.cuda.is_available():
     device_list = [f"cuda:{n}" for n in range(torch.cuda.device_count())]
 else:
     device_list = ["cpu"]
-print("Devices:", device_list)
 if __name__ == "__main__":
+    print("Devices:", device_list)
     mp.set_start_method("spawn")
 
     def NormalizeData(data):
