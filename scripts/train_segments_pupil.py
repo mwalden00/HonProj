@@ -41,8 +41,8 @@ if __name__ == "__main__":
             os.mkdir(f"../models/layers/pupil_vine/segments/seg_{i}/")
             os.mkdir(f"../models/results/pupil_segments/")
             os.mkdir(f"../data/segmented_pupil_copulas/")
-        except err:
-            print(err)
+        except:
+            pass
 
         with open(f"../data/segmented_pupil_copulas/data_{i}_0.pkl", "wb") as f:
             pkl.dump(dict([("Y", Y[i]), ("X", x[i])]), f)
@@ -60,3 +60,5 @@ if __name__ == "__main__":
             light=False,
             device_list=device_list,
         )
+
+        os.remove("../data/segmented_pupil_copulas/*.pkl")
