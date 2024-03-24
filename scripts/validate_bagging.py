@@ -44,7 +44,7 @@ if __name__ == "__main__":
         pupil_vine = v.CVine(pupil_model_data, torch.Tensor(data["X"]), device=device)
 
         X = pupil_vine.sample().reshape(100, 100, 13)
-        Y = data["X"]
+        Y = data["X"].reshape(100, 100)
 
         for i in range(0, 100, 4):
             try:
