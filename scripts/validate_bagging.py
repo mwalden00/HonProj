@@ -12,18 +12,27 @@ from copulagp.train import train_vine
 from copulagp.bvcopula import MixtureCopula
 import os
 import gc
+import argparse
 
 
 device = "cpu" if not torch.cuda.is_available() else "cuda:0"
 
-pd.set_option("display.max_columns", None)
+args = argparse.ArgumentParser()
+args.add_argument(
+    "--seed",
+    type=int,
+    nargs="?",
+    default=783953529,
+    help="Random seed to pass to torch and numpy.",
+)
+
 if torch.cuda.is_available():
     device_list = [f"cuda:{n}" for n in range(torch.cuda.device_count())]
 else:
     device_list = ["cpu"]
 
 
-def get_mean_copula(
+def bagged_copula(
     copula_data_list: list,
     n_estimators: int,
     X: torch.Tensor,
@@ -85,27 +94,29 @@ def get_mean_copula(
 
 
 if __name__ == "__main__":
+    seed = args.seed
+    np.random.seed(seed)
+    torch.random.seed(seed)
     mp.set_start_method("spawn")
     with torch.device(device):
 
-        with open("../models/results/pupil_traj_13_res.pkl", "rb") as f:
+        with open("../models/results/pupil_traj_5_res.pkl", "rb") as f:
             pupil_results = pkl.load(f)
 
-        with open("../models/results/random_traj_13_res.pkl", "rb") as f:
-            rand_results = pkl.load(f)
-
-        with open("../data/pupil_vine_data_0.pkl", "rb") as f:
+        with open("../data/pupil_vine_data_partial_0.pkl", "rb") as f:
             data = pkl.load(f)
 
         pupil_model_data = copy.deepcopy(pupil_results["models"])
 
-        print("Instatiating pupil vine object...\n")
+        print("Instatiating initial pupil vine object...\n")
 
         for i, layer in enumerate(pupil_model_data):
             for j, cop_data in enumerate(layer):
                 cop = cop_data.model_init(device).marginalize(torch.Tensor(data["X"]))
                 pupil_model_data[i][j] = cop
         pupil_vine = v.CVine(pupil_model_data, torch.Tensor(data["X"]), device=device)
+
+        entropy("Entropy")
 
         X = pupil_vine.sample().reshape(100, 100, 13)
         Y = data["X"].reshape(100, 100)
@@ -154,7 +165,7 @@ if __name__ == "__main__":
 
         print("\n\nGetting Mean Vine...")
 
-        mean_copulas = [[[] for j in range(12 - i)] in i in range(12)]
+        bagged_copulas = [[[] for j in range(12 - i)] in i in range(12)]
 
         for i in range(25):
             with open(f"../models/results/pupil_segments/pupil_{i}_res.pkl", "rb") as f:
@@ -162,16 +173,19 @@ if __name__ == "__main__":
 
             for l, layer in enumerate(models_i):
                 for n, copula in enumerate(layer):
-                    mean_copulas[l][n].append(copula.model_init(device))
+                    bagged_copulas[l][n].append(copula.model_init(device))
 
         n_estimators = 25
 
-        for l, layer in enumerate(mean_copulas):
+        for l, layer in enumerate(bagged_copulas):
             for n, copula_data_list in enumerate(layer):
-                mean_copulas[l][n] = get_mean_copula(
+                bagged_copulas[l][n] = bagged_copula(
                     copula_data_list, 25, X[:1500], device=device
                 )
 
-        mean_vine = v.vine(mean_copulas, X[:1500], device=device)
-        print("Getting Mean Vine Entropy...")
-        print("Entropy: ", mean_vine.entropy())
+        mean_vine = v.vine(bagged_copulas, X[:1500], device=device)
+        print("Getting Bagged Vine Entropy...")
+        ent = mean_vine.entropy().detach().cpu().numpy()
+        print(f"Entropy: {ent.mean()} +/- {np.std(ent)}")
+
+        print("Getting Baseline")

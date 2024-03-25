@@ -64,4 +64,4 @@ if __name__ == "__main__":
         pupil_model_data, torch.Tensor(data["X"][:1500]), device=device
     )
     H = pupil_vine.entropy(v=True).cpu().detach().numpy()
-    print(f"Estimated entropy: {H} +/- {np.std(H)}")
+    print(f"Estimated entropy: {H} +/- {2*np.std(H)}")
