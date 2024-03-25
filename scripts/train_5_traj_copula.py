@@ -47,13 +47,19 @@ if __name__ == "__main__":
         path_logs=lambda a, b: f"./{a}/layer_{b}",
         exp=f"Vine on {N} of 13 trajectories Parametrized in Pupil Area",
         light=False,
-        start=0,
+        start=5,
         device_list=device_list,
     )
     print("Getting entropyies...")
     with open(f"../models/results/pupil_traj_{N}_res_partial.pkl", "rb") as f:
         pupil_results = pkl.load(f)
     pupil_model_data = copy.deepcopy(pupil_results["models"])
+    for i, layer in enumerate(pupil_model_data):
+        for j, cop_data in enumerate(layer):
+            cop = cop_data.model_init(device).marginalize(
+                torch.Tensor(data["X"][:1500])
+            )
+            pupil_model_data[i][j] = cop
     pupil_vine = v.CVine(
         pupil_model_data, torch.Tensor(data["X"][:1500]), device=device
     )
