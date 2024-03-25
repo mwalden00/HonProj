@@ -137,7 +137,7 @@ if __name__ == "__main__":
     args = parser().parse_args()
     seed = args.seed
     np.random.seed(seed)
-    torch.random.seed(seed)
+    torch.manual_seed(seed)
     mp.set_start_method("spawn")
     with torch.device(device):
 
