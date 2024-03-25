@@ -141,7 +141,7 @@ if __name__ == "__main__":
     mp.set_start_method("spawn")
     with torch.device(device):
 
-        with open("../models/results/pupil_traj_5_res.pkl", "rb") as f:
+        with open("../models/results/pupil_traj_5_res_partial.pkl", "rb") as f:
             pupil_results = pkl.load(f)
 
         with open("../data/pupil_vine_data_partial_0.pkl", "rb") as f:
