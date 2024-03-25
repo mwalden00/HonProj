@@ -17,45 +17,52 @@ import argparse
 
 device = "cpu" if not torch.cuda.is_available() else "cuda:0"
 
-args = argparse.ArgumentParser()
-args.add_argument(
-    "--seed",
-    type=int,
-    nargs="?",
-    default=783953529,
-    help="Random seed to pass to torch and numpy.",
-)
-args.add_argument(
-    "--skip_baseline",
-    type=int,
-    nargs="?",
-    default=0,
-    help="Layer to skip to for Baseline",
-)
-args.add_argument(
-    "--bagged_start",
-    type=int,
-    nargs="?",
-    default=0,
-    help="Which model to start at for Bagging training",
-)
-args.add_argument(
-    "--bagged_start_layer",
-    type=int,
-    nargs="?",
-    default=0,
-    help="Which layer to start at for first model",
-)
-args.add_argument(
-    "--skip_ent_baseline",
-    type=int,
-    nargs="?",
-    default=0,
-    help="Skip baseline entropy calc",
-)
-args.add_argument(
-    "--skip_ent_bagged", type=int, nargs="?", default=0, help="Skip bagged entropy calc"
-)
+
+def parser():
+    args = argparse.ArgumentParser()
+    args.add_argument(
+        "--seed",
+        type=int,
+        nargs="?",
+        default=783953529,
+        help="Random seed to pass to torch and numpy.",
+    )
+    args.add_argument(
+        "--skip_baseline",
+        type=int,
+        nargs="?",
+        default=0,
+        help="Layer to skip to for Baseline",
+    )
+    args.add_argument(
+        "--bagged_start",
+        type=int,
+        nargs="?",
+        default=0,
+        help="Which model to start at for Bagging training",
+    )
+    args.add_argument(
+        "--bagged_start_layer",
+        type=int,
+        nargs="?",
+        default=0,
+        help="Which layer to start at for first model",
+    )
+    args.add_argument(
+        "--skip_ent_baseline",
+        type=int,
+        nargs="?",
+        default=0,
+        help="Skip baseline entropy calc",
+    )
+    args.add_argument(
+        "--skip_ent_bagged",
+        type=int,
+        nargs="?",
+        default=0,
+        help="Skip bagged entropy calc",
+    )
+    return args
 
 
 if torch.cuda.is_available():
@@ -127,6 +134,7 @@ def bagged_copula(
 
 
 if __name__ == "__main__":
+    args = parser().parse_args()
     args.parse_args()
     seed = args.seed
     np.random.seed(seed)
