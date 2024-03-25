@@ -114,14 +114,22 @@ if __name__ == "__main__":
             for j, cop_data in enumerate(layer):
                 cop = cop_data.model_init(device).marginalize(torch.Tensor(data["X"]))
                 pupil_model_data[i][j] = cop
-        pupil_vine = v.CVine(pupil_model_data, torch.Tensor(data["X"]), device=device)
+        pupil_vine = v.CVine(
+            pupil_model_data, torch.Tensor(data["X"][-5000:]), device=device
+        )
 
-        entropy("Entropy")
+        ent = pupil_vine.entropy().detach().cpu().numpy()
+        print(f"Entropy extraction: {ent.mean()} +/- {2*np.std(ent)}")
 
-        X = pupil_vine.sample().reshape(100, 100, 13)
-        Y = data["X"].reshape(100, 100)
+        print("Getting vines...")
+        X = pupil_vine.sample()
+        X_train = X[:4000].reshape(10, 400, 5)
 
-        for i in range(0, 25):
+        Y = data["X"][-5000:]
+        Y_train = Y[:4000].reshape(10, 400, 5)
+        Y_test = Y[-1000:]
+
+        for i in range(0, 10):
             try:
                 os.mkdir(f"../models/layers/pupil_vine/segments/seg_{i}/")
                 os.mkdir(f"../models/results/pupil_segments/")
@@ -132,13 +140,12 @@ if __name__ == "__main__":
             # print(f"\nSelecting Trial {i} with trajectory choices {choices}")
             # np.savetxt(f"./segmented_pupil/choices/choice_i.txt", choices)
 
-            X_chosen = X[i : i + 4].reshape(400, 13)
-
+            X_chosen = X_train[i]
             with open(f"../data/segmented_pupil_copulas/data_{i}_0.pkl", "wb") as f:
                 pkl.dump(
                     dict(
                         [
-                            ("X", np.concatenate(Y[i : i + 4])),
+                            ("X", Y_train[i]),
                             ("Y", X_chosen.cpu().numpy()),
                         ]
                     ),
@@ -156,14 +163,14 @@ if __name__ == "__main__":
                 path_models=lambda x: f"../models/layers/pupil_vine/segments/seg_{i}/layer_{x}.pkl",
                 path_final=f"../models/results/pupil_segments/pupil_{i}_res.pkl",
                 path_logs=lambda a, b: f"./segmented_pupil/{a}/layer_{b}",
-                exp=f"Vine on trial {i} 13 trajectories Parametrized in Pupil Area",
+                exp=f"Vine on trial {i} Parametrized in Pupil Area",
                 light=True,
                 device_list=device_list,
             )
 
         os.remove("../data/segmented_pupil_copulas/*.pkl")
 
-        print("\n\nGetting Mean Vine...")
+        print("\n\nGetting Bagged Vine...")
 
         bagged_copulas = [[[] for j in range(12 - i)] in i in range(12)]
 
@@ -189,3 +196,12 @@ if __name__ == "__main__":
         print(f"Entropy: {ent.mean()} +/- {np.std(ent)}")
 
         print("Getting Baseline")
+        train_vine(
+            path_data=lambda x: f"../data/segmented_pupil_copulas/baseline_data_{x}.pkl",
+            path_models=lambda x: f"../models/layers/pupil_vine/segments/baseline/layer_{x}.pkl",
+            path_final=f"../models/results/pupil_segments/baseline_res.pkl",
+            path_logs=lambda a, b: f"./segmented_pupil/{a}/layer_{b}",
+            exp=f"Baseline Vine on 5 of 13 trajectories Parametrized in Pupil Area",
+            light=True,
+            device_list=device_list,
+        )
