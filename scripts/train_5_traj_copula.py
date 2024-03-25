@@ -23,7 +23,7 @@ if __name__ == "__main__":
         traj_and_pupil_data = pkl.load(f)
 
     Y = np.concatenate(
-        [l[:, :100, :5] for l in traj_and_pupil_data["trajectories"]], axis=1
+        [l[:5, :100] for l in traj_and_pupil_data["trajectories"]], axis=1
     )
     for i, traj in enumerate(Y):
         Y[i] = NormalizeData(traj)
