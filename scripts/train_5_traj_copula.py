@@ -43,6 +43,6 @@ if __name__ == "__main__":
         path_logs=lambda a, b: f"./{a}/layer_{b}",
         exp=f"Vine on {N} of 13 trajectories Parametrized in Pupil Area",
         light=False,
-        start=0
+        start=0,
         device_list=device_list,
     )
