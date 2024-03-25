@@ -62,6 +62,9 @@ def parser():
         default=0,
         help="Skip bagged entropy calc",
     )
+    args.add_argument(
+        "--skip_true_ent", type=int, nargs="?", default=0, helpt="Skip true ent. calc."
+    )
     return args
 
 
