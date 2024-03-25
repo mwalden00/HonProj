@@ -50,12 +50,12 @@ if __name__ == "__main__":
         start=0,
         device_list=device_list,
     )
-
+    print("Getting entropyies...")
     with open(f"../models/results/pupil_traj_{N}_res_partial.pkl", "rb") as f:
         pupil_results = pkl.load(f)
     pupil_model_data = copy.deepcopy(pupil_results["models"])
     pupil_vine = v.CVine(
         pupil_model_data, torch.Tensor(data["X"][:1500]), device=device
     )
-    H = pupil_vine.entropy().cpu().detach().numpy()
+    H = pupil_vine.entropy(v=True).cpu().detach().numpy()
     print(f"Estimated entropy: {H} +/- {np.std(H)}")
