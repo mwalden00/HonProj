@@ -135,7 +135,6 @@ def bagged_copula(
 
 if __name__ == "__main__":
     args = parser().parse_args()
-    args.parse_args()
     seed = args.seed
     np.random.seed(seed)
     torch.random.seed(seed)
