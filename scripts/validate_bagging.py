@@ -153,7 +153,9 @@ if __name__ == "__main__":
 
         for i, layer in enumerate(pupil_model_data):
             for j, cop_data in enumerate(layer):
-                cop = cop_data.model_init(device).marginalize(torch.Tensor(data["X"]))
+                cop = cop_data.model_init(device).marginalize(
+                    torch.Tensor(data["X"][-5000:])
+                )
                 pupil_model_data[i][j] = cop
         pupil_vine = v.CVine(
             pupil_model_data, torch.Tensor(data["X"][-5000:]), device=device
