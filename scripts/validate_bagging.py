@@ -25,6 +25,38 @@ args.add_argument(
     default=783953529,
     help="Random seed to pass to torch and numpy.",
 )
+args.add_argument(
+    "--skip_baseline",
+    type=int,
+    nargs="?",
+    default=0,
+    help="Layer to skip to for Baseline",
+)
+args.add_argument(
+    "--bagged_start",
+    type=int,
+    nargs="?",
+    default=0,
+    help="Which model to start at for Bagging training",
+)
+args.add_argument(
+    "--bagged_start_layer",
+    type=int,
+    nargs="?",
+    default=0,
+    help="Which layer to start at for first model",
+)
+args.add_argument(
+    "--skip_ent_baseline",
+    type=int,
+    nargs="?",
+    default=0,
+    help="Skip baseline entropy calc",
+)
+args.add_argument(
+    "--skip_ent_bagged", type=int, nargs="?", default=0, help="Skip bagged entropy calc"
+)
+
 
 if torch.cuda.is_available():
     device_list = [f"cuda:{n}" for n in range(torch.cuda.device_count())]
@@ -52,6 +84,7 @@ def bagged_copula(
         Device ot marginalize on.
     """
     cop_datas = copula_data_list
+    assert len(cop_datas) == n_estimators
     N = 0
     cop_indeces = dict()
     cop_combo_indeces = dict()
@@ -94,6 +127,7 @@ def bagged_copula(
 
 
 if __name__ == "__main__":
+    args.parse_args()
     seed = args.seed
     np.random.seed(seed)
     torch.random.seed(seed)
@@ -118,7 +152,11 @@ if __name__ == "__main__":
             pupil_model_data, torch.Tensor(data["X"][-5000:]), device=device
         )
 
-        ent = pupil_vine.entropy().detach().cpu().numpy()
+        if args.skip_true_ent == 1:
+            ent = np.genfromtxt("./true_ent.csv", delimiter=",")
+        else:
+            ent = pupil_vine.entropy().detach().cpu().numpy()
+            ent.tofile("./true_ent.csv", sep=",")
         print(f"Entropy extraction: {ent.mean()} +/- {2*np.std(ent)}")
 
         print("Getting vines...")
@@ -129,7 +167,7 @@ if __name__ == "__main__":
         Y_train = Y[:4000].reshape(10, 400, 5)
         Y_test = Y[-1000:]
 
-        for i in range(0, 10):
+        for i in range(args.bagged_start, 10):
             try:
                 os.mkdir(f"../models/layers/pupil_vine/segments/seg_{i}/")
                 os.mkdir(f"../models/results/pupil_segments/")
@@ -166,6 +204,7 @@ if __name__ == "__main__":
                 exp=f"Vine on trial {i} Parametrized in Pupil Area",
                 light=True,
                 device_list=device_list,
+                start=args.bagged_start_layer,
             )
 
         os.remove("../data/segmented_pupil_copulas/*.pkl")
@@ -174,7 +213,7 @@ if __name__ == "__main__":
 
         bagged_copulas = [[[] for j in range(12 - i)] in i in range(12)]
 
-        for i in range(25):
+        for i in range(10):
             with open(f"../models/results/pupil_segments/pupil_{i}_res.pkl", "rb") as f:
                 models_i = pkl.load(f)["models"]
 
@@ -182,18 +221,31 @@ if __name__ == "__main__":
                 for n, copula in enumerate(layer):
                     bagged_copulas[l][n].append(copula.model_init(device))
 
-        n_estimators = 25
+        n_estimators = 10
 
         for l, layer in enumerate(bagged_copulas):
             for n, copula_data_list in enumerate(layer):
                 bagged_copulas[l][n] = bagged_copula(
-                    copula_data_list, 25, X[:1500], device=device
+                    copula_data_list, n_estimators, Y_test, device=device
                 )
 
-        mean_vine = v.vine(bagged_copulas, X[:1500], device=device)
+        mean_vine = v.vine(bagged_copulas, Y_test, device=device)
         print("Getting Bagged Vine Entropy...")
-        ent = mean_vine.entropy().detach().cpu().numpy()
-        print(f"Entropy: {ent.mean()} +/- {np.std(ent)}")
+        if args.skip_ent_bagged == 1:
+            ent_pred = np.genfromtxt("./pred.csv")
+        else:
+            ent_pred = mean_vine.entropy().detach().cpu().numpy()
+            ent_pred.tofile("./pred.csv", sep=",")
+        print(f"Entropy: {ent_pred.mean()} +/- {np.std(ent_pred)}")
+
+        gc.collect()
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+        X_train = X_train.reshape(4000, 5)
+        Y_train = Y_train.reshape(4000, 5)
+        baseline_data = dict([("Y", X_train), ("X", Y_train)])
+        with open("../data/segmented_pupil_copulas/baseline_data_0.pkl", "wb") as f:
+            pkl.dump(baseline_data, f)
 
         print("Getting Baseline")
         train_vine(
@@ -203,5 +255,33 @@ if __name__ == "__main__":
             path_logs=lambda a, b: f"./segmented_pupil/{a}/layer_{b}",
             exp=f"Baseline Vine on 5 of 13 trajectories Parametrized in Pupil Area",
             light=True,
+            start=args.baseline_skip,
             device_list=device_list,
         )
+
+        with open("../models/results/pupil_segments/baseline_res.pkl", "rb") as f:
+            baseline_results = pkl.load(f)
+        baseline_model_data = copy.deepcopy(pupil_results["models"])
+
+        print("Getting Entropies...")
+
+        for i, layer in enumerate(pupil_model_data):
+            for j, cop_data in enumerate(layer):
+                cop = cop_data.model_init(device).marginalize(Y_test)
+                baseline_model_data[i][j] = cop
+        baseline_vine = v.CVine(
+            baseline_model_data, torch.Tensor(Y_test), device=device
+        )
+        if args.skip_ent_baseline:
+            baseline_ent = np.genfromtxt("./baseline.csv", delimiter=",")
+        else:
+            baseline_ent = baseline_vine.entropy()
+            baseline_ent.tofile("./baseline.csv", sep=",")
+
+        print(f"Baseline ent: {baseline_ent} +/- {2*np.std(baseline_ent)}")
+
+        print("================================================================")
+        print("================================================================")
+        print("True: \t{:.6f} +/- {:.6f}".format(ent, np.std(ent) * 2))
+        print("MAE Baseline: \t{:.6f}".format(np.abs(ent - baseline_ent)))
+        print("MAE Pred: \t{:.6f}".format(np.abs(ent - ent_pred)))
