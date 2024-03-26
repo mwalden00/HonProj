@@ -138,7 +138,7 @@ def bagged_copula(
 
     if N == 1:
         return (
-            cop_list[0](theta=torch.empty(device=device))
+            cop_list[0](theta=torch.tensor(np.array(), device=device))
             if cop_list[0] is IndependenceCopula
             else cop_list[0](theta=thetas, rotation=rotations[0])
         )
