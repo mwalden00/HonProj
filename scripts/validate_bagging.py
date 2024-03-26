@@ -252,7 +252,7 @@ if __name__ == "__main__":
         )
         print("Getting Bagged Vine Entropy...")
         if args.skip_ent_bagged == 1:
-            ent_pred = np.genfromtxt("./pred.csv")
+            ent_pred = np.genfromtxt("./pred.csv", delimiter=",")
         else:
             ent_pred = mean_vine.entropy().detach().cpu().numpy()
             ent_pred.tofile("./pred.csv", sep=",")
@@ -263,7 +263,7 @@ if __name__ == "__main__":
             torch.cuda.empty_cache()
         X_train = X_train.reshape(4000, 5)
         Y_train = Y_train.reshape(4000)
-        baseline_data = dict([("Y", X_train), ("X", Y_train)])
+        baseline_data = dict([("Y", X_train.cpu().numpy()), ("X", Y_train)])
         with open("../data/segmented_pupil_copulas/baseline_data_0.pkl", "wb") as f:
             pkl.dump(baseline_data, f)
 
