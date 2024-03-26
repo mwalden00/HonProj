@@ -124,6 +124,7 @@ def bagged_copula(
 
     # Create Mixture as Average
     cop_list = [None for i in range(N)]
+    print(cop_list)
     thetas = torch.zeros((N, X.shape[0]))
     mixes = torch.zeros((N, X.shape[0]))
 
@@ -231,7 +232,6 @@ if __name__ == "__main__":
             for l, layer in enumerate(models_i):
                 for n, copula in enumerate(layer):
                     bagged_copulas[l][n].append(models_i[l][n])
-        print(bagged_copulas[0])
 
         n_estimators = 10
 
