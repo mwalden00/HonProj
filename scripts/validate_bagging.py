@@ -288,7 +288,7 @@ if __name__ == "__main__":
 
         for i, layer in enumerate(baseline_model_data):
             for j, cop_data in enumerate(layer):
-                cop = cop_data.model_init(device).marginalize(Y_test)
+                cop = cop_data.model_init(device).marginalize(torch.Tensor(Y_test))
                 baseline_model_data[i][j] = cop
         baseline_vine = v.CVine(
             baseline_model_data, torch.Tensor(Y_test), device=device
