@@ -76,6 +76,9 @@ def parser():
     args.add_argument(
         "--dim", nargs="?", type=int, default=3, help="Dim of random data"
     )
+    args.add_argument(
+        "--max_el", nargs="?", type=int, default=5, help="Max num. of copulas mixed"
+    )
     return args
 
 
@@ -170,9 +173,10 @@ if __name__ == "__main__":
             data = pkl.load(f)
 
         dim = args.dim
+        max_el = args.max_el
 
         pupil_vine = get_random_vine(
-            dim, torch.Tensor(data["X"][-5000:]), device=device, max_el=6
+            dim, torch.Tensor(data["X"][-5000:]), device=device, max_el=max_el
         )
         print("True vine: ", pupil_vine)
 
