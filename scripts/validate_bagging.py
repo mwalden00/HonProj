@@ -282,6 +282,7 @@ if __name__ == "__main__":
         with open("../models/results/pupil_segments/baseline_res.pkl", "rb") as f:
             baseline_results = pkl.load(f)
         baseline_model_data = copy.deepcopy(baseline_results["models"])
+        print(baseline_model_data)
 
         print("Getting Entropies...")
 
