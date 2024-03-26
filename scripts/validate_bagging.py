@@ -244,7 +244,7 @@ if __name__ == "__main__":
         for l, layer in enumerate(bagged_copulas):
             for n, copula_data_list in enumerate(layer):
                 bagged_copulas[l][n] = bagged_copula(
-                    copula_data_list, n_estimators, Y_test, device=device
+                    copula_data_list, n_estimators, torch.Tensor(Y_test), device=device
                 )
 
         mean_vine = v.CVine(
