@@ -136,10 +136,14 @@ def bagged_copula(
 
     print(cop_list)
 
-    return MixtureCopula(theta=thetas, mix=mixes, copulas=cop_list, rotations=rotations)
+    return (
+        MixtureCopula(theta=thetas, mix=mixes, copulas=cop_list, rotations=rotations)
+        if N > 1
+        else cop_list[0](thetas,rotation=rotations[0])
+    )
 
 
-if __name__ == "__main__":
+////if __name__ == "__main__":
     args = parser().parse_args()
     seed = args.seed
     np.random.seed(seed)
