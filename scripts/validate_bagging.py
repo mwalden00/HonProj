@@ -285,7 +285,7 @@ if __name__ == "__main__":
 
         print("Getting Entropies...")
 
-        for i, layer in enumerate(pupil_model_data):
+        for i, layer in enumerate(baseline_model_data):
             for j, cop_data in enumerate(layer):
                 cop = cop_data.model_init(device).marginalize(Y_test)
                 baseline_model_data[i][j] = cop
