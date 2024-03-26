@@ -191,10 +191,10 @@ if __name__ == "__main__":
 
         print(f"Getting {n_estimators} copulaGP estimators...")
         X = pupil_vine.sample()
-        X_train = X[:4000].reshape(n_estimators, 4000 / n_estimators, 5)
+        X_train = X[:4000].reshape(n_estimators, int(4000 / n_estimators), 5)
 
         Y = data["X"][-5000:]
-        Y_train = Y[:4000].reshape(n_estimators, 4000 / n_estimators)
+        Y_train = Y[:4000].reshape(n_estimators, int(4000 / n_estimators))
         Y_test = Y[-1000:]
 
         for i in range(args.bagged_start, n_estimators):
@@ -313,6 +313,12 @@ if __name__ == "__main__":
 
         print("================================================================")
         print("================================================================")
-        print("True: \t{:.6f} +/- {:.6f}".format(ent[-1000:].mean(), 2*np.std(ent[-1000:])))
-        print("MAE Baseline: \t{:.6f}".format(np.abs(ent[-1000:] - baseline_ent).mean()))
+        print(
+            "True: \t{:.6f} +/- {:.6f}".format(
+                ent[-1000:].mean(), 2 * np.std(ent[-1000:])
+            )
+        )
+        print(
+            "MAE Baseline: \t{:.6f}".format(np.abs(ent[-1000:] - baseline_ent).mean())
+        )
         print("MAE Pred: \t{:.6f}".format(np.abs(ent[-1000:] - ent_pred).mean()))
