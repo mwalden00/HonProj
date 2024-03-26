@@ -136,11 +136,9 @@ def bagged_copula(
 
     print(cop_list)
 
-    if N == 1:
-        return (
-            cop_list[0](theta=torch.tensor([], device=device))
-            if cop_list[0] is IndependenceCopula
-            else cop_list[0](theta=thetas, rotation=rotations[0])
+    if N == 1 and cop_list[0] is IndependenceCopula:
+        return MixtureCopula(
+            thetas=torch.Tensor(device=device), mix=mixes, copulas=cop_list
         )
     return MixtureCopula(theta=thetas, mix=mixes, copulas=cop_list, rotations=rotations)
 
