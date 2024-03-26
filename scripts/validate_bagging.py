@@ -166,8 +166,10 @@ if __name__ == "__main__":
         with open("../data/pupil_vine_data_partial_0.pkl", "rb") as f:
             data = pkl.load(f)
 
+        dim = args.dim
+
         pupil_vine = get_random_vine(
-            5, torch.Tensor(data["X"][-5000:]), device=device, max_el=10
+            dim, torch.Tensor(data["X"][-5000:]), device=device, max_el=11
         )
 
         print("True vine: ", pupil_vine.layers)
@@ -184,9 +186,9 @@ if __name__ == "__main__":
 
         print(f"Getting {n_estimators} copulaGP estimators...")
         X = pupil_vine.sample()
-        X_train = X[:4000].reshape(n_estimators, int(4000 / n_estimators), 5)
+        X_train = X[:4000].reshape(n_estimators, int(4000 / n_estimators), dim)
 
-        Y = data["X"][-5000:]
+        Y = data["X"][-dim000:]
         Y_train = Y[:4000].reshape(n_estimators, int(4000 / n_estimators))
         Y_test = Y[-1000:]
 
@@ -262,7 +264,7 @@ if __name__ == "__main__":
         gc.collect()
         if torch.cuda.is_available():
             torch.cuda.empty_cache()
-        X_train = X_train.reshape(4000, 5)
+        X_train = X_train.reshape(4000, dim)
         Y_train = Y_train.reshape(4000)
         baseline_data = dict([("Y", X_train.cpu().numpy()), ("X", Y_train)])
         with open("../data/segmented_pupil_copulas/baseline_data_0.pkl", "wb") as f:
@@ -274,7 +276,7 @@ if __name__ == "__main__":
             path_models=lambda x: f"../models/layers/pupil_vine/segments/baseline/layer_{x}.pkl",
             path_final=f"../models/results/pupil_segments/baseline_res.pkl",
             path_logs=lambda a, b: f"./segmented_pupil/{a}/layer_{b}",
-            exp=f"Baseline Vine on 5 of 13 trajectories Parametrized in Pupil Area",
+            exp=f"Baseline Vine on {dim} dim random copula data Parametrized in Pupil Area",
             light=True,
             start=args.skip_baseline,
             device_list=device_list,
