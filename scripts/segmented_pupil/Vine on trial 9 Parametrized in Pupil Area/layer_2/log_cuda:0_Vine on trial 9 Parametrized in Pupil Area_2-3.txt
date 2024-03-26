@@ -1,0 +1,16 @@
+2024-03-26 06:01:45,302 Selecting 2-3 on cuda:0
+2024-03-26 06:01:45,303 Trying Gaussian
+2024-03-26 06:02:54,316 WAIC=-0.0779, took 69 sec
+2024-03-26 06:02:54,431 Gaussian (WAIC = -0.0779)
+2024-03-26 06:02:54,431 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-03-26 06:05:12,899 WAIC=-0.0833, took 138 sec
+2024-03-26 06:05:13,002 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.0833)
+2024-03-26 06:05:13,014 Re-running reduced model...
+2024-03-26 06:05:13,015 Trying GaussianClayton270°
+2024-03-26 06:06:42,335 WAIC=-0.0803, took 89 sec
+2024-03-26 06:06:42,438 GaussianClayton270° (WAIC = -0.0833)
+2024-03-26 06:06:42,439 Trying FrankGaussianClayton270°
+2024-03-26 06:08:25,621 WAIC=-0.0827, took 103 sec
+2024-03-26 06:08:25,724 Frank added
+2024-03-26 06:08:25,729 Nothing to reduce
+2024-03-26 06:08:25,729 Final model: FrankGaussianClayton270°

@@ -1,0 +1,5 @@
+2024-03-26 03:43:18,273 Selecting 2-4 on cuda:0
+2024-03-26 03:43:18,274 Trying Gaussian
+2024-03-26 03:44:32,833 WAIC=-0.0008, took 74 sec
+2024-03-26 03:44:32,956 Gaussian (WAIC = -0.0008)
+2024-03-26 03:44:32,956 These variables are independent

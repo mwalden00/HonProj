@@ -1,0 +1,32 @@
+2024-03-25 13:34:07,736 Selecting 10-11 on cuda:0
+2024-03-25 13:34:07,737 Trying Gaussian
+2024-03-25 13:35:21,009 WAIC=-0.0199, took 73 sec
+2024-03-25 13:35:21,119 Gaussian (WAIC = -0.0199)
+2024-03-25 13:35:21,119 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-03-25 13:35:34,493 Training does not look promissing!
+2024-03-25 13:35:34,579 WAIC=0.0040, took 13 sec
+2024-03-25 13:35:34,696 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = 0.0040)
+2024-03-25 13:35:34,696 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-03-25 13:38:20,454 WAIC=-0.0254, took 165 sec
+2024-03-25 13:38:20,636 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.0254)
+2024-03-25 13:38:20,668 tensor([ True,  True, False, False,  True, False], device='cuda:0')
+2024-03-25 13:38:20,669 tensor([True, True, True, True, True, True], device='cuda:0')
+2024-03-25 13:38:20,669 Symmetric: IndependenceGaussian
+2024-03-25 13:38:20,670 Trying IndependenceGaussianGumbel180°Clayton90°Clayton180°Clayton270°
+2024-03-25 13:40:57,926 WAIC=-0.0255, took 157 sec
+2024-03-25 13:40:58,034 Swap Clayton0°->Gumbel180°
+2024-03-25 13:40:58,051 Trying IndependenceGaussianGumbel180°Gumbel270°Clayton180°Clayton270°
+2024-03-25 13:43:35,795 WAIC=-0.0254, took 157 sec
+2024-03-25 13:43:35,902 Swap Clayton90°->Gumbel270°
+2024-03-25 13:43:35,919 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Clayton270°
+2024-03-25 13:46:14,092 WAIC=-0.0241, took 158 sec
+2024-03-25 13:46:14,201 Trying IndependenceGaussianGumbel180°Gumbel270°Clayton180°Gumbel90°
+2024-03-25 13:48:52,530 WAIC=-0.0253, took 158 sec
+2024-03-25 13:48:52,642 Re-running reduced model...
+2024-03-25 13:48:52,642 Trying IndependenceGaussianClayton180°
+2024-03-25 13:50:27,142 WAIC=-0.0260, took 94 sec
+2024-03-25 13:50:27,247 IndependenceGaussianClayton180° (WAIC = -0.0260)
+2024-03-25 13:50:27,249 Trying IndependenceFrankClayton180°
+2024-03-25 13:51:58,362 WAIC=-0.0243, took 91 sec
+2024-03-25 13:51:58,479 Nothing to reduce
+2024-03-25 13:51:58,479 Final model: IndependenceGaussianClayton180°

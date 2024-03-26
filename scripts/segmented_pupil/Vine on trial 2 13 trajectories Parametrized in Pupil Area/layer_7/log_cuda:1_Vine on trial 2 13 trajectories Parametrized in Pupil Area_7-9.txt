@@ -1,0 +1,26 @@
+2024-03-25 13:15:43,364 Selecting 7-9 on cuda:1
+2024-03-25 13:15:43,365 Trying Gaussian
+2024-03-25 13:16:54,336 WAIC=-0.0086, took 70 sec
+2024-03-25 13:16:54,450 Gaussian (WAIC = -0.0086)
+2024-03-25 13:16:54,450 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-03-25 13:17:05,749 Training does not look promissing!
+2024-03-25 13:17:05,817 WAIC=0.0221, took 11 sec
+2024-03-25 13:17:05,927 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = 0.0221)
+2024-03-25 13:17:05,928 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-03-25 13:17:16,780 Training does not look promissing!
+2024-03-25 13:17:16,846 WAIC=0.0188, took 10 sec
+2024-03-25 13:17:16,943 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = 0.0188)
+2024-03-25 13:17:16,945 Trying Frank
+2024-03-25 13:18:17,491 WAIC=-0.0027, took 60 sec
+2024-03-25 13:18:17,613 Nothing to reduce
+2024-03-25 13:18:17,614 Final model: Gaussian
+2024-03-25 13:18:17,651 Selecting 7-11 on cuda:1
+2024-03-25 13:18:17,652 Trying Gaussian
+2024-03-25 13:19:27,933 WAIC=-0.0021, took 70 sec
+2024-03-25 13:19:28,041 Gaussian (WAIC = -0.0021)
+2024-03-25 13:19:28,041 These variables are independent
+2024-03-25 13:19:28,053 Selecting 7-12 on cuda:1
+2024-03-25 13:19:28,054 Trying Gaussian
+2024-03-25 13:20:38,373 WAIC=-0.0025, took 70 sec
+2024-03-25 13:20:38,478 Gaussian (WAIC = -0.0025)
+2024-03-25 13:20:38,479 These variables are independent

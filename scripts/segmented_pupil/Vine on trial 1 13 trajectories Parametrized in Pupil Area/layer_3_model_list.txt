@@ -1,0 +1,9 @@
+3-4 Independence	-0.0007	71 sec
+3-6 IndependenceGaussianClayton90°	-0.0609	568 sec
+3-5 IndependenceGaussianGumbel180°Gumbel0°	-0.0623	734 sec
+3-8 Independence	-0.0004	63 sec
+3-7 IndependenceGaussianClayton90°	-0.0533	569 sec
+3-9 IndependenceGaussianGumbel270°	-0.0499	681 sec
+3-10 IndependenceGaussianClayton180°	-0.0803	568 sec
+3-12 Independence	-0.0026	69 sec
+3-11 GaussianClayton0°	-0.0899	545 sec

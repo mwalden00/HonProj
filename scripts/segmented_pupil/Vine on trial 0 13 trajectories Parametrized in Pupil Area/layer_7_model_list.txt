@@ -1,0 +1,10 @@
+7-9 Independence	0.0005	16 sec
+7-8 Independence	-0.0005	67 sec
+7-11 Independence	-0.0019	23 sec
+7-10 Gaussian	-0.0099	90 sec
+7-12 Gaussian	-0.0065	92 sec
+7-8 Independence	-0.0014	68 sec
+7-9 Independence	0.0002	72 sec
+7-10 Independence	-0.0014	68 sec
+7-12 Independence	-0.0048	68 sec
+7-11 Gaussian	-0.0085	157 sec

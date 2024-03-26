@@ -1,0 +1,2 @@
+2-4 Independence	-0.0008	74 sec
+2-3 FrankGaussianClayton90°	-0.0953	412 sec

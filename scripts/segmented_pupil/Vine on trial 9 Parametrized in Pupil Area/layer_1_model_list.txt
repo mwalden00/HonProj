@@ -1,0 +1,3 @@
+1-3 FrankGaussian	-0.3999	258 sec
+1-4 Independence	-0.0009	69 sec
+1-2 IndependenceGaussianClayton0°	-0.1473	407 sec

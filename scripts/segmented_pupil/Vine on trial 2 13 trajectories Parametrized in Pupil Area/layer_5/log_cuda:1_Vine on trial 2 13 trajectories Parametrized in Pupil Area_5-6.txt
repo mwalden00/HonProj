@@ -1,0 +1,36 @@
+2024-03-25 12:41:18,293 Selecting 5-6 on cuda:1
+2024-03-25 12:41:18,294 Trying Gaussian
+2024-03-25 12:42:27,036 WAIC=-0.0150, took 68 sec
+2024-03-25 12:42:27,146 Gaussian (WAIC = -0.0150)
+2024-03-25 12:42:27,146 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-03-25 12:42:37,660 Training does not look promissing!
+2024-03-25 12:42:37,725 WAIC=0.0181, took 10 sec
+2024-03-25 12:42:37,810 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = 0.0181)
+2024-03-25 12:42:37,810 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-03-25 12:45:18,252 WAIC=-0.0196, took 160 sec
+2024-03-25 12:45:18,362 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.0196)
+2024-03-25 12:45:18,394 tensor([ True,  True, False,  True, False, False], device='cuda:1')
+2024-03-25 12:45:18,394 tensor([True, True, True, True, True, True], device='cuda:1')
+2024-03-25 12:45:18,395 Symmetric: IndependenceGaussian
+2024-03-25 12:45:18,395 Trying IndependenceGaussianGumbel180°Clayton90°Clayton180°Clayton270°
+2024-03-25 12:48:00,803 WAIC=-0.0195, took 162 sec
+2024-03-25 12:48:00,916 Trying IndependenceGaussianClayton0°Gumbel270°Clayton180°Clayton270°
+2024-03-25 12:48:11,708 Training does not look promissing!
+2024-03-25 12:48:11,774 WAIC=0.0114, took 10 sec
+2024-03-25 12:48:11,853 Trying IndependenceGaussianClayton0°Clayton90°Gumbel0°Clayton270°
+2024-03-25 12:48:22,572 Training does not look promissing!
+2024-03-25 12:48:22,636 WAIC=0.0064, took 10 sec
+2024-03-25 12:48:22,721 No need to swap the last one, as we already tried that model
+2024-03-25 12:48:22,722 Re-running reduced model...
+2024-03-25 12:48:22,722 Trying IndependenceGaussianClayton90°
+2024-03-25 12:49:58,579 WAIC=-0.0196, took 95 sec
+2024-03-25 12:49:58,689 IndependenceGaussianClayton90° (WAIC = -0.0196)
+2024-03-25 12:49:58,691 Trying IndependenceFrankClayton90°
+2024-03-25 12:51:30,045 WAIC=-0.0196, took 91 sec
+2024-03-25 12:51:30,166 Nothing to reduce
+2024-03-25 12:51:30,167 Final model: IndependenceGaussianClayton90°
+2024-03-25 12:51:30,207 Selecting 5-12 on cuda:1
+2024-03-25 12:51:30,208 Trying Gaussian
+2024-03-25 12:52:39,238 WAIC=-0.0016, took 69 sec
+2024-03-25 12:52:39,351 Gaussian (WAIC = -0.0016)
+2024-03-25 12:52:39,351 These variables are independent

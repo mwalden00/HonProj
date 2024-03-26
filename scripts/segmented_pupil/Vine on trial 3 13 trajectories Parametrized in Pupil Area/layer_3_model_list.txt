@@ -1,0 +1,3 @@
+3-4 IndependenceFrankClayton90°	-0.0231	502 sec
+3-5 IndependenceGaussianClayton0°Clayton180°	-0.0454	767 sec
+3-6 IndependenceGaussianClayton90°	-0.0783	613 sec

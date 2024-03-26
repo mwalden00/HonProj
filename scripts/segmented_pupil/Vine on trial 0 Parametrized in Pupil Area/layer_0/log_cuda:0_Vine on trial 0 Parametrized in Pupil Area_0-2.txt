@@ -1,0 +1,36 @@
+2024-03-26 01:43:58,595 Selecting 0-2 on cuda:0
+2024-03-26 01:43:58,596 Trying Gaussian
+2024-03-26 01:44:10,357 Converged in 500 steps! (Relative!)
+2024-03-26 01:44:10,368 WAIC=-0.4620, took 11 sec
+2024-03-26 01:44:10,489 Gaussian (WAIC = -0.4620)
+2024-03-26 01:44:10,489 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-03-26 01:46:21,953 WAIC=-0.5049, took 131 sec
+2024-03-26 01:46:22,059 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.5049)
+2024-03-26 01:46:22,071 Re-running reduced model...
+2024-03-26 01:46:22,071 Trying GaussianClayton180°
+2024-03-26 01:47:18,998 Converged in 1900 steps! (Relative!)
+2024-03-26 01:47:19,014 WAIC=-0.5064, took 56 sec
+2024-03-26 01:47:19,120 GaussianClayton180° (WAIC = -0.5049)
+2024-03-26 01:47:19,122 Trying FrankGaussianClayton180°
+2024-03-26 01:49:04,348 WAIC=-0.5083, took 105 sec
+2024-03-26 01:49:04,454 Frank added
+2024-03-26 01:49:04,460 Reduced to the previous model.
+2024-03-26 01:49:04,460 Final model: GaussianClayton180°
+2024-03-26 01:49:04,546 Selecting 0-3 on cuda:0
+2024-03-26 01:49:04,547 Trying Gaussian
+2024-03-26 01:49:15,978 Converged in 500 steps! (Relative!)
+2024-03-26 01:49:15,991 WAIC=-0.4014, took 11 sec
+2024-03-26 01:49:16,063 Gaussian (WAIC = -0.4014)
+2024-03-26 01:49:16,063 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-03-26 01:51:51,781 WAIC=-0.5448, took 155 sec
+2024-03-26 01:51:51,883 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.5448)
+2024-03-26 01:51:51,900 Re-running reduced model...
+2024-03-26 01:51:51,900 Trying Clayton90°
+2024-03-26 01:52:11,355 Converged in 900 steps! (Relative!)
+2024-03-26 01:52:11,365 WAIC=-0.5476, took 19 sec
+2024-03-26 01:52:11,437 Clayton90° (WAIC = -0.5448)
+2024-03-26 01:52:11,438 Trying FrankClayton90°
+2024-03-26 01:52:54,958 Converged in 1400 steps! (Relative!)
+2024-03-26 01:52:54,976 WAIC=-0.5461, took 43 sec
+2024-03-26 01:52:55,054 Frank is not helping
+2024-03-26 01:52:55,054 Final model: Clayton90°

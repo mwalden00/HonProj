@@ -1,0 +1,2 @@
+2-4 Independence	-0.0002	68 sec
+2-3 Frank	-0.1602	279 sec

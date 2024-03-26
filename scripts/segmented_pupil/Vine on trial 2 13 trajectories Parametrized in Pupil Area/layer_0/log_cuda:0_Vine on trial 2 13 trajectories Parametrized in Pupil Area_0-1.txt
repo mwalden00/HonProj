@@ -1,0 +1,144 @@
+2024-03-25 09:11:43,177 Selecting 0-1 on cuda:0
+2024-03-25 09:11:43,179 Trying Gaussian
+2024-03-25 09:11:50,120 Converged in 300 steps! (Relative!)
+2024-03-25 09:11:50,132 WAIC=-0.4651, took 6 sec
+2024-03-25 09:11:50,216 Gaussian (WAIC = -0.4651)
+2024-03-25 09:11:50,216 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-03-25 09:14:08,901 Converged in 2700 steps! (Relative!)
+2024-03-25 09:14:08,962 WAIC=-0.4998, took 138 sec
+2024-03-25 09:14:09,068 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -0.4998)
+2024-03-25 09:14:09,068 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-03-25 09:16:32,180 Converged in 2800 steps! (Relative!)
+2024-03-25 09:16:32,240 WAIC=-0.5043, took 143 sec
+2024-03-25 09:16:32,345 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.5043)
+2024-03-25 09:16:32,374 tensor([False,  True, False, False,  True, False], device='cuda:0')
+2024-03-25 09:16:32,375 tensor([False,  True, False, False,  True, False], device='cuda:0')
+2024-03-25 09:16:32,375 Symmetric: Gaussian
+2024-03-25 09:16:32,376 No need to swap the last one, as we already tried that model
+2024-03-25 09:16:32,376 Re-running reduced model...
+2024-03-25 09:16:32,376 Trying GaussianClayton180°
+2024-03-25 09:18:01,973 WAIC=-0.5089, took 89 sec
+2024-03-25 09:18:02,078 GaussianClayton180° (WAIC = -0.5089)
+2024-03-25 09:18:02,079 Trying FrankClayton180°
+2024-03-25 09:18:23,924 Converged in 900 steps! (Relative!)
+2024-03-25 09:18:23,941 WAIC=-0.4648, took 21 sec
+2024-03-25 09:18:24,041 Nothing to reduce
+2024-03-25 09:18:24,042 Final model: GaussianClayton180°
+2024-03-25 09:18:24,118 Selecting 0-4 on cuda:0
+2024-03-25 09:18:24,120 Trying Gaussian
+2024-03-25 09:19:28,637 WAIC=-0.0090, took 64 sec
+2024-03-25 09:19:28,722 Gaussian (WAIC = -0.0090)
+2024-03-25 09:19:28,722 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-03-25 09:22:02,984 WAIC=-0.1750, took 154 sec
+2024-03-25 09:22:03,091 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -0.1750)
+2024-03-25 09:22:03,092 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-03-25 09:24:36,952 WAIC=-0.1852, took 153 sec
+2024-03-25 09:24:37,063 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.1852)
+2024-03-25 09:24:37,093 tensor([False, False, False,  True,  True, False], device='cuda:0')
+2024-03-25 09:24:37,093 tensor([False, False, False,  True,  True, False], device='cuda:0')
+2024-03-25 09:24:37,093 Symmetric: 
+2024-03-25 09:24:37,094 Trying Gumbel270°Clayton180°
+2024-03-25 09:25:50,760 WAIC=-0.1852, took 73 sec
+2024-03-25 09:25:50,866 Swap Clayton90°->Gumbel270°
+2024-03-25 09:25:50,871 Trying Gumbel270°Gumbel0°
+2024-03-25 09:27:07,093 WAIC=-0.1753, took 76 sec
+2024-03-25 09:27:07,189 Nothing to reduce
+2024-03-25 09:27:07,189 Trying to substitute 2 elements (0 and 1) with a Gauss...
+2024-03-25 09:27:07,190 Trying Gaussian
+2024-03-25 09:28:11,826 WAIC=-0.0085, took 64 sec
+2024-03-25 09:28:11,916 Nothing to reduce
+2024-03-25 09:28:11,917 Final model: Gumbel270°Clayton180°
+2024-03-25 09:28:11,934 Selecting 0-6 on cuda:0
+2024-03-25 09:28:11,936 Trying Gaussian
+2024-03-25 09:28:23,651 Converged in 500 steps! (Relative!)
+2024-03-25 09:28:23,662 WAIC=-0.3692, took 11 sec
+2024-03-25 09:28:23,769 Gaussian (WAIC = -0.3692)
+2024-03-25 09:28:23,769 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-03-25 09:31:00,029 WAIC=-0.4689, took 156 sec
+2024-03-25 09:31:00,137 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -0.4689)
+2024-03-25 09:31:00,137 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-03-25 09:33:24,272 Converged in 2800 steps! (Relative!)
+2024-03-25 09:33:24,333 WAIC=-0.5105, took 144 sec
+2024-03-25 09:33:24,442 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.5105)
+2024-03-25 09:33:24,471 tensor([False, False, False, False,  True, False], device='cuda:0')
+2024-03-25 09:33:24,472 tensor([False, False, False, False,  True, False], device='cuda:0')
+2024-03-25 09:33:24,472 Symmetric: 
+2024-03-25 09:33:24,472 No need to swap the last one, as we already tried that model
+2024-03-25 09:33:24,472 Re-running reduced model...
+2024-03-25 09:33:24,473 Trying Clayton180°
+2024-03-25 09:33:36,603 Converged in 700 steps! (Relative!)
+2024-03-25 09:33:36,612 WAIC=-0.5154, took 12 sec
+2024-03-25 09:33:36,683 Clayton180° (WAIC = -0.5154)
+2024-03-25 09:33:36,691 Nothing to reduce
+2024-03-25 09:33:36,691 Final model: Clayton180°
+2024-03-25 09:33:36,702 Selecting 0-7 on cuda:0
+2024-03-25 09:33:36,702 Trying Gaussian
+2024-03-25 09:33:47,965 Converged in 500 steps! (Relative!)
+2024-03-25 09:33:47,978 WAIC=-0.3208, took 11 sec
+2024-03-25 09:33:48,071 Gaussian (WAIC = -0.3208)
+2024-03-25 09:33:48,071 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-03-25 09:36:26,245 WAIC=-0.4140, took 158 sec
+2024-03-25 09:36:26,352 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -0.4140)
+2024-03-25 09:36:26,353 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-03-25 09:39:01,119 WAIC=-0.4572, took 154 sec
+2024-03-25 09:39:01,228 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.4572)
+2024-03-25 09:39:01,258 tensor([False, False, False, False,  True, False], device='cuda:0')
+2024-03-25 09:39:01,258 tensor([False, False, False, False,  True, False], device='cuda:0')
+2024-03-25 09:39:01,258 Symmetric: 
+2024-03-25 09:39:01,259 No need to swap the last one, as we already tried that model
+2024-03-25 09:39:01,259 Re-running reduced model...
+2024-03-25 09:39:01,259 Trying Clayton180°
+2024-03-25 09:39:15,188 Converged in 800 steps! (Relative!)
+2024-03-25 09:39:15,197 WAIC=-0.4612, took 13 sec
+2024-03-25 09:39:15,277 Clayton180° (WAIC = -0.4612)
+2024-03-25 09:39:15,286 Nothing to reduce
+2024-03-25 09:39:15,286 Final model: Clayton180°
+2024-03-25 09:39:15,296 Selecting 0-9 on cuda:0
+2024-03-25 09:39:15,297 Trying Gaussian
+2024-03-25 09:39:21,908 Converged in 300 steps! (Relative!)
+2024-03-25 09:39:21,919 WAIC=-0.4776, took 6 sec
+2024-03-25 09:39:21,989 Gaussian (WAIC = -0.4776)
+2024-03-25 09:39:21,989 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-03-25 09:41:58,537 Converged in 3000 steps! (Relative!)
+2024-03-25 09:41:58,597 WAIC=-0.5356, took 156 sec
+2024-03-25 09:41:58,706 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -0.5356)
+2024-03-25 09:41:58,706 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-03-25 09:44:33,550 WAIC=-0.5417, took 154 sec
+2024-03-25 09:44:33,658 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.5417)
+2024-03-25 09:44:33,688 tensor([False,  True, False, False,  True, False], device='cuda:0')
+2024-03-25 09:44:33,688 tensor([False,  True, False, False,  True, False], device='cuda:0')
+2024-03-25 09:44:33,688 Symmetric: Gaussian
+2024-03-25 09:44:33,689 No need to swap the last one, as we already tried that model
+2024-03-25 09:44:33,689 Re-running reduced model...
+2024-03-25 09:44:33,689 Trying GaussianClayton180°
+2024-03-25 09:45:38,772 Converged in 2200 steps! (Relative!)
+2024-03-25 09:45:38,790 WAIC=-0.5410, took 65 sec
+2024-03-25 09:45:38,894 GaussianClayton180° (WAIC = -0.5410)
+2024-03-25 09:45:38,896 Trying FrankClayton180°
+2024-03-25 09:45:58,353 Converged in 800 steps! (Relative!)
+2024-03-25 09:45:58,369 WAIC=-0.5174, took 19 sec
+2024-03-25 09:45:58,450 Nothing to reduce
+2024-03-25 09:45:58,450 Final model: GaussianClayton180°
+2024-03-25 09:45:58,464 Selecting 0-11 on cuda:0
+2024-03-25 09:45:58,465 Trying Gaussian
+2024-03-25 09:46:04,970 Converged in 300 steps! (Relative!)
+2024-03-25 09:46:04,982 WAIC=-0.5026, took 6 sec
+2024-03-25 09:46:05,069 Gaussian (WAIC = -0.5026)
+2024-03-25 09:46:05,069 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-03-25 09:48:14,109 Converged in 2500 steps! (Relative!)
+2024-03-25 09:48:14,170 WAIC=-0.6358, took 129 sec
+2024-03-25 09:48:14,272 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -0.6358)
+2024-03-25 09:48:14,272 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-03-25 09:50:48,451 WAIC=-0.6822, took 154 sec
+2024-03-25 09:50:48,558 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.6822)
+2024-03-25 09:50:48,587 tensor([False, False, False,  True, False, False], device='cuda:0')
+2024-03-25 09:50:48,588 tensor([False, False, False,  True, False, False], device='cuda:0')
+2024-03-25 09:50:48,588 Symmetric: 
+2024-03-25 09:50:48,588 No need to swap the last one, as we already tried that model
+2024-03-25 09:50:48,589 Re-running reduced model...
+2024-03-25 09:50:48,589 Trying Clayton90°
+2024-03-25 09:51:00,740 Converged in 700 steps! (Relative!)
+2024-03-25 09:51:00,749 WAIC=-0.6867, took 12 sec
+2024-03-25 09:51:00,830 Clayton90° (WAIC = -0.6867)
+2024-03-25 09:51:00,838 Nothing to reduce
+2024-03-25 09:51:00,838 Final model: Clayton90°

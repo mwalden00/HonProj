@@ -1,0 +1,10 @@
+2-4 Independence	0.0004	71 sec
+2-3 Gaussian	-0.1350	501 sec
+2-5 IndependenceFrankClayton270°	-0.0363	904 sec
+2-6 Gaussian	-0.0757	581 sec
+2-7 GaussianClayton0°	-0.1221	607 sec
+2-8 Gaussian	-0.0682	516 sec
+2-9 GaussianClayton0°	-0.1023	646 sec
+2-10 GaussianClayton90°Clayton270°	-0.0848	791 sec
+2-11 Frank	-0.1397	606 sec
+2-12 IndependenceGaussianClayton0°	-0.0566	682 sec

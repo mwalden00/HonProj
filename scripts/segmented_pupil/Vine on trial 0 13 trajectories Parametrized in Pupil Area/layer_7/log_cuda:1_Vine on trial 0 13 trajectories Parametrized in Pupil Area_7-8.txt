@@ -1,0 +1,15 @@
+2024-03-25 04:13:46,356 Selecting 7-8 on cuda:1
+2024-03-25 04:13:46,357 Trying Gaussian
+2024-03-25 04:14:54,889 WAIC=-0.0014, took 68 sec
+2024-03-25 04:14:54,995 Gaussian (WAIC = -0.0014)
+2024-03-25 04:14:54,995 These variables are independent
+2024-03-25 04:14:55,008 Selecting 7-10 on cuda:1
+2024-03-25 04:14:55,009 Trying Gaussian
+2024-03-25 04:16:03,032 WAIC=-0.0014, took 68 sec
+2024-03-25 04:16:03,136 Gaussian (WAIC = -0.0014)
+2024-03-25 04:16:03,136 These variables are independent
+2024-03-25 04:16:03,148 Selecting 7-12 on cuda:1
+2024-03-25 04:16:03,148 Trying Gaussian
+2024-03-25 04:17:11,647 WAIC=-0.0048, took 68 sec
+2024-03-25 04:17:11,752 Gaussian (WAIC = -0.0048)
+2024-03-25 04:17:11,752 These variables are independent

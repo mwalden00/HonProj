@@ -1,0 +1,3 @@
+2024-03-26 10:52:10,070 Selecting 0-2 on cuda:1
+2024-03-26 10:52:10,071 Trying Gaussian
+2024-03-26 10:52:19,370 Selecting 0-4 on cuda:1

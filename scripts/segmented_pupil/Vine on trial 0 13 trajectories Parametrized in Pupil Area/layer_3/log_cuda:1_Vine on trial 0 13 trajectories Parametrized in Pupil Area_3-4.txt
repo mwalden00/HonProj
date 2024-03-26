@@ -1,0 +1,69 @@
+2024-03-24 21:40:57,095 Selecting 3-4 on cuda:1
+2024-03-24 21:40:57,097 Trying Gaussian
+2024-03-24 21:41:25,123 Converged in 1200 steps! (Absolute!)
+2024-03-24 21:41:25,134 WAIC=-0.0035, took 28 sec
+2024-03-24 21:41:25,242 Gaussian (WAIC = -0.0035)
+2024-03-24 21:41:25,242 These variables are independent
+2024-03-24 21:41:25,253 Selecting 3-6 on cuda:1
+2024-03-24 21:41:25,254 Trying Gaussian
+2024-03-24 21:41:41,501 Converged in 700 steps! (Absolute!)
+2024-03-24 21:41:41,514 WAIC=-0.0430, took 16 sec
+2024-03-24 21:41:41,619 Gaussian (WAIC = -0.0430)
+2024-03-24 21:41:41,619 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-03-24 21:44:43,235 WAIC=-0.0531, took 181 sec
+2024-03-24 21:44:43,344 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.0531)
+2024-03-24 21:44:43,366 Re-running reduced model...
+2024-03-24 21:44:43,366 Trying IndependenceGaussianClayton90°
+2024-03-24 21:46:32,271 WAIC=-0.0528, took 108 sec
+2024-03-24 21:46:32,376 IndependenceGaussianClayton90° (WAIC = -0.0531)
+2024-03-24 21:46:32,377 Trying FrankIndependenceGaussianClayton90°
+2024-03-24 21:47:46,483 Converged in 1600 steps! (Absolute!)
+2024-03-24 21:47:46,533 WAIC=-0.0515, took 74 sec
+2024-03-24 21:47:46,638 Frank is not helping
+2024-03-24 21:47:46,638 Final model: IndependenceGaussianClayton90°
+2024-03-24 21:47:46,680 Selecting 3-8 on cuda:1
+2024-03-24 21:47:46,681 Trying Gaussian
+2024-03-24 21:48:57,815 WAIC=-0.0090, took 71 sec
+2024-03-24 21:48:57,898 Gaussian (WAIC = -0.0090)
+2024-03-24 21:48:57,898 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-03-24 21:49:10,106 Training does not look promissing!
+2024-03-24 21:49:10,192 WAIC=0.0095, took 12 sec
+2024-03-24 21:49:10,287 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = 0.0095)
+2024-03-24 21:49:10,288 Trying Frank
+2024-03-24 21:49:18,378 Converged in 400 steps! (Absolute!)
+2024-03-24 21:49:18,391 WAIC=-0.0001, took 8 sec
+2024-03-24 21:49:18,459 Final model: Gaussian
+2024-03-24 21:49:18,474 Selecting 3-9 on cuda:1
+2024-03-24 21:49:18,475 Trying Gaussian
+2024-03-24 21:49:39,797 Converged in 900 steps! (Absolute!)
+2024-03-24 21:49:39,813 WAIC=-0.0474, took 21 sec
+2024-03-24 21:49:39,885 Gaussian (WAIC = -0.0474)
+2024-03-24 21:49:39,885 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-03-24 21:52:45,235 WAIC=-0.0532, took 185 sec
+2024-03-24 21:52:45,344 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.0532)
+2024-03-24 21:52:45,366 Re-running reduced model...
+2024-03-24 21:52:45,366 Trying IndependenceGaussianClayton90°
+2024-03-24 21:54:33,910 WAIC=-0.0537, took 108 sec
+2024-03-24 21:54:34,014 IndependenceGaussianClayton90° (WAIC = -0.0532)
+2024-03-24 21:54:34,016 Trying FrankIndependenceGaussianClayton90°
+2024-03-24 21:56:43,672 WAIC=-0.0537, took 129 sec
+2024-03-24 21:56:43,777 Frank added
+2024-03-24 21:56:43,786 Nothing to reduce
+2024-03-24 21:56:43,787 Final model: FrankIndependenceGaussianClayton90°
+2024-03-24 21:56:43,807 Selecting 3-11 on cuda:1
+2024-03-24 21:56:43,808 Trying Gaussian
+2024-03-24 21:56:55,558 Converged in 500 steps! (Relative!)
+2024-03-24 21:56:55,574 WAIC=-0.1305, took 11 sec
+2024-03-24 21:56:55,646 Gaussian (WAIC = -0.1305)
+2024-03-24 21:56:55,647 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-03-24 22:00:01,182 WAIC=-0.1495, took 185 sec
+2024-03-24 22:00:01,291 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.1495)
+2024-03-24 22:00:01,313 Re-running reduced model...
+2024-03-24 22:00:01,313 Trying GaussianClayton0°Clayton180°
+2024-03-24 22:02:04,226 WAIC=-0.1492, took 122 sec
+2024-03-24 22:02:04,327 GaussianClayton0°Clayton180° (WAIC = -0.1495)
+2024-03-24 22:02:04,329 Trying FrankGaussianClayton0°Clayton180°
+2024-03-24 22:04:02,012 Converged in 2400 steps! (Relative!)
+2024-03-24 22:04:02,064 WAIC=-0.1490, took 117 sec
+2024-03-24 22:04:02,166 Frank is not helping
+2024-03-24 22:04:02,167 Final model: GaussianClayton0°Clayton180°

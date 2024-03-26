@@ -1,0 +1,40 @@
+2024-03-25 03:59:13,327 Selecting 6-7 on cuda:0
+2024-03-25 03:59:13,328 Trying Gaussian
+2024-03-25 04:00:20,923 WAIC=-0.0051, took 67 sec
+2024-03-25 04:00:21,028 Gaussian (WAIC = -0.0051)
+2024-03-25 04:00:21,028 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-03-25 04:00:31,233 Training does not look promissing!
+2024-03-25 04:00:31,295 WAIC=0.0266, took 10 sec
+2024-03-25 04:00:31,383 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = 0.0266)
+2024-03-25 04:00:31,383 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-03-25 04:00:41,568 Training does not look promissing!
+2024-03-25 04:00:41,629 WAIC=0.0115, took 10 sec
+2024-03-25 04:00:41,702 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = 0.0115)
+2024-03-25 04:00:41,703 Trying Frank
+2024-03-25 04:01:41,139 WAIC=-0.0022, took 59 sec
+2024-03-25 04:01:41,252 Nothing to reduce
+2024-03-25 04:01:41,252 Final model: Gaussian
+2024-03-25 04:01:41,285 Selecting 6-11 on cuda:0
+2024-03-25 04:01:41,286 Trying Gaussian
+2024-03-25 04:02:48,649 WAIC=-0.0376, took 67 sec
+2024-03-25 04:02:48,754 Gaussian (WAIC = -0.0376)
+2024-03-25 04:02:48,754 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-03-25 04:05:22,919 WAIC=-0.0495, took 154 sec
+2024-03-25 04:05:23,026 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -0.0495)
+2024-03-25 04:05:23,026 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-03-25 04:07:56,775 WAIC=-0.0519, took 153 sec
+2024-03-25 04:07:56,881 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.0519)
+2024-03-25 04:07:56,912 tensor([ True,  True, False,  True, False,  True], device='cuda:0')
+2024-03-25 04:07:56,912 tensor([ True,  True, False, False, False, False], device='cuda:0')
+2024-03-25 04:07:56,913 Symmetric: IndependenceGaussian
+2024-03-25 04:07:56,913 Trying IndependenceGaussianGumbel270°Clayton270°
+2024-03-25 04:09:56,222 WAIC=-0.0494, took 119 sec
+2024-03-25 04:09:56,328 No need to swap the last one, as we already tried that model
+2024-03-25 04:09:56,328 Re-running reduced model...
+2024-03-25 04:09:56,328 Trying IndependenceGaussianClayton90°Clayton270°
+2024-03-25 04:11:54,661 WAIC=-0.0529, took 118 sec
+2024-03-25 04:11:54,768 IndependenceGaussianClayton90°Clayton270° (WAIC = -0.0529)
+2024-03-25 04:11:54,769 Trying IndependenceFrankClayton90°Clayton270°
+2024-03-25 04:13:43,097 WAIC=-0.0526, took 108 sec
+2024-03-25 04:13:43,215 Nothing to reduce
+2024-03-25 04:13:43,215 Final model: IndependenceGaussianClayton90°Clayton270°

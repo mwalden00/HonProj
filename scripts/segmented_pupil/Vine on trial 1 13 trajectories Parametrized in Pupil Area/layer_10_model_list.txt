@@ -1,0 +1,2 @@
+10-12 Independence	-0.0038	70 sec
+10-11 IndependenceGaussianClayton0°	-0.0307	569 sec

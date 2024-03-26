@@ -1,0 +1,76 @@
+2024-03-25 06:54:40,221 Selecting 3-4 on cuda:0
+2024-03-25 06:54:40,222 Trying Gaussian
+2024-03-25 06:55:51,383 WAIC=-0.0007, took 71 sec
+2024-03-25 06:55:51,492 Gaussian (WAIC = -0.0007)
+2024-03-25 06:55:51,492 These variables are independent
+2024-03-25 06:55:51,505 Selecting 3-6 on cuda:0
+2024-03-25 06:55:51,506 Trying Gaussian
+2024-03-25 06:57:01,335 WAIC=-0.0445, took 69 sec
+2024-03-25 06:57:01,438 Gaussian (WAIC = -0.0445)
+2024-03-25 06:57:01,438 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-03-25 06:59:38,868 WAIC=-0.0597, took 157 sec
+2024-03-25 06:59:38,975 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -0.0597)
+2024-03-25 06:59:38,975 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-03-25 07:02:14,009 WAIC=-0.0610, took 155 sec
+2024-03-25 07:02:14,115 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.0610)
+2024-03-25 07:02:14,145 tensor([ True,  True, False,  True, False, False], device='cuda:0')
+2024-03-25 07:02:14,146 tensor([ True,  True, False,  True, False, False], device='cuda:0')
+2024-03-25 07:02:14,146 Symmetric: IndependenceGaussian
+2024-03-25 07:02:14,147 No need to swap the last one, as we already tried that model
+2024-03-25 07:02:14,147 Re-running reduced model...
+2024-03-25 07:02:14,147 Trying IndependenceGaussianClayton90°
+2024-03-25 07:03:48,616 WAIC=-0.0609, took 94 sec
+2024-03-25 07:03:48,720 IndependenceGaussianClayton90° (WAIC = -0.0609)
+2024-03-25 07:03:48,721 Trying IndependenceFrankClayton90°
+2024-03-25 07:05:19,885 WAIC=-0.0560, took 91 sec
+2024-03-25 07:05:20,001 Nothing to reduce
+2024-03-25 07:05:20,002 Final model: IndependenceGaussianClayton90°
+2024-03-25 07:05:20,039 Selecting 3-7 on cuda:0
+2024-03-25 07:05:20,040 Trying Gaussian
+2024-03-25 07:06:30,015 WAIC=-0.0453, took 69 sec
+2024-03-25 07:06:30,120 Gaussian (WAIC = -0.0453)
+2024-03-25 07:06:30,120 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-03-25 07:09:08,320 WAIC=-0.0512, took 158 sec
+2024-03-25 07:09:08,427 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -0.0512)
+2024-03-25 07:09:08,427 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-03-25 07:11:43,699 WAIC=-0.0529, took 155 sec
+2024-03-25 07:11:43,805 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.0529)
+2024-03-25 07:11:43,836 tensor([ True,  True, False,  True, False, False], device='cuda:0')
+2024-03-25 07:11:43,836 tensor([ True,  True, False,  True, False, False], device='cuda:0')
+2024-03-25 07:11:43,837 Symmetric: IndependenceGaussian
+2024-03-25 07:11:43,837 No need to swap the last one, as we already tried that model
+2024-03-25 07:11:43,837 Re-running reduced model...
+2024-03-25 07:11:43,837 Trying IndependenceGaussianClayton90°
+2024-03-25 07:13:18,317 WAIC=-0.0533, took 94 sec
+2024-03-25 07:13:18,422 IndependenceGaussianClayton90° (WAIC = -0.0533)
+2024-03-25 07:13:18,423 Trying IndependenceFrankClayton90°
+2024-03-25 07:14:49,579 WAIC=-0.0498, took 91 sec
+2024-03-25 07:14:49,695 Nothing to reduce
+2024-03-25 07:14:49,695 Final model: IndependenceGaussianClayton90°
+2024-03-25 07:14:49,711 Selecting 3-10 on cuda:0
+2024-03-25 07:14:49,712 Trying Gaussian
+2024-03-25 07:15:59,650 WAIC=-0.0705, took 69 sec
+2024-03-25 07:15:59,744 Gaussian (WAIC = -0.0705)
+2024-03-25 07:15:59,744 Trying IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90°
+2024-03-25 07:18:37,314 WAIC=-0.0801, took 157 sec
+2024-03-25 07:18:37,420 IndependenceGaussianGumbel180°Gumbel270°Gumbel0°Gumbel90° (WAIC = -0.0801)
+2024-03-25 07:18:37,420 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-03-25 07:21:12,628 WAIC=-0.0819, took 155 sec
+2024-03-25 07:21:12,735 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.0819)
+2024-03-25 07:21:12,765 tensor([ True,  True, False, False,  True, False], device='cuda:0')
+2024-03-25 07:21:12,765 tensor([ True,  True, False, False,  True, False], device='cuda:0')
+2024-03-25 07:21:12,766 Symmetric: IndependenceGaussian
+2024-03-25 07:21:12,766 No need to swap the last one, as we already tried that model
+2024-03-25 07:21:12,766 Re-running reduced model...
+2024-03-25 07:21:12,766 Trying IndependenceGaussianClayton180°
+2024-03-25 07:22:46,994 WAIC=-0.0803, took 94 sec
+2024-03-25 07:22:47,098 IndependenceGaussianClayton180° (WAIC = -0.0803)
+2024-03-25 07:22:47,100 Trying IndependenceFrankClayton180°
+2024-03-25 07:24:18,288 WAIC=-0.0692, took 91 sec
+2024-03-25 07:24:18,404 Nothing to reduce
+2024-03-25 07:24:18,404 Final model: IndependenceGaussianClayton180°
+2024-03-25 07:24:18,420 Selecting 3-12 on cuda:0
+2024-03-25 07:24:18,421 Trying Gaussian
+2024-03-25 07:25:27,958 WAIC=-0.0026, took 69 sec
+2024-03-25 07:25:28,052 Gaussian (WAIC = -0.0026)
+2024-03-25 07:25:28,052 These variables are independent

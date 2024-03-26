@@ -1,0 +1,14 @@
+5-7 Independence	-0.0037	68 sec
+5-6 Gaussian	-0.0059	88 sec
+5-9 Independence	-0.0034	69 sec
+5-8 Gaussian	-0.0150	279 sec
+5-10 IndependenceGaussian	-0.0177	350 sec
+5-12 Gaussian	-0.0062	94 sec
+5-11 IndependenceGaussian	-0.0248	353 sec
+5-7 Independence	-0.0042	76 sec
+5-8 Independence	-0.0028	64 sec
+5-9 Independence	0.0005	65 sec
+5-10 Gaussian	-0.0108	146 sec
+5-11 Gaussian	-0.0158	145 sec
+5-12 Independence	-0.0026	68 sec
+5-6 IndependenceGaussianClayton90°	-0.0165	576 sec

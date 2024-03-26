@@ -1,0 +1,38 @@
+2024-03-26 05:07:39,946 Selecting 0-1 on cuda:0
+2024-03-26 05:07:39,947 Trying Gaussian
+2024-03-26 05:08:13,073 Converged in 1300 steps! (Relative!)
+2024-03-26 05:08:13,084 WAIC=-0.4777, took 33 sec
+2024-03-26 05:08:13,192 Gaussian (WAIC = -0.4777)
+2024-03-26 05:08:13,192 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-03-26 05:10:29,115 WAIC=-0.5154, took 135 sec
+2024-03-26 05:10:29,220 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.5154)
+2024-03-26 05:10:29,232 Re-running reduced model...
+2024-03-26 05:10:29,232 Trying GaussianClayton180°
+2024-03-26 05:10:55,595 Converged in 900 steps! (Relative!)
+2024-03-26 05:10:55,611 WAIC=-0.5117, took 26 sec
+2024-03-26 05:10:55,696 GaussianClayton180° (WAIC = -0.5154)
+2024-03-26 05:10:55,697 Trying FrankGaussianClayton180°
+2024-03-26 05:11:47,048 Converged in 1500 steps! (Relative!)
+2024-03-26 05:11:47,070 WAIC=-0.5163, took 51 sec
+2024-03-26 05:11:47,166 Frank added
+2024-03-26 05:11:47,171 Reduced to the previous model.
+2024-03-26 05:11:47,171 Final model: GaussianClayton180°
+2024-03-26 05:11:47,266 Selecting 0-3 on cuda:0
+2024-03-26 05:11:47,267 Trying Gaussian
+2024-03-26 05:12:39,116 Converged in 2200 steps! (Relative!)
+2024-03-26 05:12:39,129 WAIC=-0.4081, took 51 sec
+2024-03-26 05:12:39,211 Gaussian (WAIC = -0.4081)
+2024-03-26 05:12:39,211 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-03-26 05:15:13,707 WAIC=-0.5071, took 154 sec
+2024-03-26 05:15:13,811 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.5071)
+2024-03-26 05:15:13,827 Re-running reduced model...
+2024-03-26 05:15:13,828 Trying GaussianClayton90°
+2024-03-26 05:16:25,280 Converged in 2600 steps! (Relative!)
+2024-03-26 05:16:25,299 WAIC=-0.5073, took 71 sec
+2024-03-26 05:16:25,399 GaussianClayton90° (WAIC = -0.5071)
+2024-03-26 05:16:25,401 Trying FrankGaussianClayton90°
+2024-03-26 05:17:39,633 Converged in 2100 steps! (Relative!)
+2024-03-26 05:17:39,661 WAIC=-0.5078, took 74 sec
+2024-03-26 05:17:39,745 Frank added
+2024-03-26 05:17:39,752 Reduced to the previous model.
+2024-03-26 05:17:39,752 Final model: GaussianClayton90°

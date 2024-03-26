@@ -275,7 +275,7 @@ if __name__ == "__main__":
             path_logs=lambda a, b: f"./segmented_pupil/{a}/layer_{b}",
             exp=f"Baseline Vine on 5 of 13 trajectories Parametrized in Pupil Area",
             light=True,
-            start=args.baseline_skip,
+            start=args.skip_baseline,
             device_list=device_list,
         )
 

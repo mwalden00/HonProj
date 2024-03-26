@@ -1,0 +1,4 @@
+0-1 Gaussian	-0.5455	172 sec
+0-2 GaussianClayton180°	-0.5569	291 sec
+0-3 Clayton90°Clayton270°	-0.6047	140 sec
+0-4 Clayton90°Clayton180°	-0.2570	442 sec

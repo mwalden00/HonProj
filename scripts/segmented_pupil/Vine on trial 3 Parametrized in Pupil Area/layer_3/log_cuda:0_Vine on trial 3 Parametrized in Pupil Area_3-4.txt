@@ -1,0 +1,11 @@
+2024-03-26 03:19:18,824 Selecting 3-4 on cuda:0
+2024-03-26 03:19:18,825 Trying Gaussian
+2024-03-26 03:20:30,424 WAIC=-0.0059, took 71 sec
+2024-03-26 03:20:30,539 Gaussian (WAIC = -0.0059)
+2024-03-26 03:20:30,539 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-03-26 03:20:40,131 Training does not look promissing!
+2024-03-26 03:20:40,176 WAIC=0.0193, took 9 sec
+2024-03-26 03:20:40,258 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = 0.0193)
+2024-03-26 03:20:40,259 Trying Frank
+2024-03-26 03:21:40,825 WAIC=-0.0008, took 60 sec
+2024-03-26 03:21:40,932 Final model: Gaussian

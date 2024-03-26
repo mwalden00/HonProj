@@ -1,0 +1,2 @@
+2-4 Independence	0.0005	69 sec
+2-3 Gaussian	-0.1294	290 sec
