@@ -222,7 +222,7 @@ if __name__ == "__main__":
 
         print("\n\nGetting Bagged Vine...")
 
-        bagged_copulas = [[[] for j in range(5 - i)] for i in range(5)]
+        bagged_copulas = [[[] for j in range(4 - i)] for i in range(4)]
 
         for i in range(10):
             with open(f"../models/results/pupil_segments/pupil_{i}_res.pkl", "rb") as f:
