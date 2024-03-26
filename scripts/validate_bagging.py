@@ -231,7 +231,7 @@ if __name__ == "__main__":
             for l, layer in enumerate(models_i):
                 for n, copula in enumerate(layer):
                     bagged_copulas[l][n].append(models_i[l][n])
-        print(bagged_copula[0])
+        print(bagged_copulas[0])
 
         n_estimators = 10
 
