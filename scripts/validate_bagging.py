@@ -166,7 +166,9 @@ if __name__ == "__main__":
         with open("../data/pupil_vine_data_partial_0.pkl", "rb") as f:
             data = pkl.load(f)
 
-        pupil_vine = get_random_vine(5, torch.Tensor(data["X"][-5000:]), device=device)
+        pupil_vine = get_random_vine(
+            5, torch.Tensor(data["X"][-5000:]), device=device, max_el=10
+        )
 
         print("True vine: ", pupil_vine.layers)
 
