@@ -260,8 +260,7 @@ if __name__ == "__main__":
         )
         print("Getting Bagged Vine Entropy...")
         if args.skip_ent_bagged == 1:
-            ent_pred = np.genfromtxt(f"./pred.csv", delimiter=",")
-            ent_pred.tofile(f"./{n_estimators}_pred.csv", sep=",")
+            ent_pred = np.genfromtxt(f"./{n_estimators}_pred.csv", delimiter=",")
         else:
             ent_pred = mean_vine.entropy().detach().cpu().numpy()
             ent_pred.tofile(f"./{n_estimators}_pred.csv", sep=",")
