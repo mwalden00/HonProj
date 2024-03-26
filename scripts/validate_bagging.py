@@ -73,7 +73,9 @@ def parser():
         default=4,
         help="Number of copula-gp estimators",
     )
-    args.add_argument("--dim", nargs="?", type=int, help="Dim of random data")
+    args.add_argument(
+        "--dim", nargs="?", type=int, default=3, help="Dim of random data"
+    )
     return args
 
 
