@@ -296,7 +296,7 @@ if __name__ == "__main__":
         if args.skip_ent_baseline:
             baseline_ent = np.genfromtxt("./baseline.csv", delimiter=",")
         else:
-            baseline_ent = baseline_vine.entropy()
+            baseline_ent = baseline_vine.entropy().detach().cpu().numpy()
             baseline_ent.tofile("./baseline.csv", sep=",")
 
         print(f"Baseline ent: {baseline_ent} +/- {2*np.std(baseline_ent)}")
