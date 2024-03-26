@@ -248,7 +248,7 @@ if __name__ == "__main__":
                     copula_data_list, n_estimators, Y_test, device=device
                 )
 
-        mean_vine = v.vine(bagged_copulas, Y_test, device=device)
+        mean_vine = v.CVine(bagged_copulas, Y_test, device=device)
         print("Getting Bagged Vine Entropy...")
         if args.skip_ent_bagged == 1:
             ent_pred = np.genfromtxt("./pred.csv")
