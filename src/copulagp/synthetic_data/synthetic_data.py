@@ -79,7 +79,7 @@ def _get_random_mixture(max_el=5):
     return [elements[i] for i in torch.randperm(len(elements))[:m]]
 
 def get_random_vine(N, x, max_el=5, device=torch.device('cpu')):
-    from vine import CVine
+    from copulagp.vine import CVine
     layers = []
     for i in range(N-1):
         layer = []
