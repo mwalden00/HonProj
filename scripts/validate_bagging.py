@@ -240,7 +240,7 @@ if __name__ == "__main__":
 
         print("\n\nGetting Bagged Vine...")
 
-        bagged_copulas = [[[] for j in range(4 - i)] for i in range(4)]
+        bagged_copulas = [[[] for j in range(dim - 1 - i)] for i in range(dim - 1)]
 
         for i in range(n_estimators):
             with open(f"../models/results/pupil_segments/pupil_{i}_res.pkl", "rb") as f:
