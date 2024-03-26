@@ -177,12 +177,12 @@ if __name__ == "__main__":
 
         print("True vine: ", pupil_vine.layers)
 
-        """if args.skip_true_ent == 1:
+        if args.skip_true_ent == 1:
             ent = np.genfromtxt("./true_ent.csv", delimiter=",")
         else:
             ent = pupil_vine.entropy().detach().cpu().numpy()
             ent.tofile("./true_ent.csv", sep=",")
-        print(f"Entropy extraction: {ent.mean()} +/- {2*np.std(ent)}")"""
+        print(f"Entropy extraction: {ent.mean()} +/- {2*np.std(ent)}")
 
         n_estimators = args.n_estimators
         assert 4000 % n_estimators == 0
