@@ -73,6 +73,7 @@ def parser():
         default=4,
         help="Number of copula-gp estimators",
     )
+    args.add_argument("--dim", nargs="?", type=int, help="Dim of random data")
     return args
 
 
@@ -188,7 +189,7 @@ if __name__ == "__main__":
         X = pupil_vine.sample()
         X_train = X[:4000].reshape(n_estimators, int(4000 / n_estimators), dim)
 
-        Y = data["X"][-dim000:]
+        Y = data["X"][-5000:]
         Y_train = Y[:4000].reshape(n_estimators, int(4000 / n_estimators))
         Y_test = Y[-1000:]
 
