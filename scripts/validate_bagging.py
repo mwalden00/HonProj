@@ -172,10 +172,9 @@ if __name__ == "__main__":
         dim = args.dim
 
         pupil_vine = get_random_vine(
-            dim, torch.Tensor(data["X"][-5000:]), device=device, max_el=7
+            dim, torch.Tensor(data["X"][-5000:]), device=device, max_el=6
         )
-
-        print("True vine: ", pupil_vine.layers)
+        print("True vine: ", pupil_vine)
 
         if args.skip_true_ent == 1:
             ent = np.genfromtxt("./true_ent.csv", delimiter=",")
@@ -183,6 +182,8 @@ if __name__ == "__main__":
             ent = pupil_vine.entropy().detach().cpu().numpy()
             ent.tofile("./true_ent.csv", sep=",")
         print(f"Entropy extraction: {ent.mean()} +/- {2*np.std(ent)}")
+
+        assert torch.thetas
 
         n_estimators = args.n_estimators
         assert 4000 % n_estimators == 0
