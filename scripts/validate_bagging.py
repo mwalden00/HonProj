@@ -172,7 +172,7 @@ if __name__ == "__main__":
         dim = args.dim
 
         pupil_vine = get_random_vine(
-            dim, torch.Tensor(data["X"][-5000:]), device=device, max_el=11
+            dim, torch.Tensor(data["X"][-5000:]), device=device, max_el=7
         )
 
         print("True vine: ", pupil_vine.layers)
