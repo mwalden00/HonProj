@@ -9,7 +9,7 @@ import copy
 from copulagp.utils import Plot_Fit
 from copulagp import vine as v
 from copulagp.train import train_vine
-from copulagp.bvcopula import MixtureCopula
+from copulagp.bvcopula import MixtureCopula, IndependenceCopula
 import os
 import gc
 import argparse
@@ -136,11 +136,13 @@ def bagged_copula(
 
     print(cop_list)
 
-    return (
-        MixtureCopula(theta=thetas, mix=mixes, copulas=cop_list, rotations=rotations)
-        if N > 1
-        else cop_list[0](thetas, rotation=rotations[0])
-    )
+    if N == 1:
+        return (
+            cop_list[0](theta=torch.empty(device=device))
+            if cop_list[0] is IndependenceCopula
+            else cop_list[0](theta=thetas, rotation=rotations[0])
+        )
+    return MixtureCopula(theta=thetas, mix=mixes, copulas=cop_list, rotations=rotations)
 
 
 if __name__ == "__main__":
