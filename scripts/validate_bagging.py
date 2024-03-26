@@ -118,7 +118,8 @@ def bagged_copula(
 
     # Marginalize
     cops = [
-        cop_data.model_init(device).marginalize(torch.Tensor(X).to(device)) for cop_data in cop_datas
+        cop_data.model_init(device).marginalize(torch.Tensor(X).to(device))
+        for cop_data in cop_datas
     ]
 
     # Create Mixture as Average
@@ -221,7 +222,7 @@ if __name__ == "__main__":
 
         print("\n\nGetting Bagged Vine...")
 
-        bagged_copulas = [[[] for j in range(12 - i)] for i in range(12)]
+        bagged_copulas = [[[] for j in range(5 - i)] for i in range(5)]
 
         for i in range(10):
             with open(f"../models/results/pupil_segments/pupil_{i}_res.pkl", "rb") as f:
@@ -230,6 +231,8 @@ if __name__ == "__main__":
             for l, layer in enumerate(models_i):
                 for n, copula in enumerate(layer):
                     bagged_copulas[l][n].append(models_i[l][n])
+        print(bagged_copula[0])
+
         n_estimators = 10
 
         for l, layer in enumerate(bagged_copulas):
