@@ -187,8 +187,6 @@ if __name__ == "__main__":
             ent.tofile("./true_ent.csv", sep=",")
         print(f"Entropy extraction: {ent.mean()} +/- {2*np.std(ent)}")
 
-        assert torch.thetas
-
         n_estimators = args.n_estimators
         assert 4000 % n_estimators == 0
 
