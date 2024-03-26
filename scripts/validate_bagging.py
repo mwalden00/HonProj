@@ -118,7 +118,7 @@ def bagged_copula(
 
     # Marginalize
     cops = [
-        cop_data.model_init(device).marginalize(X.to(device)) for cop_data in cop_datas
+        cop_data.model_init(device).marginalize(torch.Tensor(X).to(device)) for cop_data in cop_datas
     ]
 
     # Create Mixture as Average
@@ -176,7 +176,7 @@ if __name__ == "__main__":
         X_train = X[:4000].reshape(10, 400, 5)
 
         Y = data["X"][-5000:]
-        Y_train = Y[:4000].reshape(10, 400, 5)
+        Y_train = Y[:4000].reshape(10, 400)
         Y_test = Y[-1000:]
 
         for i in range(args.bagged_start, 10):
@@ -219,11 +219,9 @@ if __name__ == "__main__":
                 start=args.bagged_start_layer,
             )
 
-        os.remove("../data/segmented_pupil_copulas/*.pkl")
-
         print("\n\nGetting Bagged Vine...")
 
-        bagged_copulas = [[[] for j in range(12 - i)] in i in range(12)]
+        bagged_copulas = [[[] for j in range(12 - i)] for i in range(12)]
 
         for i in range(10):
             with open(f"../models/results/pupil_segments/pupil_{i}_res.pkl", "rb") as f:
@@ -231,8 +229,7 @@ if __name__ == "__main__":
 
             for l, layer in enumerate(models_i):
                 for n, copula in enumerate(layer):
-                    bagged_copulas[l][n].append(copula.model_init(device))
-
+                    bagged_copulas[l][n].append(models_i[l][n])
         n_estimators = 10
 
         for l, layer in enumerate(bagged_copulas):
@@ -254,7 +251,7 @@ if __name__ == "__main__":
         if torch.cuda.is_available():
             torch.cuda.empty_cache()
         X_train = X_train.reshape(4000, 5)
-        Y_train = Y_train.reshape(4000, 5)
+        Y_train = Y_train.reshape(4000)
         baseline_data = dict([("Y", X_train), ("X", Y_train)])
         with open("../data/segmented_pupil_copulas/baseline_data_0.pkl", "wb") as f:
             pkl.dump(baseline_data, f)
