@@ -299,10 +299,10 @@ if __name__ == "__main__":
             baseline_ent = baseline_vine.entropy().detach().cpu().numpy()
             baseline_ent.tofile("./baseline.csv", sep=",")
 
-        print(f"Baseline ent: {baseline_ent} +/- {2*np.std(baseline_ent)}")
+        print(f"Baseline ent: {baseline_ent.mean()} +/- {2*np.std(baseline_ent)}")
 
         print("================================================================")
         print("================================================================")
-        print("True: \t{:.6f} +/- {:.6f}".format(ent, np.std(ent) * 2))
-        print("MAE Baseline: \t{:.6f}".format(np.abs(ent - baseline_ent)))
-        print("MAE Pred: \t{:.6f}".format(np.abs(ent - ent_pred)))
+        print("True: \t{:.6f} +/- {:.6f}".format(ent[-1000:].mean(), 2*np.std(ent[-1000:])))
+        print("MAE Baseline: \t{:.6f}".format(np.abs(ent[-1000:] - baseline_ent).mean()))
+        print("MAE Pred: \t{:.6f}".format(np.abs(ent[-1000:] - ent_pred).mean()))
