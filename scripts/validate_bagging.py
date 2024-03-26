@@ -9,7 +9,8 @@ import copy
 from copulagp.utils import Plot_Fit
 from copulagp import vine as v
 from copulagp.train import train_vine
-from copulagp.bvcopula import MixtureCopula, IndependenceCopula
+from copulagp.bvcopula import MixtureCopula
+from copulagp.synthetic_data import get_random_vine
 import os
 import gc
 import argparse
@@ -165,19 +166,9 @@ if __name__ == "__main__":
         with open("../data/pupil_vine_data_partial_0.pkl", "rb") as f:
             data = pkl.load(f)
 
-        pupil_model_data = copy.deepcopy(pupil_results["models"])
+        pupil_vine = get_random_vine(5, torch.Tensor(data["X"][-8000:]), device=device)
 
-        print("Instatiating initial pupil vine object...\n")
-
-        for i, layer in enumerate(pupil_model_data):
-            for j, cop_data in enumerate(layer):
-                cop = cop_data.model_init(device).marginalize(
-                    torch.Tensor(data["X"][-5000:])
-                )
-                pupil_model_data[i][j] = cop
-        pupil_vine = v.CVine(
-            pupil_model_data, torch.Tensor(data["X"][-5000:]), device=device
-        )
+        print("True vine: ", pupil_vine.layers)
 
         if args.skip_true_ent == 1:
             ent = np.genfromtxt("./true_ent.csv", delimiter=",")
@@ -195,7 +186,7 @@ if __name__ == "__main__":
 
         Y = data["X"][-5000:]
         Y_train = Y[:4000].reshape(n_estimators, int(4000 / n_estimators))
-        Y_test = Y[-1000:]
+        Y_test = Y[-4000:]
 
         for i in range(args.bagged_start, n_estimators):
             try:
