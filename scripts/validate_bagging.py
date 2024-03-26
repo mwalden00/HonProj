@@ -65,6 +65,13 @@ def parser():
     args.add_argument(
         "--skip_true_ent", type=int, nargs="?", default=0, help="Skip true ent. calc."
     )
+    args.add_argument(
+        "--n_estimators",
+        type=int,
+        nargs="?",
+        default=4,
+        help="Number of copula-gp estimators",
+    )
     return args
 
 
@@ -179,15 +186,18 @@ if __name__ == "__main__":
             ent.tofile("./true_ent.csv", sep=",")
         print(f"Entropy extraction: {ent.mean()} +/- {2*np.std(ent)}")
 
-        print("Getting vines...")
+        n_estimators = args.n_estimators
+        assert 4000 % n_estimators == 0
+
+        print(f"Getting {n_estimators} copulaGP estimators...")
         X = pupil_vine.sample()
-        X_train = X[:4000].reshape(10, 400, 5)
+        X_train = X[:4000].reshape(n_estimators, 4000 / n_estimators, 5)
 
         Y = data["X"][-5000:]
-        Y_train = Y[:4000].reshape(10, 400)
+        Y_train = Y[:4000].reshape(n_estimators, 4000 / n_estimators)
         Y_test = Y[-1000:]
 
-        for i in range(args.bagged_start, 10):
+        for i in range(args.bagged_start, n_estimators):
             try:
                 os.mkdir(f"../models/layers/pupil_vine/segments/seg_{i}/")
                 os.mkdir(f"../models/results/pupil_segments/")
@@ -231,7 +241,7 @@ if __name__ == "__main__":
 
         bagged_copulas = [[[] for j in range(4 - i)] for i in range(4)]
 
-        for i in range(10):
+        for i in range(n_estimators):
             with open(f"../models/results/pupil_segments/pupil_{i}_res.pkl", "rb") as f:
                 models_i = pkl.load(f)["models"]
 
