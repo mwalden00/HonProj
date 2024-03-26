@@ -248,7 +248,7 @@ if __name__ == "__main__":
                 )
 
         mean_vine = v.CVine(
-            bagged_copulas, torch.Tensor(Y_test, device=device), device=device
+            bagged_copulas, torch.Tensor(Y_test).to(device), device=device
         )
         print("Getting Bagged Vine Entropy...")
         if args.skip_ent_bagged == 1:
