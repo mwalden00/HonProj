@@ -124,7 +124,6 @@ def bagged_copula(
 
     # Create Mixture as Average
     cop_list = [None for i in range(N)]
-    print(cop_list)
     thetas = torch.zeros((N, X.shape[0]))
     mixes = torch.zeros((N, X.shape[0]))
 
@@ -134,6 +133,8 @@ def bagged_copula(
             cop_list[idx] = cop_type
             thetas[idx] = thetas[idx] + cop.theta[n] / cop_counts[idx]
             mixes[idx] = mixes[idx] + cop.mix[n] / len(cop_datas)
+
+    print(cop_list)
 
     return MixtureCopula(theta=thetas, mix=mixes, copulas=cop_list, rotations=rotations)
 
