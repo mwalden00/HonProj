@@ -136,11 +136,12 @@ def bagged_copula(
 
     print(cop_list)
 
-    if N == 1 and cop_list[0] is IndependenceCopula:
-        return MixtureCopula(
-            theta=torch.empty(0, device=device), mix=mixes, copulas=cop_list
-        )
-    return MixtureCopula(theta=thetas, mix=mixes, copulas=cop_list, rotations=rotations)
+    return MixtureCopula(
+        theta=thetas,
+        mix=mixes.clamp(0.001, 0.999),
+        copulas=cop_list,
+        rotations=rotations,
+    )
 
 
 if __name__ == "__main__":
