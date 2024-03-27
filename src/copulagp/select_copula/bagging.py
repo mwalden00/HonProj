@@ -89,7 +89,7 @@ def bagged_vine(
         device to marginalize / return on.
     """
     n_estimators = len(vines_data)
-    dim = len(vines_data[0] + 1)
+    dim = len(vines_data[0]) + 1
     bagged_copulas = [[[] for j in range(dim - 1 - i)] for i in range(dim - 1)]
 
     for models_i in vines_data:
