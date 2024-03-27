@@ -109,7 +109,7 @@ if __name__ == "__main__":
         pupil_vine = get_random_vine(
             dim, torch.Tensor(data["X"][-5000:]), device=device, max_el=max_el
         )
-        print("True vine: ", pupil_vine.layers)
+        print("True vine: ", [[cop.copulas for cop in l] for l in pupil_vine.layers])
 
         if args.skip_true_ent == 1:
             ent = np.genfromtxt(f"./true_ent_{dim}.csv", delimiter=",")
