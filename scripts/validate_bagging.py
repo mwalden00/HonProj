@@ -181,10 +181,10 @@ if __name__ == "__main__":
         print("True vine: ", pupil_vine.layers)
 
         if args.skip_true_ent == 1:
-            ent = np.genfromtxt("./true_ent.csv", delimiter=",")
+            ent = np.genfromtxt(f"./true_ent_{dim}.csv", delimiter=",")
         else:
             ent = pupil_vine.entropy().detach().cpu().numpy()
-            ent.tofile("./true_ent.csv", sep=",")
+            ent.tofile(f"./true_ent_{dim}.csv", sep=",")
         print(f"Entropy extraction: {ent.mean()} +/- {2*np.std(ent)}")
 
         n_estimators = args.n_estimators
@@ -264,7 +264,7 @@ if __name__ == "__main__":
             ent_pred = np.genfromtxt(f"./{n_estimators}_pred.csv", delimiter=",")
         else:
             ent_pred = mean_vine.entropy().detach().cpu().numpy()
-            ent_pred.tofile(f"./{n_estimators}_pred.csv", sep=",")
+            ent_pred.tofile(f"./{n_estimators}_pred_{dim}.csv", sep=",")
         print(f"Entropy: {ent_pred.mean()} +/- {np.std(ent_pred)}")
 
         gc.collect()
@@ -303,10 +303,10 @@ if __name__ == "__main__":
             baseline_model_data, torch.Tensor(Y_test), device=device
         )
         if args.skip_ent_baseline:
-            baseline_ent = np.genfromtxt("./baseline.csv", delimiter=",")
+            baseline_ent = np.genfromtxt("./baseline_{dim}.csv", delimiter=",")
         else:
             baseline_ent = baseline_vine.entropy().detach().cpu().numpy()
-            baseline_ent.tofile("./baseline.csv", sep=",")
+            baseline_ent.tofile(f"./baseline_{dim}.csv", sep=",")
 
         print(f"Baseline ent: {baseline_ent.mean()} +/- {2*np.std(baseline_ent)}")
 
