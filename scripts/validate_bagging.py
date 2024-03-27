@@ -123,11 +123,10 @@ if __name__ == "__main__":
 
         print(f"Getting {n_estimators} copulaGP estimators...")
         X = pupil_vine.sample()
-        X_train = X[:4000].reshape(n_estimators, int(4000 / n_estimators), dim)
+        X_train = X.reshape(n_estimators, int(5000 / n_estimators), dim)
 
         Y = data["X"][-5000:]
-        Y_train = Y[:4000].reshape(n_estimators, int(4000 / n_estimators))
-        Y_test = Y[-1000:]
+        Y_train = Y.reshape(n_estimators, int(5000 / n_estimators))
 
         for i in range(args.bagged_start, n_estimators):
             try:
@@ -178,7 +177,7 @@ if __name__ == "__main__":
                 vines2bag.append(pkl.load(f)["models"])
 
         mean_vine = bagged_vine(
-            vines_data=vines2bag, X=torch.Tensor(Y_test).to(device), device=device
+            vines_data=vines2bag, X=torch.Tensor(Y).to(device), device=device
         )
         print("Getting Bagged Vine Entropy...")
         if args.skip_ent_bagged == 1:
@@ -191,8 +190,8 @@ if __name__ == "__main__":
         gc.collect()
         if torch.cuda.is_available():
             torch.cuda.empty_cache()
-        X_train = X_train.reshape(4000, dim)
-        Y_train = Y_train.reshape(4000)
+        X_train = X
+        Y_train = Y
         baseline_data = dict([("Y", X_train.cpu().numpy()), ("X", Y_train)])
         with open("../data/segmented_pupil_copulas/baseline_data_0.pkl", "wb") as f:
             pkl.dump(baseline_data, f)
@@ -218,11 +217,9 @@ if __name__ == "__main__":
 
         for i, layer in enumerate(baseline_model_data):
             for j, cop_data in enumerate(layer):
-                cop = cop_data.model_init(device).marginalize(torch.Tensor(Y_test))
+                cop = cop_data.model_init(device).marginalize(torch.Tensor(Y))
                 baseline_model_data[i][j] = cop
-        baseline_vine = v.CVine(
-            baseline_model_data, torch.Tensor(Y_test), device=device
-        )
+        baseline_vine = v.CVine(baseline_model_data, torch.Tensor(Y), device=device)
         if args.skip_ent_baseline:
             baseline_ent = np.genfromtxt("./baseline_{dim}.csv", delimiter=",")
         else:
@@ -238,7 +235,5 @@ if __name__ == "__main__":
                 ent[-1000:].mean(), 2 * np.std(ent[-1000:])
             )
         )
-        print(
-            "MAE Baseline: \t{:.6f}".format(np.abs(ent[-1000:] - baseline_ent).mean())
-        )
-        print("MAE Pred: \t{:.6f}".format(np.abs(ent[-1000:] - ent_pred).mean()))
+        print("MAE Baseline: \t{:.6f}".format(np.abs(ent - baseline_ent).mean()))
+        print("MAE Pred: \t{:.6f}".format(np.abs(ent - ent_pred).mean()))
