@@ -1,6 +1,7 @@
 from copulagp.bvcopula import MixtureCopula
 from copulagp.vine import CVine
 from copulagp.bvcopula import Pair_CopulaGP_data
+import numpy as np
 import torch
 
 
@@ -8,6 +9,8 @@ def bagged_copula(
     copula_data_list: list,
     n_estimators: int,
     X: torch.Tensor,
+    Y1: torch.Tensor,
+    Y2: torch.Tensor,
     device: torch.device = torch.device("cpu"),
 ):
     """
@@ -19,17 +22,73 @@ def bagged_copula(
         List of Copula-GP Data objects.
         Marginalizing along X gives a distribution over X.
     X : torch.Tensor on range [0,1]
-        Tensor of marginalizing variable.
+        Tensor of parameterizing variable
+    Y1,Y2 : torch.Tensor on range(0,1)
+        Tensors of marginal values
     device : torch.device
         Device ot marginalize on.
     """
+    assert len(copula_data_list) == n_estimators and n_estimators > 1
     cop_datas = copula_data_list
+    cops = [
+        cop_data.model_init(device).marginalize(torch.Tensor(X).to(device))
+        for cop_data in cop_datas
+    ]
+
+    # We first need goodness of fit values to determine cop. weights
+    # This will be mean bucketed R2s as is done in the core paper.
+    # If R2s is neg, we omit the model
+    buckets = [
+        torch.arange(i * int(X.shape[0] / 20), (i + 1) * int(Y1.shape[0] / 20))
+        for i in range(20)
+    ]
+
+    def ecdf(i):
+        vals = []
+        for y2 in Y2[buckets[i]]:
+            vals.append(
+                len(Y1[buckets[i]][Y2[buckets[i]] < y2]) / (len(Y1[buckets[i]]))
+            )
+        return vals
+
+    def eccdf(cop, i):
+        Y1_sample = cop.sample()[:, 0]
+        vals = []
+        for y2 in Y2[buckets[i]]:
+            vals.append(len(Y1_sample[Y2[buckets[i]] < y2]) / (len(Y1_sample)))
+        return vals
+
+    # Get CCDFs
+    cop_ccdfs = [
+        torch.vstack(
+            [
+                torch.Tensor(
+                    eccdf(cop_data.model_init(device).marginalize(X[buckets[i]]), i)
+                )
+                for i in range(20)
+            ]
+        )
+        for cop_data in cop_datas
+    ]
+
+    ecdfs = torch.Tensor([ecdf(i) for i in range(20)], device=device)
+    R2s = np.array(
+        [
+            1 - (((ecdfs - ccdfs) ** 2) / ((ecdfs - 0.5) ** 2).clamp(0.001, 1)).sum()
+            for ccdfs in cop_ccdfs
+        ]
+    )
+
+    weights = torch.Tensor([R2 if R2 > 0 else 0 for R2 in R2s])
+    weights = weights / sum(weights)
+
     assert len(cop_datas) == n_estimators
     N = 0
     cop_indeces = dict()
     cop_combo_indeces = dict()
     cop_combinations = set()
     cop_counts = dict()
+    mix_total_weight = dict()
     rotations = []
 
     # Get Rotation and Index Information
@@ -40,17 +99,13 @@ def bagged_copula(
                 cop_combinations.add(cop_combo)
                 cop_combo_indeces[cop_combo] = N
                 cop_counts[N] = 0.0
+                mix_total_weight[N] = 0.0
                 N = N + 1
                 rotations.append(cop_combo[1])
             idx = cop_combo_indeces[cop_combo]
-            cop_counts[idx] = cop_counts[idx] + 1.0
+            cop_counts[idx] += 1.0
             cop_indeces[(i, n)] = idx
-
-    # Marginalize
-    cops = [
-        cop_data.model_init(device).marginalize(torch.Tensor(X).to(device))
-        for cop_data in cop_datas
-    ]
+            mix_total_weight[idx] += weights[i]
 
     # Create Mixture as Average
     cop_list = [None for i in range(N)]
@@ -61,21 +116,27 @@ def bagged_copula(
         for n, cop_type in enumerate(cop.copulas):
             idx = cop_indeces[(i, n)]
             cop_list[idx] = cop_type
-            thetas[idx] = thetas[idx] + cop.theta[n] / cop_counts[idx]
-            mixes[idx] = mixes[idx] + cop.mix[n] / len(cop_datas)
+            mixes[idx] += cop.mix[n] * weights[i]
+            thetas[idx] += cop.theta[n] * weights[i] / mix_total_weight[idx]
 
     print(cop_list)
 
-    return MixtureCopula(
-        theta=thetas,
-        mix=mixes.clamp(0.001, 0.999),
-        copulas=cop_list,
-        rotations=rotations,
+    return (
+        MixtureCopula(
+            theta=thetas,
+            mix=mixes.clamp(0.001, 0.999),
+            copulas=cop_list,
+            rotations=rotations,
+        ),
+        weights,
     )
 
 
 def bagged_vine(
-    vines_data: list, X: torch.Tensor, device: torch.device = torch.device("cpu")
+    vines_data: list,
+    X: torch.Tensor,
+    Y: torch.Tensor,
+    device: torch.device = torch.device("cpu"),
 ):
     """
     Given a list of vine predictor model layer lists,
@@ -100,7 +161,7 @@ def bagged_vine(
     for l, layer in enumerate(bagged_copulas):
         for n, copula_data_list in enumerate(layer):
             bagged_copulas[l][n] = bagged_copula(
-                copula_data_list, n_estimators, torch.Tensor(X), device=device
+                copula_data_list, n_estimators, X, Y[l], Y[n], device=device
             )
 
     mean_vine = CVine(bagged_copulas, torch.Tensor(X).to(device), device=device)
