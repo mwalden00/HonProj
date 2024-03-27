@@ -11,6 +11,7 @@ from copulagp import vine as v
 from copulagp.train import train_vine
 from copulagp.bvcopula import MixtureCopula
 from copulagp.synthetic_data import get_random_vine
+from copulagp.select_copula import bagged_vine
 import os
 import gc
 import argparse
@@ -86,76 +87,6 @@ if torch.cuda.is_available():
     device_list = [f"cuda:{n}" for n in range(torch.cuda.device_count())]
 else:
     device_list = ["cpu"]
-
-
-def bagged_copula(
-    copula_data_list: list,
-    n_estimators: int,
-    X: torch.Tensor,
-    device: torch.device = torch.device("cpu"),
-):
-    """
-    Estimate the copula via pre-trained copula-GP object.
-    Calculates average mixed copula via averaging mixing
-    and theta params (copula variant wise)
-    -----------------
-    copula_data_list : List( CopulaData )
-        List of Copula-GP Data objects.
-        Marginalizing along X gives a distribution over X.
-    X : torch.Tensor on range [0,1]
-        Tensor of marginalizing variable.
-    device : torch.device
-        Device ot marginalize on.
-    """
-    cop_datas = copula_data_list
-    assert len(cop_datas) == n_estimators
-    N = 0
-    cop_indeces = dict()
-    cop_combo_indeces = dict()
-    cop_combinations = set()
-    cop_counts = dict()
-    rotations = []
-
-    # Get Rotation and Index Information
-    for i, cop_data in enumerate(cop_datas):
-        for n, cop in enumerate(cop_data.bvcopulas):
-            cop_combo = (cop[0], cop[1])
-            if cop_combo not in cop_combinations:
-                cop_combinations.add(cop_combo)
-                cop_combo_indeces[cop_combo] = N
-                cop_counts[N] = 0.0
-                N = N + 1
-                rotations.append(cop_combo[1])
-            idx = cop_combo_indeces[cop_combo]
-            cop_counts[idx] = cop_counts[idx] + 1.0
-            cop_indeces[(i, n)] = idx
-
-    # Marginalize
-    cops = [
-        cop_data.model_init(device).marginalize(torch.Tensor(X).to(device))
-        for cop_data in cop_datas
-    ]
-
-    # Create Mixture as Average
-    cop_list = [None for i in range(N)]
-    thetas = torch.zeros((N, X.shape[0]))
-    mixes = torch.zeros((N, X.shape[0]))
-
-    for i, cop in enumerate(cops):
-        for n, cop_type in enumerate(cop.copulas):
-            idx = cop_indeces[(i, n)]
-            cop_list[idx] = cop_type
-            thetas[idx] = thetas[idx] + cop.theta[n] / cop_counts[idx]
-            mixes[idx] = mixes[idx] + cop.mix[n] / len(cop_datas)
-
-    print(cop_list)
-
-    return MixtureCopula(
-        theta=thetas,
-        mix=mixes.clamp(0.001, 0.999),
-        copulas=cop_list,
-        rotations=rotations,
-    )
 
 
 if __name__ == "__main__":
@@ -240,24 +171,14 @@ if __name__ == "__main__":
 
         print("\n\nGetting Bagged Vine...")
 
-        bagged_copulas = [[[] for j in range(dim - 1 - i)] for i in range(dim - 1)]
+        vines2bag = []
 
         for i in range(n_estimators):
             with open(f"../models/results/pupil_segments/pupil_{i}_res.pkl", "rb") as f:
-                models_i = pkl.load(f)["models"]
+                vines2bag.append(pkl.load(f)["models"])
 
-            for l, layer in enumerate(models_i):
-                for n, copula in enumerate(layer):
-                    bagged_copulas[l][n].append(models_i[l][n])
-
-        for l, layer in enumerate(bagged_copulas):
-            for n, copula_data_list in enumerate(layer):
-                bagged_copulas[l][n] = bagged_copula(
-                    copula_data_list, n_estimators, torch.Tensor(Y_test), device=device
-                )
-
-        mean_vine = v.CVine(
-            bagged_copulas, torch.Tensor(Y_test).to(device), device=device
+        mean_vine = bagged_vine(
+            vines_data=vines2bag, X=torch.Tensor(Y_test).to(device), device=device
         )
         print("Getting Bagged Vine Entropy...")
         if args.skip_ent_bagged == 1:
