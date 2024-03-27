@@ -88,7 +88,6 @@ def bagged_vine(
     device: torch.device
         device to marginalize / return on.
     """
-    assert vines_data[0][0][0] is Pair_CopulaGP_data
     n_estimators = len(vines_data)
     dim = len(vines_data[0] + 1)
     bagged_copulas = [[[] for j in range(dim - 1 - i)] for i in range(dim - 1)]
