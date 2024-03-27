@@ -1,1 +1,2 @@
 3-4 FrankIndependenceGaussianClayton90°	-0.0168	412 sec
+3-4 Gaussian	-0.0066	35 sec

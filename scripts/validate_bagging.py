@@ -20,6 +20,12 @@ import argparse
 device = "cpu" if not torch.cuda.is_available() else "cuda:0"
 
 
+def clean():
+    gc.collect()
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
+
+
 def parser():
     args = argparse.ArgumentParser()
     args.add_argument(
@@ -111,10 +117,11 @@ if __name__ == "__main__":
         )
         print("True vine: ", [[cop.copulas for cop in l] for l in pupil_vine.layers])
 
+        clean()
         if args.skip_true_ent == 1:
             ent = np.genfromtxt(f"./true_ent_{dim}.csv", delimiter=",")
         else:
-            ent = pupil_vine.entropy().detach().cpu().numpy()
+            ent = pupil_vine.entropy(mc_size=8000).detach().cpu().numpy()
             ent.tofile(f"./true_ent_{dim}.csv", sep=",")
         print(f"Entropy extraction: {ent.mean()} +/- {2*np.std(ent)}")
 
@@ -179,6 +186,8 @@ if __name__ == "__main__":
         mean_vine = bagged_vine(
             vines_data=vines2bag, X=torch.Tensor(Y).to(device), device=device
         )
+
+        clean()
         print("Getting Bagged Vine Entropy...")
         if args.skip_ent_bagged == 1:
             ent_pred = np.genfromtxt(f"./{n_estimators}_pred.csv", delimiter=",")
@@ -214,7 +223,7 @@ if __name__ == "__main__":
         print(baseline_model_data)
 
         print("Getting Entropies...")
-
+        clean()
         for i, layer in enumerate(baseline_model_data):
             for j, cop_data in enumerate(layer):
                 cop = cop_data.model_init(device).marginalize(torch.Tensor(Y))

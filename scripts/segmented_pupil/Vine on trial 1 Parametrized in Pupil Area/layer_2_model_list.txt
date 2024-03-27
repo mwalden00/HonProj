@@ -1,2 +1,5 @@
 2-4 Independence	-0.0001	70 sec
 2-3 Gaussian	-0.0683	287 sec
+2-4 Independence	0.0000	65 sec
+2-3 Frank	-0.1309	209 sec
+2-3 Independence	-0.0014	23 sec

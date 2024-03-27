@@ -1,15 +1,19 @@
-2024-03-26 03:05:43,919 Selecting 1-2 on cuda:0
-2024-03-26 03:05:43,919 Trying Gaussian
-2024-03-26 03:06:53,414 WAIC=-0.1739, took 69 sec
-2024-03-26 03:06:53,525 Gaussian (WAIC = -0.1739)
-2024-03-26 03:06:53,525 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
-2024-03-26 03:09:08,441 WAIC=-0.1844, took 134 sec
-2024-03-26 03:09:08,547 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.1844)
-2024-03-26 03:09:08,559 Re-running reduced model...
-2024-03-26 03:09:08,559 Trying GaussianClayton0°
-2024-03-26 03:10:38,683 WAIC=-0.1856, took 90 sec
-2024-03-26 03:10:38,788 GaussianClayton0° (WAIC = -0.1844)
-2024-03-26 03:10:38,790 Trying FrankGaussianClayton0°
-2024-03-26 03:12:22,071 WAIC=-0.1853, took 103 sec
-2024-03-26 03:12:22,174 Frank is not helping
-2024-03-26 03:12:22,174 Final model: GaussianClayton0°
+2024-03-27 14:22:49,371 Selecting 1-2 on cuda:0
+2024-03-27 14:22:49,371 Trying Gaussian
+2024-03-27 14:23:12,876 Converged in 1000 steps! (Absolute!)
+2024-03-27 14:23:12,888 WAIC=-0.0388, took 23 sec
+2024-03-27 14:23:12,993 Gaussian (WAIC = -0.0388)
+2024-03-27 14:23:12,993 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-03-27 14:25:45,506 WAIC=-0.0599, took 152 sec
+2024-03-27 14:25:45,614 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.0599)
+2024-03-27 14:25:45,626 Re-running reduced model...
+2024-03-27 14:25:45,626 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°
+2024-03-27 14:26:40,249 Converged in 1300 steps! (Absolute!)
+2024-03-27 14:26:40,290 WAIC=-0.0597, took 54 sec
+2024-03-27 14:26:40,396 IndependenceGaussianClayton0°Clayton90°Clayton180° (WAIC = -0.0599)
+2024-03-27 14:26:40,397 Trying FrankIndependenceGaussianClayton0°Clayton90°Clayton180°
+2024-03-27 14:28:16,940 Converged in 1900 steps! (Absolute!)
+2024-03-27 14:28:16,995 WAIC=-0.0602, took 96 sec
+2024-03-27 14:28:17,102 Frank added
+2024-03-27 14:28:17,113 Nothing to reduce
+2024-03-27 14:28:17,114 Final model: FrankIndependenceGaussianClayton0°Clayton90°Clayton180°

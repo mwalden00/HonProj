@@ -1,0 +1,38 @@
+2024-03-26 13:47:47,894 Selecting 1-3 on cuda:0
+2024-03-26 13:47:47,895 Trying Gaussian
+2024-03-26 13:47:55,697 Converged in 300 steps! (Absolute!)
+2024-03-26 13:47:55,718 WAIC=-0.3780, took 7 sec
+2024-03-26 13:47:55,837 Gaussian (WAIC = -0.3780)
+2024-03-26 13:47:55,837 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-03-26 13:48:26,549 Converged in 500 steps! (Relative!)
+2024-03-26 13:48:26,673 WAIC=-0.3835, took 30 sec
+2024-03-26 13:48:26,799 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.3835)
+2024-03-26 13:48:26,815 Re-running reduced model...
+2024-03-26 13:48:26,816 Trying GaussianClayton90°Clayton270°
+2024-03-26 13:48:43,149 Converged in 400 steps! (Relative!)
+2024-03-26 13:48:43,203 WAIC=-0.3856, took 16 sec
+2024-03-26 13:48:43,317 GaussianClayton90°Clayton270° (WAIC = -0.3835)
+2024-03-26 13:48:43,319 Trying FrankGaussianClayton90°Clayton270°
+2024-03-26 13:49:02,092 Converged in 400 steps! (Relative!)
+2024-03-26 13:49:02,166 WAIC=-0.3849, took 18 sec
+2024-03-26 13:49:02,286 Frank is not helping
+2024-03-26 13:49:02,286 Final model: GaussianClayton90°Clayton270°
+2024-03-26 13:49:02,329 Selecting 1-4 on cuda:0
+2024-03-26 13:49:02,331 Trying Gaussian
+2024-03-26 13:49:12,331 Converged in 400 steps! (Absolute!)
+2024-03-26 13:49:12,353 WAIC=-0.0069, took 10 sec
+2024-03-26 13:49:12,450 Gaussian (WAIC = -0.0069)
+2024-03-26 13:49:12,451 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-03-26 13:50:14,239 Converged in 1000 steps! (Absolute!)
+2024-03-26 13:50:14,363 WAIC=-0.0145, took 61 sec
+2024-03-26 13:50:14,488 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.0145)
+2024-03-26 13:50:14,505 Re-running reduced model...
+2024-03-26 13:50:14,505 Trying IndependenceGaussianClayton270°
+2024-03-26 13:50:54,235 Converged in 1000 steps! (Absolute!)
+2024-03-26 13:50:54,284 WAIC=-0.0133, took 39 sec
+2024-03-26 13:50:54,395 IndependenceGaussianClayton270° (WAIC = -0.0145)
+2024-03-26 13:50:54,396 Trying FrankIndependenceGaussianClayton270°
+2024-03-26 13:51:32,708 Converged in 800 steps! (Absolute!)
+2024-03-26 13:51:32,781 WAIC=-0.0127, took 38 sec
+2024-03-26 13:51:32,893 Frank is not helping
+2024-03-26 13:51:32,893 Final model: IndependenceGaussianClayton270°

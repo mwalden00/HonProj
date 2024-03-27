@@ -2,3 +2,15 @@
 0-2 GaussianClayton180°	-0.5817	259 sec
 0-4 Independence	-0.0028	69 sec
 0-3 Clayton90°	-0.5618	214 sec
+0-1 GaussianClayton180°	-0.4913	146 sec
+0-2 GaussianClayton180°	-0.5233	210 sec
+0-3 GaussianClayton90°Clayton270°	-0.5377	166 sec
+0-4 Clayton90°Clayton180°	-0.1653	310 sec
+0-1 Independence	-0.0006	70 sec
+0-2 GaussianClayton0°Clayton90°Clayton270°	-0.2834	370 sec
+0-1 GaussianClayton0°Clayton180°	-0.4262	161 sec
+0-1 GaussianClayton90°Clayton270°	-0.3363	258 sec
+0-2 IndependenceGaussianClayton0°	-0.1178	371 sec
+0-3 GaussianClayton0°Clayton90°Clayton180°	-0.1555	515 sec
+0-2 FrankIndependenceClayton0°	-0.1334	270 sec
+0-1 GaussianClayton0°Clayton90°Clayton180°Clayton270°	-0.1665	413 sec

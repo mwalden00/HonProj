@@ -1,0 +1,6 @@
+2024-03-26 21:26:38,716 Selecting 1-2 on cuda:1
+2024-03-26 21:26:38,717 Trying Gaussian
+2024-03-26 21:27:48,558 Converged in 3000 steps! (Absolute!)
+2024-03-26 21:27:48,570 WAIC=0.0004, took 69 sec
+2024-03-26 21:27:48,670 Gaussian (WAIC = 0.0004)
+2024-03-26 21:27:48,670 These variables are independent

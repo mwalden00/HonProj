@@ -1,0 +1,20 @@
+2024-03-26 13:53:59,982 Selecting 3-4 on cuda:0
+2024-03-26 13:53:59,983 Trying Gaussian
+2024-03-26 13:54:09,989 Converged in 400 steps! (Absolute!)
+2024-03-26 13:54:10,010 WAIC=-0.0093, took 10 sec
+2024-03-26 13:54:10,116 Gaussian (WAIC = -0.0093)
+2024-03-26 13:54:10,117 Trying IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270°
+2024-03-26 13:55:01,078 Converged in 900 steps! (Absolute!)
+2024-03-26 13:55:01,197 WAIC=-0.0096, took 51 sec
+2024-03-26 13:55:01,317 IndependenceGaussianClayton0°Clayton90°Clayton180°Clayton270° (WAIC = -0.0096)
+2024-03-26 13:55:01,329 Re-running reduced model...
+2024-03-26 13:55:01,330 Trying IndependenceGaussianClayton90°
+2024-03-26 13:55:21,967 Converged in 600 steps! (Absolute!)
+2024-03-26 13:55:22,013 WAIC=-0.0100, took 20 sec
+2024-03-26 13:55:22,120 IndependenceGaussianClayton90° (WAIC = -0.0096)
+2024-03-26 13:55:22,121 Trying FrankIndependenceGaussianClayton90°
+2024-03-26 13:55:56,324 Converged in 800 steps! (Absolute!)
+2024-03-26 13:55:56,394 WAIC=-0.0104, took 34 sec
+2024-03-26 13:55:56,508 Frank added
+2024-03-26 13:55:56,514 Nothing to reduce
+2024-03-26 13:55:56,514 Final model: FrankIndependenceGaussianClayton90°

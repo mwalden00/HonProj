@@ -35,7 +35,7 @@ if __name__ == "__main__":
         np.concatenate([l[:100] for l in traj_and_pupil_data["pupil area"]])
     )
 
-    data = dict([("Y", Y.T), ("X", x)])
+    data = dict([("Y", torch.Tensor(Y).T), ("X", torch.Tensor(x))])
 
     print("Getting MINE est...")
     print("MINE MI est: ", train_MINE(y=data["Y"], x=data["X"], H=200))

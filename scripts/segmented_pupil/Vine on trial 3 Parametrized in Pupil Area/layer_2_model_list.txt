@@ -1,2 +1,5 @@
 2-4 Independence	-0.0008	70 sec
 2-3 GaussianClayton270°	-0.1366	410 sec
+2-4 Independence	-0.0002	37 sec
+2-3 GaussianClayton90°Clayton270°	-0.1042	463 sec
+2-3 Independence	0.0004	69 sec
