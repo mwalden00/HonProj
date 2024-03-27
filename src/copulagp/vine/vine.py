@@ -1,6 +1,7 @@
 import torch
 import copulagp.bvcopula as bvcopula
 from math import sqrt
+import gc
 
 
 class VineGP:
@@ -294,6 +295,9 @@ class CVine:
         k = 0
         with torch.no_grad():
             while torch.any(sem >= sem_tol):
+                gc.collect()
+                if torch.cuda.is_available():
+                    torch.cuda.empty_cache()
                 # Generate samples
                 samples = self.sample(
                     torch.Size([mc_size])
@@ -301,7 +305,9 @@ class CVine:
                 samples = torch.einsum(
                     "ij...->ji...", samples
                 )  # samples (MC) x inputs (MC) x variables
-                logp = self.log_prob(samples.to(self.device))  # [sample dim, batch dims]
+                logp = self.log_prob(
+                    samples.to(self.device)
+                )  # [sample dim, batch dims]
                 assert torch.all(logp == logp)
                 assert torch.all(
                     logp.abs() != float("inf")
