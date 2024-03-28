@@ -46,10 +46,7 @@ def bagged_copula(
         for cop_data in cop_datas
     ]
 
-    # We first need goodness of fit values to determine cop. weights
-    # This will be mean bucketed R2s as is done in the core paper.
-    # If R2s is neg, we omit the model
-    buckets = [torch.arange(i - 20, i) for i in np.arange(20, X.shape[0], 20)]
+    buckets = torch.arange(X.shape[0]).chunk(20)
 
     # To get R2 terms, we first find empirical cdf along our points
     # and the empirical copula cdf along one axis of the copula.
@@ -67,7 +64,7 @@ def bagged_copula(
         """Empirical Copula CDF in bucket i utilizing copula samples."""
         Y0_sample = cop.sample()[:, 0]
         vals = []
-        for y2 in Y0_sample[buckets[i]]:
+        for y2 in Y[1][buckets[i]]:
             vals.append(len(Y0_sample[Y[1][buckets[i]] < y2]) / (len(Y0_sample)))
         return vals
 
@@ -112,19 +109,14 @@ def bagged_copula(
         # Log prob is mem. intensive, so we should cleanup.
         BICs = torch.vstack(
             [
-                -2 * cop.log_prob(Y)
+                -2 * cop.log_prob(Y.T)
                 + (cop.mix.shape[0] + cop.theta.shape[0]) * np.log(len(X.shape))
                 for cop in cops
             ]
         )
         print("BICs: ", BICs)
         weights = -0.5 * torch.exp(BICs) / (-0.5 * torch.exp(BICs)).sum(axis=0)
-        # We also apply a moving average over all of the weights,
-        window = 20
-        weights_clone = torch.clone(weights)
-        for i in torch.arange(0, weights.shape[0] - window):
-            weights[:, i + window / 2] = weights_clone[:, i + 20].mean(axis=1)
-        assert torch.allclose(weights.sum(), 1)
+        assert torch.allclose(weights.sum(axis=0), torch.ones(weights.shape[1]))
         gc.collect()
         if torch.cuda.is_available():
             torch.cuda.empty_cache()
