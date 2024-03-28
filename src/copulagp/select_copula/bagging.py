@@ -11,7 +11,7 @@ def bagged_copula(
     X: torch.Tensor,
     Y: torch.Tensor,
     device: torch.device = torch.device("cpu"),
-    R2_atol: int = 1e-7,
+    R2_atol: int = 0.01,
     how: str = "BIC dynamic",
     rsample_size: int = 0,
 ):
@@ -40,6 +40,7 @@ def bagged_copula(
     if how not in methods:
         raise ValueError("argument 'how' must be one of 'mean', 'R2', or 'BIC'")
     assert len(copula_data_list) == n_estimators and n_estimators > 1
+
     cop_datas = copula_data_list
     cops = [
         cop_data.model_init(device).marginalize(torch.Tensor(X).to(device))
@@ -63,6 +64,8 @@ def bagged_copula(
     def eccdf(cop, i):
         """Empirical Copula CDF in bucket i utilizing copula samples."""
         Y0_sample = cop.sample()[:, 0]
+        print(Y0_sample.shape)
+        print(buckets[i].shape)
         vals = []
         for y2 in Y[1][buckets[i]]:
             vals.append(len(Y0_sample[Y[1][buckets[i]] < y2]) / (len(Y0_sample)))
