@@ -225,7 +225,7 @@ def bagged_vine(
 
     for l, layer in enumerate(bagged_copulas):
         for n, copula_data_list in enumerate(layer):
-            bagged_copulas[l][n] = bagged_copula(
+            bagged_copulas[l][n], _ = bagged_copula(
                 copula_data_list, n_estimators, X, Y[:, [l, n]].T, device=device
             )
 
