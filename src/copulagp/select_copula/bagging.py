@@ -192,7 +192,6 @@ def bagged_copula(
                 mix=mixes.clamp(0.001, 0.999),
                 copulas=mix_list,
                 rotations=rotations,
-                device=device,
             ),
             weights,
         )
