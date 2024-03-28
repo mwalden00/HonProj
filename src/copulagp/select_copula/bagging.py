@@ -75,10 +75,7 @@ def bagged_copula(
             torch.vstack(
                 [
                     torch.Tensor(
-                        eccdf(
-                            cop_data.model_init(device).marginalize(X[buckets[i]]), i
-                        ),
-                        device=device,
+                        eccdf(cop_data.model_init(device).marginalize(X[buckets[i]]), i)
                     )
                     for i in range(20)
                 ]
