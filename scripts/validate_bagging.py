@@ -73,7 +73,7 @@ if __name__ == "__main__":
 
         print(f"Getting {n_estimators} copulaGP estimators...")
         Y = pupil_vine.sample()
-        Y_train = X[:-2000].reshape(n_estimators, int(8000 / n_estimators), dim)
+        Y_train = Y[:-2000].reshape(n_estimators, int(8000 / n_estimators), dim)
 
         X = X[-10000:]
         X_train = X[:-2000].reshape(n_estimators, int(8000 / n_estimators))
