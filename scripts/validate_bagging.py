@@ -141,11 +141,28 @@ if __name__ == "__main__":
             with open(f"../models/results/pupil_segments/pupil_{i}_res.pkl", "rb") as f:
                 vines2bag.append(pkl.load(f)["models"])
 
+        AIC_dynamic_vine = bagged_vine(
+            vines_data=vines2bag,
+            X=torch.Tensor(X).to(device)[-2000:],
+            Y=Y[-2000:],
+            device=device,
+            how="AIC static",
+        )
+
+        AIC_static_vine = bagged_vine(
+            vines_data=vines2bag,
+            X=torch.Tensor(X).to(device)[-2000:],
+            Y=Y[-2000:],
+            device=device,
+            how="AIC static",
+        )
+
         BIC_dynamic_vine = bagged_vine(
             vines_data=vines2bag,
             X=torch.Tensor(X).to(device)[-2000:],
             Y=Y[-2000:],
             device=device,
+            how="BIC dynamic",
         )
 
         BIC_static_vine = bagged_vine(
@@ -167,13 +184,40 @@ if __name__ == "__main__":
         clean()
         print("Getting Bagged Vine Entropy...")
         if args.skip_ent_bagged == 1:
+            ent_AIC_dynamic = np.genfromtxt(
+                f"./{n_estimators}_AIC_dyn_pred_{dim}.csv", delimiter=","
+            )
+        else:
+            ent_AIC_dynamic = AIC_dynamic_vine.entropy().detach().cpu().numpy()
+            ent_AIC_dynamic.tofile(f"./{n_estimators}_AIC_dyn_pred_{dim}.csv", sep=",")
+        print(
+            f"Entropy AIC dyn: {ent_AIC_dynamic.mean()} +/- {np.std(ent_AIC_dynamic)}"
+        )
+
+        if args.skip_ent_bagged == 1:
+            ent_AIC_static = np.genfromtxt(
+                f"./{n_estimators}_AIC_static_pred_{dim}.csv", delimiter=","
+            )
+        else:
+            ent_AIC_static = AIC_static_vine.entropy().detach().cpu().numpy()
+            ent_AIC_static.tofile(
+                f"./{n_estimators}_AIC_static_pred_{dim}.csv", sep=","
+            )
+        print(
+            f"Entropy AIC static: {ent_AIC_static.mean()} +/- {np.std(ent_AIC_static)}"
+        )
+
+        print("Getting BIC bagged entropies...")
+        if args.skip_ent_bagged == 1:
             ent_BIC_dynamic = np.genfromtxt(
                 f"./{n_estimators}_BIC_dyn_pred_{dim}.csv", delimiter=","
             )
         else:
             ent_BIC_dynamic = BIC_dynamic_vine.entropy().detach().cpu().numpy()
             ent_BIC_dynamic.tofile(f"./{n_estimators}_BIC_dyn_pred_{dim}.csv", sep=",")
-        print(f"Entropy: {ent_BIC_dynamic.mean()} +/- {np.std(ent_BIC_dynamic)}")
+        print(
+            f"Entropy BIC dynamic: {ent_BIC_dynamic.mean()} +/- {np.std(ent_BIC_dynamic)}"
+        )
 
         if args.skip_ent_bagged == 1:
             ent_BIC_static = np.genfromtxt(
@@ -184,7 +228,9 @@ if __name__ == "__main__":
             ent_BIC_static.tofile(
                 f"./{n_estimators}_BIC_static_pred_{dim}.csv", sep=","
             )
-        print(f"Entropy: {ent_BIC_static.mean()} +/- {np.std(ent_BIC_static)}")
+        print(
+            f"Entropy BIC static: {ent_BIC_static.mean()} +/- {np.std(ent_BIC_static)}"
+        )
 
         if args.skip_ent_bagged == 1:
             ent_R2_mean = np.genfromtxt(
@@ -193,7 +239,9 @@ if __name__ == "__main__":
         else:
             ent_R2_mean = R2_meaned_vine.entropy().detach().cpu().numpy()
             ent_R2_mean.tofile(f"./{n_estimators}_R2_pred_{dim}.csv", sep=",")
-        print(f"Entropy: {ent_R2_mean.mean()} +/- {np.std(ent_R2_mean)}")
+        print(
+            f"Entropy mean fits w/ max R2: {ent_R2_mean.mean()} +/- {np.std(ent_R2_mean)}"
+        )
 
         gc.collect()
         if torch.cuda.is_available():
@@ -268,3 +316,5 @@ if __name__ == "__main__":
         pprint_vine_copula_test("R2 meaned", R2_meaned_vine, ent_R2_mean)
         pprint_vine_copula_test("BIC static", BIC_static_vine, ent_BIC_static)
         pprint_vine_copula_test("BIC dynamic", BIC_dynamic_vine, ent_BIC_dynamic)
+        pprint_vine_copula_test("AIC static", AIC_static_vine, ent_AIC_static)
+        pprint_vine_copula_test("AIC dynamic", AIC_dynamic_vine, ent_AIC_dynamic)
