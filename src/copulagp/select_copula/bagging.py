@@ -33,6 +33,8 @@ def bagged_copula(
         Method of bag weighting.
     rsample_size : int = -1
         Size of rsampling for log_prob. Defaults to size of X if size is leq. 0.
+    R2_atol : int = 0.01
+        Tolerance for deciding how deviated from the max R2 score found we wish to drop models.
     """
     if rsample_size <= 0:
         rsample_size = X.shape[0]
@@ -124,6 +126,7 @@ def bagged_copula(
             )
             # print("BICs: ", BICs)
             weights = torch.exp(-0.5 * BICs) / (torch.exp(-0.5 * BICs)).sum(axis=0)
+            weights = weights / weights.sum(axis=0)
             assert torch.allclose(weights.sum(axis=0), torch.ones(weights.shape[1]))
             gc.collect()
             if torch.cuda.is_available():
@@ -140,7 +143,7 @@ def bagged_copula(
                     for cop in cops
                 ]
             )
-            print("BICs: ", BICs)
+            # print("BICs: ", BICs)
             weights = torch.exp(-0.5 * BICs) / torch.exp(-0.5 * BICs).sum()
             assert torch.allclose(weights.sum(), torch.ones(1))
             gc.collect()

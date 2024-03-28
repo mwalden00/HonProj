@@ -69,6 +69,15 @@ def parser():
     args.add_argument(
         "--max_el", nargs="?", type=int, default=5, help="Max num. of copulas mixed"
     )
+    args.add_argument(
+        "--shuffle_bags",
+        nargs="?",
+        type=int,
+        defalt=1,
+        help="Shuffle data during training",
+    )
+    args.add_argument("--shufle", nargs="?", type=int, default=0)
+    args.add_argument("--linear_input", nargs="?", type=int, default=0)
     return args
 
 
