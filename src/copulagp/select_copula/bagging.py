@@ -88,7 +88,7 @@ def bagged_copula(
 
         gc.collect()
 
-        ecdfs = torch.vstack([torch.Tensor(ecdf(i), device=device) for i in range(20)])
+        ecdfs = torch.vstack([torch.Tensor(ecdf(i)) for i in range(20)])
         R2s = torch.Tensor(
             [
                 1
