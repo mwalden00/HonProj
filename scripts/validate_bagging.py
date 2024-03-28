@@ -37,6 +37,9 @@ if __name__ == "__main__":
     mp.set_start_method("spawn")
     dim = args.dim
     max_el = args.max_el
+    shuffle_bags = args.shuffle_bags
+    linear_input = args.linear_input
+    shuffle_sample = args.shuffle
 
     with torch.device(device):
 
@@ -44,6 +47,8 @@ if __name__ == "__main__":
             pupil_results = pkl.load(f)
 
         X = torch.Tensor(np.random.normal(0.5, 0.2, 10000)).clamp(0.001, 0.999)
+        if linear_input:
+            X = torch.linspace(0, 1, 10000)
 
         pupil_vine = get_random_vine(
             dim, torch.Tensor(X[-10000:]), device=device, max_el=max_el
@@ -75,8 +80,17 @@ if __name__ == "__main__":
         Y = pupil_vine.sample()
         Y_train = Y[:-2000].reshape(n_estimators, int(8000 / n_estimators), dim)
 
+        if shuffle_sample:
+            perm = torch.randperm(10000)
+            X = X[perm]
+            Y = Y[perm]
+
         X = X[-10000:]
-        X_train = X[:-2000].reshape(n_estimators, int(8000 / n_estimators))
+        if shuffle_bags == 0:
+            X_train = X[:-2000].reshape(n_estimators, int(8000 / n_estimators))
+        else:
+            perm = torch.randperm(8000)
+            X_train = X[perm].reshape(n_estimators, int(8000 / n_estimators))
 
         for i in range(args.bagged_start, n_estimators):
             try:
