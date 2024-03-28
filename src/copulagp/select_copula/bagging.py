@@ -91,8 +91,12 @@ def bagged_copula(
         ecdfs = torch.vstack([torch.Tensor(ecdf(i)) for i in range(20)])
         R2s = torch.Tensor(
             [
-                1
-                - (((ecdfs - ccdfs) ** 2) / ((ecdfs - 0.5) ** 2).clamp(0.001, 1)).sum()
+                (
+                    1
+                    - (
+                        ((ecdfs - ccdfs) ** 2) / ((ecdfs - 0.5) ** 2).clamp(0.001, 1)
+                    ).sum(axis=1)
+                ).mean()
                 for ccdfs in cop_ccdfs
             ]
         )
@@ -145,7 +149,7 @@ def bagged_copula(
             # Simple weight by model fitness score. Static
             weights = R2s / R2s.sum()
         else:
-            weights = torch.ones() / len(cops)
+            weights = torch.ones(len(cops)) / len(cops)
 
         assert len(cop_datas) == n_estimators
         N = 0

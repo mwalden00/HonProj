@@ -14,80 +14,10 @@ from copulagp.synthetic_data import get_random_vine
 from copulagp.select_copula import bagged_vine
 import os
 import gc
-import argparse
+from test_helpers import parser, clean, get_R2
 
 
 device = "cpu" if not torch.cuda.is_available() else "cuda:0"
-
-
-def clean():
-    gc.collect()
-    if torch.cuda.is_available():
-        torch.cuda.empty_cache()
-
-
-def parser():
-    args = argparse.ArgumentParser()
-    args.add_argument(
-        "--seed",
-        type=int,
-        nargs="?",
-        default=-1,
-        help="Random seed to pass to torch and numpy.",
-    )
-    args.add_argument(
-        "--skip_baseline",
-        type=int,
-        nargs="?",
-        default=0,
-        help="Layer to skip to for Baseline",
-    )
-    args.add_argument(
-        "--bagged_start",
-        type=int,
-        nargs="?",
-        default=0,
-        help="Which model to start at for Bagging training",
-    )
-    args.add_argument(
-        "--bagged_start_layer",
-        type=int,
-        nargs="?",
-        default=0,
-        help="Which layer to start at for first model",
-    )
-    args.add_argument(
-        "--skip_ent_baseline",
-        type=int,
-        nargs="?",
-        default=0,
-        help="Skip baseline entropy calc",
-    )
-    args.add_argument(
-        "--skip_ent_bagged",
-        type=int,
-        nargs="?",
-        default=0,
-        help="Skip bagged entropy calc",
-    )
-    args.add_argument(
-        "--skip_true_ent", type=int, nargs="?", default=0, help="Skip true ent. calc."
-    )
-    args.add_argument(
-        "--n_estimators",
-        type=int,
-        nargs="?",
-        default=4,
-        help="Number of copula-gp estimators",
-    )
-    args.add_argument(
-        "--dim", nargs="?", type=int, default=3, help="Dim of random data"
-    )
-    args.add_argument(
-        "--max_el", nargs="?", type=int, default=5, help="Max num. of copulas mixed"
-    )
-    return args
-
 
 if torch.cuda.is_available():
     device_list = [f"cuda:{n}" for n in range(torch.cuda.device_count())]
@@ -101,8 +31,8 @@ if __name__ == "__main__":
         seed = args.seed
     else:
         seed = torch.seed()
-    print('Seed: ',seed)
-    np.random.seed(seed%(2**32-1))
+    print("Seed: ", seed)
+    np.random.seed(seed % (2**32 - 1))
     torch.manual_seed(seed)
     mp.set_start_method("spawn")
     with torch.device(device):
@@ -125,9 +55,21 @@ if __name__ == "__main__":
         if args.skip_true_ent == 1:
             ent = np.genfromtxt(f"./true_ent_{dim}.csv", delimiter=",")
         else:
-            ent = pupil_vine.entropy(mc_size=8000).detach().cpu().numpy()
+            layers = copy.deepcopy(pupil_vine.layers)
+            for l, layer in enumerate(layers):
+                for n, cop in enumerate(layer):
+                    layers[l][n] = MixtureCopula(
+                        theta=cop.theta[:, -2000:],
+                        mix=cop.mix[:, -2000:],
+                        copulas=cop.copulas,
+                        rotations=cop.rotations,
+                    )
+            pup_vine_ent = v.CVine(
+                layers=layers, inputs=data["X"][-2000:], device=device
+            )
+            ent = pupil_vine.entropy().detach().cpu().numpy()
             ent.tofile(f"./true_ent_{dim}.csv", sep=",")
-        print(f"Entropy extraction: {ent.mean()} +/- {2*np.std(ent)}")
+        print(f"Test entropy extraction: {ent.mean()} +/- {2*np.std(ent)}")
 
         n_estimators = args.n_estimators
         assert 4000 % n_estimators == 0
@@ -188,7 +130,10 @@ if __name__ == "__main__":
                 vines2bag.append(pkl.load(f)["models"])
 
         mean_vine = bagged_vine(
-            vines_data=vines2bag, X=torch.Tensor(Y).to(device)[-2000:], Y=X[-2000:], device=device
+            vines_data=vines2bag,
+            X=torch.Tensor(Y).to(device)[-2000:],
+            Y=X[-2000:],
+            device=device,
         )
 
         clean()
@@ -232,7 +177,9 @@ if __name__ == "__main__":
             for j, cop_data in enumerate(layer):
                 cop = cop_data.model_init(device).marginalize(torch.Tensor(Y)[-2000:])
                 baseline_model_data[i][j] = cop
-        baseline_vine = v.CVine(baseline_model_data, torch.Tensor(Y)[-2000:], device=device)
+        baseline_vine = v.CVine(
+            baseline_model_data, torch.Tensor(Y)[-2000:], device=device
+        )
         if args.skip_ent_baseline:
             baseline_ent = np.genfromtxt("./baseline_{dim}.csv", delimiter=",")
         else:
@@ -248,5 +195,26 @@ if __name__ == "__main__":
                 ent[-2000:].mean(), 2 * np.std(ent[-2000:])
             )
         )
-        print("MAE Baseline: \t{:.6f}".format(np.abs(ent - baseline_ent).mean()))
-        print("MAE Pred: \t{:.6f}".format(np.abs(ent - ent_pred).mean()))
+        if dim == 2:
+            print("Single copula test.")
+            print(
+                "Test Ent. MAE Baseline: \t{:.6f}\t| Baseline test R2: {:.6f}".format(
+                    np.abs(ent - baseline_ent).mean(),
+                    get_R2(cop=baseline_vine.layers[0][0]),
+                )
+            )
+            print(
+                "Test Ent. MAE Bagged: \t{:.6f}\t| Bagged test R2: {:.6f}".format(
+                    np.abs(ent - ent_pred).mean(), get_R2(cop=mean_vine.layers[0][0])
+                )
+            )
+        else:
+            print("Single copula test.")
+            print(
+                "Test Ent. MAE Baseline: \t{:.6f}".format(
+                    np.abs(ent - baseline_ent).mean()
+                )
+            )
+            print(
+                "Test Ent. MAE Bagged: \t{:.6f}".format(np.abs(ent - ent_pred).mean())
+            )
