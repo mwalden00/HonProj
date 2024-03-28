@@ -34,6 +34,8 @@ def bagged_copula(
     rsample_size : int = -1
         Size of rsampling for log_prob. Defaults to size of X if size is leq. 0.
     """
+    print(Y.shape)
+    print(X.shape)
     if rsample_size <= 0:
         rsample_size = X.shape[0]
     methods = ["mean", "R2", "BIC dynamic", "BIC static"]
