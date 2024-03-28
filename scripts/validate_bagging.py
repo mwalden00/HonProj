@@ -35,19 +35,18 @@ if __name__ == "__main__":
     np.random.seed(seed % (2**32 - 1))
     torch.manual_seed(seed)
     mp.set_start_method("spawn")
+    dim = args.dim
+    max_el = args.max_el
+
     with torch.device(device):
 
         with open("../models/results/pupil_traj_5_res_partial.pkl", "rb") as f:
             pupil_results = pkl.load(f)
 
-        with open("../data/pupil_vine_data_partial_0.pkl", "rb") as f:
-            data = pkl.load(f)
-
-        dim = args.dim
-        max_el = args.max_el
+        X = torch.rand(10000)
 
         pupil_vine = get_random_vine(
-            dim, torch.Tensor(data["X"][-10000:]), device=device, max_el=max_el
+            dim, torch.Tensor(X[-10000:]), device=device, max_el=max_el
         )
         print("True vine: ", [[cop.copulas for cop in l] for l in pupil_vine.layers])
 
@@ -65,7 +64,7 @@ if __name__ == "__main__":
                         rotations=cop.rotations,
                     )
             pup_vine_ent = v.CVine(
-                layers=layers, inputs=data["X"][-2000:], device=device
+                layers=layers, inputs=X[-2000:], device=device
             )
             ent = pupil_vine.entropy().detach().cpu().numpy()
             ent.tofile(f"./true_ent_{dim}.csv", sep=",")
