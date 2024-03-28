@@ -32,7 +32,7 @@ def parser():
         "--seed",
         type=int,
         nargs="?",
-        default=783953529,
+        default=-1,
         help="Random seed to pass to torch and numpy.",
     )
     args.add_argument(
@@ -97,8 +97,12 @@ else:
 
 if __name__ == "__main__":
     args = parser().parse_args()
-    seed = args.seed
-    np.random.seed(seed)
+    if args.seed > 0:
+        seed = args.seed
+    else:
+        seed = torch.seed()
+    print('Seed: ',seed)
+    np.random.seed(seed%(2**32-1))
     torch.manual_seed(seed)
     mp.set_start_method("spawn")
     with torch.device(device):
@@ -113,7 +117,7 @@ if __name__ == "__main__":
         max_el = args.max_el
 
         pupil_vine = get_random_vine(
-            dim, torch.Tensor(data["X"][-5000:]), device=device, max_el=max_el
+            dim, torch.Tensor(data["X"][-10000:]), device=device, max_el=max_el
         )
         print("True vine: ", [[cop.copulas for cop in l] for l in pupil_vine.layers])
 
@@ -129,10 +133,10 @@ if __name__ == "__main__":
         assert 4000 % n_estimators == 0
 
         print(f"Getting {n_estimators} copulaGP estimators...")
-        X = pupil_vine.sample()
-        X_train = X.reshape(n_estimators, int(5000 / n_estimators), dim)
+        X = pupil_vine.sample()[:8000]
+        X_train = X.reshape(n_estimators, int(8000 / n_estimators), dim)
 
-        Y = data["X"][-5000:]
+        Y = data["X"][-10000:-2000]
         Y_train = Y.reshape(n_estimators, int(5000 / n_estimators))
 
         for i in range(args.bagged_start, n_estimators):
@@ -184,7 +188,7 @@ if __name__ == "__main__":
                 vines2bag.append(pkl.load(f)["models"])
 
         mean_vine = bagged_vine(
-            vines_data=vines2bag, X=torch.Tensor(Y).to(device), Y=X, device=device
+            vines_data=vines2bag, X=torch.Tensor(Y).to(device)[-2000:], Y=X[-2000:], device=device
         )
 
         clean()
@@ -199,8 +203,8 @@ if __name__ == "__main__":
         gc.collect()
         if torch.cuda.is_available():
             torch.cuda.empty_cache()
-        X_train = X
-        Y_train = Y
+        X_train = X[-10000:-2000]
+        Y_train = Y[-10000:-2000]
         baseline_data = dict([("Y", X_train.cpu().numpy()), ("X", Y_train)])
         with open("../data/segmented_pupil_copulas/baseline_data_0.pkl", "wb") as f:
             pkl.dump(baseline_data, f)
@@ -226,9 +230,9 @@ if __name__ == "__main__":
         clean()
         for i, layer in enumerate(baseline_model_data):
             for j, cop_data in enumerate(layer):
-                cop = cop_data.model_init(device).marginalize(torch.Tensor(Y))
+                cop = cop_data.model_init(device).marginalize(torch.Tensor(Y)[-2000:])
                 baseline_model_data[i][j] = cop
-        baseline_vine = v.CVine(baseline_model_data, torch.Tensor(Y), device=device)
+        baseline_vine = v.CVine(baseline_model_data, torch.Tensor(Y)[-2000:], device=device)
         if args.skip_ent_baseline:
             baseline_ent = np.genfromtxt("./baseline_{dim}.csv", delimiter=",")
         else:
@@ -241,7 +245,7 @@ if __name__ == "__main__":
         print("================================================================")
         print(
             "True: \t{:.6f} +/- {:.6f}".format(
-                ent[-1000:].mean(), 2 * np.std(ent[-1000:])
+                ent[-2000:].mean(), 2 * np.std(ent[-2000:])
             )
         )
         print("MAE Baseline: \t{:.6f}".format(np.abs(ent - baseline_ent).mean()))
