@@ -129,21 +129,51 @@ if __name__ == "__main__":
             with open(f"../models/results/pupil_segments/pupil_{i}_res.pkl", "rb") as f:
                 vines2bag.append(pkl.load(f)["models"])
 
-        mean_vine = bagged_vine(
+        BIC_dynamic_vine = bagged_vine(
             vines_data=vines2bag,
             X=torch.Tensor(Y).to(device)[-2000:],
             Y=X[-2000:],
             device=device,
         )
 
+        BIC_static_vine = bagged_vine(
+            vines_data=vines2bag,
+            X=torch.Tensor(Y).to(device)[-2000:],
+            Y=X[-2000:],
+            device=device,
+            how="BIC static",
+        )
+
+        R2_meaned_vine = bagged_vine(
+            vines_data=vines2bag,
+            X=torch.Tensor(Y).to(device)[-2000:],
+            Y=X[-2000:],
+            device=device,
+            how="R2",
+        )
+
         clean()
         print("Getting Bagged Vine Entropy...")
         if args.skip_ent_bagged == 1:
-            ent_pred = np.genfromtxt(f"./{n_estimators}_pred.csv", delimiter=",")
+            ent_BIC_dynamic = np.genfromtxt(f"./{n_estimators}_pred.csv", delimiter=",")
         else:
-            ent_pred = mean_vine.entropy().detach().cpu().numpy()
-            ent_pred.tofile(f"./{n_estimators}_pred_{dim}.csv", sep=",")
-        print(f"Entropy: {ent_pred.mean()} +/- {np.std(ent_pred)}")
+            ent_BIC_dynamic = BIC_dynamic_vine.entropy().detach().cpu().numpy()
+            ent_BIC_dynamic.tofile(f"./{n_estimators}_pred_{dim}.csv", sep=",")
+        print(f"Entropy: {ent_BIC_dynamic.mean()} +/- {np.std(ent_BIC_dynamic)}")
+
+        if args.skip_ent_bagged == 1:
+            ent_BIC_static = np.genfromtxt(f"./{n_estimators}_pred.csv", delimiter=",")
+        else:
+            ent_BIC_static = BIC_static_vine.entropy().detach().cpu().numpy()
+            ent_BIC_static.tofile(f"./{n_estimators}_pred_{dim}.csv", sep=",")
+        print(f"Entropy: {ent_BIC_static.mean()} +/- {np.std(ent_BIC_static)}")
+
+        if args.skip_ent_bagged == 1:
+            ent_R2_mean = np.genfromtxt(f"./{n_estimators}_pred.csv", delimiter=",")
+        else:
+            ent_R2_mean = R2_meaned_vine.entropy().detach().cpu().numpy()
+            ent_R2_mean.tofile(f"./{n_estimators}_pred_{dim}.csv", sep=",")
+        print(f"Entropy: {ent_R2_mean.mean()} +/- {np.std(ent_R2_mean)}")
 
         gc.collect()
         if torch.cuda.is_available():
@@ -197,26 +227,32 @@ if __name__ == "__main__":
                 ent[-2000:].mean(), 2 * np.std(ent[-2000:])
             )
         )
+
+        def pprint_single_copula_test(name, model, pred_ent):
+            print(
+                "Test Ent. MAE {}: \t{:.6f}\t| Baseline test R2: {:.6f}".format(
+                    name,
+                    np.abs(ent - pred_ent).mean(),
+                    get_R2(cop=model.layers[0][0]),
+                )
+            )
+
+        def pprint_vine_copula_test(name, model, pred_ent):
+            print(
+                "Test Ent. MAE {}: \t{:.6f}\t".format(
+                    name, np.abs(ent - pred_ent).mean()
+                )
+            )
+
         if dim == 2:
             print("Single copula test.")
-            print(
-                "Test Ent. MAE Baseline: \t{:.6f}\t| Baseline test R2: {:.6f}".format(
-                    np.abs(ent - baseline_ent).mean(),
-                    get_R2(cop=baseline_vine.layers[0][0]),
-                )
-            )
-            print(
-                "Test Ent. MAE Bagged: \t{:.6f}\t| Bagged test R2: {:.6f}".format(
-                    np.abs(ent - ent_pred).mean(), get_R2(cop=mean_vine.layers[0][0])
-                )
-            )
+            pprint_single_copula_test("Baseline", baseline_vine, baseline_ent)
+            pprint_single_copula_test("R2 meaned", R2_meaned_vine, ent_R2_mean)
+            pprint_single_copula_test("BIC static", BIC_static_vine, ent_BIC_static)
+            pprint_single_copula_test("BIC dynamic", BIC_dynamic_vine, ent_BIC_dynamic)
         else:
-            print("Single copula test.")
-            print(
-                "Test Ent. MAE Baseline: \t{:.6f}".format(
-                    np.abs(ent - baseline_ent).mean()
-                )
-            )
-            print(
-                "Test Ent. MAE Bagged: \t{:.6f}".format(np.abs(ent - ent_pred).mean())
-            )
+            print("Vine copula test.")
+            pprint_vine_copula_test("Baseline", baseline_vine, baseline_ent)
+            pprint_vine_copula_test("R2 meaned", R2_meaned_vine, ent_R2_mean)
+            pprint_vine_copula_test("BIC static", BIC_static_vine, ent_BIC_static)
+            pprint_vine_copula_test("BIC dynamic", BIC_dynamic_vine, ent_BIC_dynamic)
