@@ -40,6 +40,7 @@ if __name__ == "__main__":
     shuffle_bags = args.shuffle_bags
     linear_input = args.linear_input
     shuffle_sample = args.shuffle
+    light = args.light
 
     with torch.device(device):
 
@@ -127,7 +128,7 @@ if __name__ == "__main__":
                 path_final=f"../models/results/pupil_segments/pupil_{i}_res.pkl",
                 path_logs=lambda a, b: f"./segmented_pupil/{a}/layer_{b}",
                 exp=f"Vine on trial {i} Parametrized in Pupil Area",
-                light=True,
+                light=light == 1,
                 device_list=device_list,
                 start=args.bagged_start_layer,
             )
@@ -212,7 +213,7 @@ if __name__ == "__main__":
             path_final=f"../models/results/pupil_segments/baseline_res.pkl",
             path_logs=lambda a, b: f"./segmented_pupil/{a}/layer_{b}",
             exp=f"Baseline Vine on {dim} dim random copula data Parametrized in Pupil Area",
-            light=True,
+            light=light == 1,
             start=args.skip_baseline,
             device_list=device_list,
         )
