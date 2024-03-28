@@ -156,7 +156,7 @@ if __name__ == "__main__":
         print("Getting Bagged Vine Entropy...")
         if args.skip_ent_bagged == 1:
             ent_BIC_dynamic = np.genfromtxt(
-                f"./{n_estimators}_BIC_dyn_pred.csv", delimiter=","
+                f"./{n_estimators}_BIC_dyn_pred_{dim}.csv", delimiter=","
             )
         else:
             ent_BIC_dynamic = BIC_dynamic_vine.entropy().detach().cpu().numpy()
@@ -165,7 +165,7 @@ if __name__ == "__main__":
 
         if args.skip_ent_bagged == 1:
             ent_BIC_static = np.genfromtxt(
-                f"./{n_estimators}_BIC_static_pred.csv", delimiter=","
+                f"./{n_estimators}_BIC_static_pred_{dim}.csv", delimiter=","
             )
         else:
             ent_BIC_static = BIC_static_vine.entropy().detach().cpu().numpy()
@@ -175,7 +175,9 @@ if __name__ == "__main__":
         print(f"Entropy: {ent_BIC_static.mean()} +/- {np.std(ent_BIC_static)}")
 
         if args.skip_ent_bagged == 1:
-            ent_R2_mean = np.genfromtxt(f"./{n_estimators}_R2_pred.csv", delimiter=",")
+            ent_R2_mean = np.genfromtxt(
+                f"./{n_estimators}_R2_pred{dim}.csv", delimiter=","
+            )
         else:
             ent_R2_mean = R2_meaned_vine.entropy().detach().cpu().numpy()
             ent_R2_mean.tofile(f"./{n_estimators}_R2_pred_{dim}.csv", sep=",")
