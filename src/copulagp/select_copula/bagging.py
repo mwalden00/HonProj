@@ -9,9 +9,11 @@ def bagged_copula(
     copula_data_list: list,
     n_estimators: int,
     X: torch.Tensor,
-    Y1: torch.Tensor,
-    Y2: torch.Tensor,
+    Y: torch.Tensor,
     device: torch.device = torch.device("cpu"),
+    R2_atol: int = 1e-7,
+    how: str = "BIC dynamic",
+    rsample_size: int = 0,
 ):
     """
     Estimate the copula via pre-trained copula-GP object.
@@ -23,11 +25,20 @@ def bagged_copula(
         Marginalizing along X gives a distribution over X.
     X : torch.Tensor on range [0,1]
         Tensor of parameterizing variable
-    Y1,Y2 : torch.Tensor on range(0,1)
-        Tensors of marginal values
+    Y[0],Y[1] : torch.Tensor on range(0,1)
+        Tensors of marginal values for sample. Used to get ecdf.
     device : torch.device
         Device ot marginalize on.
+    how : str = "BIC dynamic" | "BIC static" | "R2" | "mean"
+        Method of bag weighting.
+    rsample_size : int = -1
+        Size of rsampling for log_prob. Defaults to size of X if size is leq. 0.
     """
+    if rsample_size <= 0:
+        rsample_size = X.shape[0]
+    methods = ["mean", "R2", "BIC dynamic", "BIC static"]
+    if how not in methods:
+        raise ValueError("argument 'how' must be one of 'mean', 'R2', or 'BIC'")
     assert len(copula_data_list) == n_estimators and n_estimators > 1
     cop_datas = copula_data_list
     cops = [
@@ -38,27 +49,29 @@ def bagged_copula(
     # We first need goodness of fit values to determine cop. weights
     # This will be mean bucketed R2s as is done in the core paper.
     # If R2s is neg, we omit the model
-    buckets = [
-        torch.arange(i * int(X.shape[0] / 20), (i + 1) * int(Y1.shape[0] / 20))
-        for i in range(20)
-    ]
+    buckets = [torch.arange(i - 20, i) for i in np.arange(20, X.shape[0], 20)]
 
+    # To get R2 terms, we first find empirical cdf along our points
+    # and the empirical copula cdf along one axis of the copula.
+    # We do this along the buckets.
     def ecdf(i):
+        """Empirical CDF in bucket i."""
         vals = []
-        for y2 in Y2[buckets[i]]:
+        for y2 in Y[1][buckets[i]]:
             vals.append(
-                len(Y1[buckets[i]][Y2[buckets[i]] < y2]) / (len(Y1[buckets[i]]))
+                len(Y[0][buckets[i]][Y[1][buckets[i]] < y2]) / (len(Y[0][buckets[i]]))
             )
         return vals
 
     def eccdf(cop, i):
-        Y1_sample = cop.sample()[:, 0]
+        """Empirical Copula CDF in bucket i utilizing copula samples."""
+        Y0_sample = cop.sample()[:, 0]
         vals = []
-        for y2 in Y2[buckets[i]]:
-            vals.append(len(Y1_sample[Y2[buckets[i]] < y2]) / (len(Y1_sample)))
+        for y2 in Y0_sample[buckets[i]]:
+            vals.append(len(Y0_sample[Y[1][buckets[i]] < y2]) / (len(Y0_sample)))
         return vals
 
-    # Get CCDFs
+    # Get CCDFs. Involves marginalizing
     cop_ccdfs = [
         torch.vstack(
             [
@@ -71,16 +84,73 @@ def bagged_copula(
         for cop_data in cop_datas
     ]
 
+    # Lets collect the bucket copulas.
+    import gc
+
+    gc.collect()
+
     ecdfs = torch.Tensor([ecdf(i) for i in range(20)], device=device)
-    R2s = np.array(
+    R2s = torch.Tensor(
         [
             1 - (((ecdfs - ccdfs) ** 2) / ((ecdfs - 0.5) ** 2).clamp(0.001, 1)).sum()
             for ccdfs in cop_ccdfs
         ]
     )
 
-    weights = torch.Tensor([R2 if R2 > 0 else 0 for R2 in R2s])
-    weights = weights / sum(weights)
+    # If there is a single best fit, we return that.
+    R2s = R2s[R2s >= (R2s.max() - R2_atol)]
+    if len(R2s) == 1:
+        print("Single best copula found.")
+        return cops[np.argmax(R2s)]
+
+    if how == "BIC dynamic":
+        # We now weight the remaining copulas lineary via Bayesian Info Criterion.
+        # BIC is defined as -2 * log likelihood + (# of params) * log(sample size)
+        # For # params we have mixing params + theta params.
+        # We average cop.log_prob along axis 0 as it outputs log_prob of mixed copuls * weights.
+        # This also means we aggregate dynamically in X
+        # Log prob is mem. intensive, so we should cleanup.
+        BICs = torch.vstack(
+            [
+                -2 * cop.log_prob(Y)
+                + (cop.mix.shape[0] + cop.theta.shape[0]) * np.log(len(X.shape))
+                for cop in cops
+            ]
+        )
+        print("BICs: ", BICs)
+        weights = -0.5 * torch.exp(BICs) / (-0.5 * torch.exp(BICs)).sum(axis=0)
+        # We also apply a moving average over all of the weights,
+        window = 20
+        weights_clone = torch.clone(weights)
+        for i in torch.arange(0, weights.shape[0] - window):
+            weights[:, i + window / 2] = weights_clone[:, i + 20].mean(axis=1)
+        assert torch.allclose(weights.sum(), 1)
+        gc.collect()
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+    elif how == "BIC static":
+        # We now weight the remaining copulas lineary via Bayesian Info Criterion.
+        # BIC is defined as -2 * log likelihood + (# of params) * log(sample size)
+        # For # params we have mixing params + theta params.
+        # We get the overall mean, creating a static model.
+        BICs = torch.vstack(
+            [
+                -2 * cop.log_prob(Y).mean()
+                + (cop.mix.shape[0] + cop.theta.shape[0]) * np.log(len(X.shape))
+                for cop in cops
+            ]
+        )
+        print("BICs: ", BICs)
+        weights = BICs / BICs.sum()
+        assert torch.allclose(weights.sum())
+        gc.collect()
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+    elif how == "R2":
+        # Simple weight by model fitness score. Static
+        weights = R2s / R2s.sum()
+    else:
+        weights = torch.ones() / len(cops)
 
     assert len(cop_datas) == n_estimators
     N = 0
@@ -91,7 +161,7 @@ def bagged_copula(
     mix_total_weight = dict()
     rotations = []
 
-    # Get Rotation and Index Information
+    # Get rotation and index data
     for i, cop_data in enumerate(cop_datas):
         for n, cop in enumerate(cop_data.bvcopulas):
             cop_combo = (cop[0], cop[1])
@@ -107,25 +177,25 @@ def bagged_copula(
             cop_indeces[(i, n)] = idx
             mix_total_weight[idx] += weights[i]
 
-    # Create Mixture as Average
-    cop_list = [None for i in range(N)]
+    # Create mixture params as weighted average
+    mix_list = [None for i in range(N)]
     thetas = torch.zeros((N, X.shape[0]))
     mixes = torch.zeros((N, X.shape[0]))
 
     for i, cop in enumerate(cops):
         for n, cop_type in enumerate(cop.copulas):
             idx = cop_indeces[(i, n)]
-            cop_list[idx] = cop_type
+            mix_list[idx] = cop_type
             mixes[idx] += cop.mix[n] * weights[i]
             thetas[idx] += cop.theta[n] * weights[i] / mix_total_weight[idx]
 
-    print(cop_list)
+    print(mix_list)
 
     return (
         MixtureCopula(
             theta=thetas,
             mix=mixes.clamp(0.001, 0.999),
-            copulas=cop_list,
+            copulas=mix_list,
             rotations=rotations,
         ),
         weights,
@@ -161,7 +231,7 @@ def bagged_vine(
     for l, layer in enumerate(bagged_copulas):
         for n, copula_data_list in enumerate(layer):
             bagged_copulas[l][n] = bagged_copula(
-                copula_data_list, n_estimators, X, Y[l], Y[n], device=device
+                copula_data_list, n_estimators, X, Y[[l, n]], device=device
             )
 
     mean_vine = CVine(bagged_copulas, torch.Tensor(X).to(device), device=device)
