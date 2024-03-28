@@ -78,8 +78,8 @@ if __name__ == "__main__":
         X = pupil_vine.sample()
         X_train = X[:-2000].reshape(n_estimators, int(8000 / n_estimators), dim)
 
-        Y = data["X"][-10000:-2000]
-        Y_train = Y.reshape(n_estimators, int(8000 / n_estimators))
+        Y = data["X"][-10000:]
+        Y_train = Y[:-2000].reshape(n_estimators, int(8000 / n_estimators))
 
         for i in range(args.bagged_start, n_estimators):
             try:
