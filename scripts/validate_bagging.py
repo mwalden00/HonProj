@@ -63,10 +63,8 @@ if __name__ == "__main__":
                         copulas=cop.copulas,
                         rotations=cop.rotations,
                     )
-            pup_vine_ent = v.CVine(
-                layers=layers, inputs=X[-2000:], device=device
-            )
-            ent = pupil_vine.entropy().detach().cpu().numpy()
+            pup_vine_ent = v.CVine(layers=layers, inputs=X[-2000:], device=device)
+            ent = pup_vine_ent.entropy().detach().cpu().numpy()
             ent.tofile(f"./true_ent_{dim}.csv", sep=",")
         print(f"Test entropy extraction: {ent.mean()} +/- {2*np.std(ent)}")
 
@@ -77,7 +75,7 @@ if __name__ == "__main__":
         X = pupil_vine.sample()
         X_train = X[:-2000].reshape(n_estimators, int(8000 / n_estimators), dim)
 
-        Y = data["X"][-10000:]
+        Y = X[-10000:]
         Y_train = Y[:-2000].reshape(n_estimators, int(8000 / n_estimators))
 
         for i in range(args.bagged_start, n_estimators):
@@ -236,7 +234,7 @@ if __name__ == "__main__":
                 "Test Ent. MAE {}: \t{:.6f}\t| Baseline test R2: {:.6f}".format(
                     name,
                     np.abs(ent.mean() - pred_ent).mean(),
-                    get_R2(cop=model.layers[0][0],Y=torch.Tensor(Y).T),
+                    get_R2(cop=model.layers[0][0], Y=torch.Tensor(Y).T),
                 )
             )
 
@@ -251,8 +249,12 @@ if __name__ == "__main__":
             print("Single copula test.")
             pprint_single_copula_test("Baseline", baseline_vine, baseline_ent, X_train)
             pprint_single_copula_test("R2 meaned", R2_meaned_vine, ent_R2_mean, X_train)
-            pprint_single_copula_test("BIC static", BIC_static_vine, ent_BIC_static, X_train)
-            pprint_single_copula_test("BIC dynamic", BIC_dynamic_vine, ent_BIC_dynamic, X_train)
+            pprint_single_copula_test(
+                "BIC static", BIC_static_vine, ent_BIC_static, X_train
+            )
+            pprint_single_copula_test(
+                "BIC dynamic", BIC_dynamic_vine, ent_BIC_dynamic, X_train
+            )
         else:
             print("Vine copula test.")
             pprint_vine_copula_test("Baseline", baseline_vine, baseline_ent)
