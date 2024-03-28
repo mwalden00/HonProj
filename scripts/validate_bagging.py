@@ -43,7 +43,7 @@ if __name__ == "__main__":
         with open("../models/results/pupil_traj_5_res_partial.pkl", "rb") as f:
             pupil_results = pkl.load(f)
 
-        X = torch.rand(10000)
+        Y = torch.rand(10000)
 
         pupil_vine = get_random_vine(
             dim, torch.Tensor(X[-10000:]), device=device, max_el=max_el
@@ -75,7 +75,7 @@ if __name__ == "__main__":
         X = pupil_vine.sample()
         X_train = X[:-2000].reshape(n_estimators, int(8000 / n_estimators), dim)
 
-        Y = X[-10000:]
+        Y = Y[-10000:]
         Y_train = Y[:-2000].reshape(n_estimators, int(8000 / n_estimators))
 
         for i in range(args.bagged_start, n_estimators):
