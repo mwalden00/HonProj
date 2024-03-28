@@ -75,11 +75,11 @@ if __name__ == "__main__":
         assert 4000 % n_estimators == 0
 
         print(f"Getting {n_estimators} copulaGP estimators...")
-        X = pupil_vine.sample()[:8000]
-        X_train = X.reshape(n_estimators, int(8000 / n_estimators), dim)
+        X = pupil_vine.sample()
+        X_train = X[:-2000].reshape(n_estimators, int(8000 / n_estimators), dim)
 
         Y = data["X"][-10000:-2000]
-        Y_train = Y.reshape(n_estimators, int(5000 / n_estimators))
+        Y_train = Y.reshape(n_estimators, int(8000 / n_estimators))
 
         for i in range(args.bagged_start, n_estimators):
             try:
@@ -150,6 +150,8 @@ if __name__ == "__main__":
             torch.cuda.empty_cache()
         X_train = X[-10000:-2000]
         Y_train = Y[-10000:-2000]
+        print(X_train.shape)
+        print(Y_train.shape)
         baseline_data = dict([("Y", X_train.cpu().numpy()), ("X", Y_train)])
         with open("../data/segmented_pupil_copulas/baseline_data_0.pkl", "wb") as f:
             pkl.dump(baseline_data, f)
