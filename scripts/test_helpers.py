@@ -76,7 +76,7 @@ def parser():
         default=1,
         help="Shuffle data during training",
     )
-    args.add_argument("--shufle", nargs="?", type=int, default=0)
+    args.add_argument("--shuffle", nargs="?", type=int, default=0)
     args.add_argument("--linear_input", nargs="?", type=int, default=0)
     return args
 
