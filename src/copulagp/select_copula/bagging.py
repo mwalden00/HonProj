@@ -25,7 +25,7 @@ def bagged_copula(
         Marginalizing along X gives a distribution over X.
     X : torch.Tensor on range [0,1]
         Tensor of parameterizing variable
-    Y[0],Y[1] : torch.Tensor on range(0,1)
+    Y : torch.Tensor on range(0,1). Shape of (n samples) x (dimensions)
         Tensors of marginal values for sample. Used to get ecdf.
     device : torch.device
         Device ot marginalize on.
@@ -110,6 +110,7 @@ def bagged_copula(
         if how == "BIC dynamic":
             # We now weight the remaining copulas lineary via Bayesian Info Criterion.
             # BIC is defined as -2 * log likelihood + (# of params) * log(sample size)
+            # We use the weights exp(-1/2 * BICs[i]) / sum(BICs)
             # For # params we have mixing params + theta params.
             # We average cop.log_prob along axis 0 as it outputs log_prob of mixed copuls * weights.
             # This also means we aggregate dynamically in X
@@ -122,7 +123,7 @@ def bagged_copula(
                 ]
             )
             # print("BICs: ", BICs)
-            weights = -0.5 * torch.exp(BICs) / (-0.5 * torch.exp(BICs)).sum(axis=0)
+            weights = torch.exp(-0.5 * BICs) / (torch.exp(-0.5 * BICs)).sum(axis=0)
             assert torch.allclose(weights.sum(axis=0), torch.ones(weights.shape[1]))
             gc.collect()
             if torch.cuda.is_available():
@@ -134,14 +135,14 @@ def bagged_copula(
             # We get the overall mean, creating a static model.
             BICs = torch.vstack(
                 [
-                    -2 * cop.log_prob(Y).mean()
+                    -2 * cop.log_prob(Y.T).mean()
                     + (cop.mix.shape[0] + cop.theta.shape[0]) * np.log(len(X.shape))
                     for cop in cops
                 ]
             )
             print("BICs: ", BICs)
-            weights = BICs / BICs.sum()
-            assert torch.allclose(weights.sum())
+            weights = torch.exp(-0.5 * BICs) / torch.exp(-0.5 * BICs).sum()
+            assert torch.allclose(weights.sum(), torch.ones(1))
             gc.collect()
             if torch.cuda.is_available():
                 torch.cuda.empty_cache()
