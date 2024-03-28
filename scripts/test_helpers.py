@@ -72,33 +72,9 @@ def parser():
     return args
 
 
-def get_R2(cop, Y):
-
-    buckets = torch.arange(Y.shape[0]).chunk(20)
-    Y0_sample = cop.sample()[:, 0]
-
-    def ecdf(i):
-        """Empirical CDF in bucket i."""
-        vals = []
-        for y2 in Y[1][buckets[i]]:
-            vals.append(
-                len(Y[0][buckets[i]][Y[1][buckets[i]] < y2]) / (len(Y[0][buckets[i]]))
-            )
-        return vals
-
-    def eccdf(i):
-        """Empirical Copula CDF in bucket i utilizing copula samples."""
-        vals = []
-        for y2 in Y[1][buckets[i]]:
-            vals.append(
-                len(Y0_sample[buckets[i]][Y[1][buckets[i]] < y2]) / (len(Y0_sample))
-            )
-        return vals
-
-    ccdfs = [torch.vstack([torch.Tensor(eccdf(i)) for i in range(20)])]
-    ecdfs = torch.vstack([torch.Tensor(ecdf(i)) for i in range(20)])
-    R2s = (
-        1
-        - ((((ecdfs - ccdfs) ** 2) / ((ecdfs - 0.5) ** 2).clamp(0.001, 1)).sum()).mean()
-    )
-    return R2s
+def num_vine_params(model):
+    p = 0
+    for layer in model.layers:
+        for copula in layer:
+            p += 2 * len(copula.copulas)
+    return p

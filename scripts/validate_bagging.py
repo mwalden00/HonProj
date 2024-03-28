@@ -14,7 +14,7 @@ from copulagp.synthetic_data import get_random_vine
 from copulagp.select_copula import bagged_vine
 import os
 import gc
-from test_helpers import parser, clean, get_R2
+from test_helpers import parser, clean, num_vine_params
 
 
 device = "cpu" if not torch.cuda.is_available() else "cuda:0"
@@ -43,7 +43,7 @@ if __name__ == "__main__":
         with open("../models/results/pupil_traj_5_res_partial.pkl", "rb") as f:
             pupil_results = pkl.load(f)
 
-        X = torch.rand(10000)
+        X = torch.Tensor(np.random.normal(0.5, 0.2, 10000)).clamp(0.001, 0.999)
 
         pupil_vine = get_random_vine(
             dim, torch.Tensor(X[-10000:]), device=device, max_el=max_el
@@ -229,35 +229,27 @@ if __name__ == "__main__":
         print("================================================================")
         print("True: \t{:.6f} +/- {:.6f}".format(ent.mean(), 2 * np.std(ent[-2000:])))
 
-        def pprint_single_copula_test(name, model, pred_ent, Y):
-            print(
-                "Test Ent. MAE {}: \t{:.6f}\t| Baseline test R2: {:.6f}".format(
-                    name,
-                    np.abs(ent.mean() - pred_ent).mean(),
-                    get_R2(cop=model.layers[0][0], Y=torch.Tensor(Y).T),
-                )
-            )
-
         def pprint_vine_copula_test(name, model, pred_ent):
             print(
-                "Test Ent. MAE {}: \t{:.6f}\t".format(
-                    name, np.abs(ent.mean() - pred_ent).mean()
+                "Test Ent. MAE {}: \t{:.6f}\t| Test. BIC: {}".format(
+                    name,
+                    np.abs(ent.mean() - pred_ent).mean(),
+                    -2 * model.log_prob(X[-2000:]).mean()
+                    + (
+                        len(model.layers)
+                        * (len(model.layers) + 1)
+                        * num_vine_params(model)
+                    )
+                    / 2
+                    * 2000,
                 )
             )
 
         if dim == 2:
             print("Single copula test.")
-            pprint_single_copula_test("Baseline", baseline_vine, baseline_ent, X_train)
-            pprint_single_copula_test("R2 meaned", R2_meaned_vine, ent_R2_mean, X_train)
-            pprint_single_copula_test(
-                "BIC static", BIC_static_vine, ent_BIC_static, X_train
-            )
-            pprint_single_copula_test(
-                "BIC dynamic", BIC_dynamic_vine, ent_BIC_dynamic, X_train
-            )
         else:
             print("Vine copula test.")
-            pprint_vine_copula_test("Baseline", baseline_vine, baseline_ent)
-            pprint_vine_copula_test("R2 meaned", R2_meaned_vine, ent_R2_mean)
-            pprint_vine_copula_test("BIC static", BIC_static_vine, ent_BIC_static)
-            pprint_vine_copula_test("BIC dynamic", BIC_dynamic_vine, ent_BIC_dynamic)
+        pprint_vine_copula_test("Baseline", baseline_vine, baseline_ent)
+        pprint_vine_copula_test("R2 meaned", R2_meaned_vine, ent_R2_mean)
+        pprint_vine_copula_test("BIC static", BIC_static_vine, ent_BIC_static)
+        pprint_vine_copula_test("BIC dynamic", BIC_dynamic_vine, ent_BIC_dynamic)
