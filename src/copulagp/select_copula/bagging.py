@@ -64,8 +64,6 @@ def bagged_copula(
     def eccdf(cop, i):
         """Empirical Copula CDF in bucket i utilizing copula samples."""
         Y0_sample = cop.sample()[:, 0]
-        print(Y0_sample.shape)
-        print(buckets[i].shape)
         vals = []
         for y2 in Y[1][buckets[i]]:
             vals.append(len(Y0_sample[Y[1][buckets[i]] < y2]) / (len(Y0_sample)))
@@ -117,7 +115,7 @@ def bagged_copula(
                 for cop in cops
             ]
         )
-        print("BICs: ", BICs)
+        # print("BICs: ", BICs)
         weights = -0.5 * torch.exp(BICs) / (-0.5 * torch.exp(BICs)).sum(axis=0)
         assert torch.allclose(weights.sum(axis=0), torch.ones(weights.shape[1]))
         gc.collect()
