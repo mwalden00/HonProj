@@ -187,7 +187,7 @@ if __name__ == "__main__":
 
         if args.skip_ent_bagged == 1:
             ent_R2_mean = np.genfromtxt(
-                f"./{n_estimators}_R2_pred{dim}.csv", delimiter=","
+                f"./{n_estimators}_R2_pred_{dim}.csv", delimiter=","
             )
         else:
             ent_R2_mean = R2_meaned_vine.entropy().detach().cpu().numpy()
