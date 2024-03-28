@@ -52,7 +52,7 @@ def bagged_copula(
     # To get R2 terms, we first find empirical cdf along our points
     # and the empirical copula cdf along one axis of the copula.
     # We do this along the buckets.
-    def ecdf(i):
+    '''def ecdf(i):
         """Empirical CDF in bucket i."""
         vals = []
         for y2 in Y[1][buckets[i]]:
@@ -102,7 +102,7 @@ def bagged_copula(
     if len(R2s) == 1:
         print("Single best copula found.")
         return cops[np.argmax(R2s)]
-
+    '''
     if how == "BIC dynamic":
         # We now weight the remaining copulas lineary via Bayesian Info Criterion.
         # BIC is defined as -2 * log likelihood + (# of params) * log(sample size)
