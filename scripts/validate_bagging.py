@@ -184,7 +184,7 @@ if __name__ == "__main__":
                 vines2bag.append(pkl.load(f)["models"])
 
         mean_vine = bagged_vine(
-            vines_data=vines2bag, X=torch.Tensor(Y).to(device), device=device
+            vines_data=vines2bag, X=torch.Tensor(Y).to(device), Y=X, device=device
         )
 
         clean()
