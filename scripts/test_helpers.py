@@ -95,16 +95,10 @@ def get_R2(cop, Y):
             )
         return vals
 
-    cop_ccdfs = [torch.vstack([torch.Tensor(eccdf(i)) for i in range(20)])]
+    ccdfs = [torch.vstack([torch.Tensor(eccdf(i)) for i in range(20)])]
     ecdfs = torch.vstack([torch.Tensor(ecdf(i)) for i in range(20)])
-    R2s = torch.Tensor(
-        [
-            1
-            - (
-                (((ecdfs - ccdfs) ** 2) / ((ecdfs - 0.5) ** 2).clamp(0.001, 1)).sum(
-                    axis=1
-                )
-            ).mean()
-            for ccdfs in cop_ccdfs
-        ]
+    R2s = (
+        1
+        - ((((ecdfs - ccdfs) ** 2) / ((ecdfs - 0.5) ** 2).clamp(0.001, 1)).sum()).mean()
     )
+    return R2s
