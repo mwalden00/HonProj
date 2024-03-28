@@ -12,7 +12,7 @@ def bagged_copula(
     Y: torch.Tensor,
     device: torch.device = torch.device("cpu"),
     R2_atol: int = 0.01,
-    how: str = "BIC dynamic",
+    how: str = "AIC dynamic",
     rsample_size: int = 0,
 ):
     """
@@ -29,7 +29,7 @@ def bagged_copula(
         Tensors of marginal values for sample. Used to get ecdf.
     device : torch.device
         Device ot marginalize on.
-    how : str = "BIC dynamic" | "BIC static" | "R2" | "mean"
+    how : str = "BIC dynamic" | "BIC static" | "AIC dynamic" | "AIC static" | "R2" | "mean"
         Method of bag weighting.
     rsample_size : int = -1
         Size of rsampling for log_prob. Defaults to size of X if size is leq. 0.
@@ -38,7 +38,7 @@ def bagged_copula(
     """
     if rsample_size <= 0:
         rsample_size = X.shape[0]
-    methods = ["mean", "R2", "BIC dynamic", "BIC static"]
+    methods = ["mean", "R2", "BIC dynamic", "BIC static", "AIC dynamic", "AIC static"]
     if how not in methods:
         raise ValueError("argument 'how' must be one of 'mean', 'R2', or 'BIC'")
     assert len(copula_data_list) == n_estimators and n_estimators > 1
@@ -109,7 +109,45 @@ def bagged_copula(
             print("Single best copula found.")
             return cops[np.argmax(R2s)]
 
-        if how == "BIC dynamic":
+        if how == "AIC dynamic":
+            # We now weight the remaining copulas lineary via Bayesian Info Criterion.
+            # AIC is defined as -2 * log likelihood + (# of params) * 2
+            # For # params we have mixing params + theta params.
+            # We get the overall mean, creating a static model.
+            # We average cop.log_prob along axis 0 as it outputs log_prob of mixed copuls * weights.
+            # This also means we aggregate dynamically in X
+            # Log prob is mem. intensive, so we should cleanup.
+            AICs = torch.vstack(
+                [
+                    -2 * cop.log_prob(Y.T) + (cop.mix.shape[0] + cop.theta.shape[0]) * 2
+                    for cop in cops
+                ]
+            )
+            # print("BICs: ", BICs)
+            weights = torch.exp(-0.5 * AICs) / (torch.exp(-0.5 * AICs)).sum(axis=0)
+            weights = weights / weights.sum(axis=0)
+            assert torch.allclose(weights.sum(axis=0), torch.ones(weights.shape[1]))
+            gc.collect()
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
+        elif how == "AIC static":
+            # We now weight the remaining copulas lineary via Bayesian Info Criterion.
+            # AIC is defined as -2 * log likelihood + (# of params) * 2
+            # For # params we have mixing params + theta params.
+            # We get the overall mean, creating a static model.
+            AICs = torch.vstack(
+                [
+                    -2 * cop.log_prob(Y.T).mean()
+                    + (cop.mix.shape[0] + cop.theta.shape[0]) * 2
+                ]
+            )
+            # print("BICs: ", BICs)
+            weights = torch.exp(-0.5 * AICs) / torch.exp(-0.5 * AICs).sum()
+            assert torch.allclose(weights.sum(), torch.ones(1))
+            gc.collect()
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
+        elif how == "BIC dynamic":
             # We now weight the remaining copulas lineary via Bayesian Info Criterion.
             # BIC is defined as -2 * log likelihood + (# of params) * log(sample size)
             # We use the weights exp(-1/2 * BICs[i]) / sum(BICs)

@@ -82,7 +82,7 @@ if __name__ == "__main__":
         Y_train = Y[:-2000].reshape(n_estimators, int(8000 / n_estimators), dim)
 
         if shuffle_sample:
-            perm = torch.randperm(10000)
+            perm = torch.randperm(10000).cpu()
             X = X[perm]
             Y = Y[perm]
 
@@ -90,7 +90,7 @@ if __name__ == "__main__":
         if shuffle_bags == 0:
             X_train = X[:-2000].reshape(n_estimators, int(8000 / n_estimators))
         else:
-            perm = torch.randperm(8000)
+            perm = torch.randperm(8000).cpu()
             X_train = X[perm].reshape(n_estimators, int(8000 / n_estimators))
 
         for i in range(args.bagged_start, n_estimators):
