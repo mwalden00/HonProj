@@ -226,7 +226,7 @@ def bagged_vine(
     for l, layer in enumerate(bagged_copulas):
         for n, copula_data_list in enumerate(layer):
             bagged_copulas[l][n] = bagged_copula(
-                copula_data_list, n_estimators, X, Y[:, [l, n]], device=device
+                copula_data_list, n_estimators, X, Y[:, [l, n]].T, device=device
             )
 
     mean_vine = CVine(bagged_copulas, torch.Tensor(X).to(device), device=device)
