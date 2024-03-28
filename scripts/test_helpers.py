@@ -73,7 +73,7 @@ def parser():
         "--shuffle_bags",
         nargs="?",
         type=int,
-        defalt=1,
+        default=1,
         help="Shuffle data during training",
     )
     args.add_argument("--shufle", nargs="?", type=int, default=0)
