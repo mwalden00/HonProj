@@ -187,7 +187,7 @@ if __name__ == "__main__":
         Y_train = Y[-10000:-2000]
         print(X_train.shape)
         print(Y_train.shape)
-        baseline_data = dict([("X", X_train.cpu().numpy()), ("Y", Y_train)])
+        baseline_data = dict([("X", X_train), ("Y", Y_train.cpu().numpy())])
         with open("../data/segmented_pupil_copulas/baseline_data_0.pkl", "wb") as f:
             pkl.dump(baseline_data, f)
 
