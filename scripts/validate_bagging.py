@@ -155,24 +155,30 @@ if __name__ == "__main__":
         clean()
         print("Getting Bagged Vine Entropy...")
         if args.skip_ent_bagged == 1:
-            ent_BIC_dynamic = np.genfromtxt(f"./{n_estimators}_pred.csv", delimiter=",")
+            ent_BIC_dynamic = np.genfromtxt(
+                f"./{n_estimators}_BIC_dyn_pred.csv", delimiter=","
+            )
         else:
             ent_BIC_dynamic = BIC_dynamic_vine.entropy().detach().cpu().numpy()
-            ent_BIC_dynamic.tofile(f"./{n_estimators}_pred_{dim}.csv", sep=",")
+            ent_BIC_dynamic.tofile(f"./{n_estimators}_BIC_dyn_pred_{dim}.csv", sep=",")
         print(f"Entropy: {ent_BIC_dynamic.mean()} +/- {np.std(ent_BIC_dynamic)}")
 
         if args.skip_ent_bagged == 1:
-            ent_BIC_static = np.genfromtxt(f"./{n_estimators}_pred.csv", delimiter=",")
+            ent_BIC_static = np.genfromtxt(
+                f"./{n_estimators}_BIC_static_pred.csv", delimiter=","
+            )
         else:
             ent_BIC_static = BIC_static_vine.entropy().detach().cpu().numpy()
-            ent_BIC_static.tofile(f"./{n_estimators}_pred_{dim}.csv", sep=",")
+            ent_BIC_static.tofile(
+                f"./{n_estimators}_BIC_static_pred_{dim}.csv", sep=","
+            )
         print(f"Entropy: {ent_BIC_static.mean()} +/- {np.std(ent_BIC_static)}")
 
         if args.skip_ent_bagged == 1:
-            ent_R2_mean = np.genfromtxt(f"./{n_estimators}_pred.csv", delimiter=",")
+            ent_R2_mean = np.genfromtxt(f"./{n_estimators}_R2_pred.csv", delimiter=",")
         else:
             ent_R2_mean = R2_meaned_vine.entropy().detach().cpu().numpy()
-            ent_R2_mean.tofile(f"./{n_estimators}_pred_{dim}.csv", sep=",")
+            ent_R2_mean.tofile(f"./{n_estimators}_R2_pred_{dim}.csv", sep=",")
         print(f"Entropy: {ent_R2_mean.mean()} +/- {np.std(ent_R2_mean)}")
 
         gc.collect()
@@ -222,11 +228,7 @@ if __name__ == "__main__":
 
         print("================================================================")
         print("================================================================")
-        print(
-            "True: \t{:.6f} +/- {:.6f}".format(
-                ent[-2000:].mean(), 2 * np.std(ent[-2000:])
-            )
-        )
+        print("True: \t{:.6f} +/- {:.6f}".format(ent.mean(), 2 * np.std(ent[-2000:])))
 
         def pprint_single_copula_test(name, model, pred_ent):
             print(
