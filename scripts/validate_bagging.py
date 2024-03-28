@@ -43,7 +43,7 @@ if __name__ == "__main__":
         with open("../models/results/pupil_traj_5_res_partial.pkl", "rb") as f:
             pupil_results = pkl.load(f)
 
-        Y = torch.rand(10000)
+        X = torch.rand(10000)
 
         pupil_vine = get_random_vine(
             dim, torch.Tensor(X[-10000:]), device=device, max_el=max_el
@@ -72,11 +72,11 @@ if __name__ == "__main__":
         assert 4000 % n_estimators == 0
 
         print(f"Getting {n_estimators} copulaGP estimators...")
-        X = pupil_vine.sample()
-        X_train = X[:-2000].reshape(n_estimators, int(8000 / n_estimators), dim)
+        Y = pupil_vine.sample()
+        Y_train = X[:-2000].reshape(n_estimators, int(8000 / n_estimators), dim)
 
-        Y = Y[-10000:]
-        Y_train = Y[:-2000].reshape(n_estimators, int(8000 / n_estimators))
+        X = X[-10000:]
+        X_train = X[:-2000].reshape(n_estimators, int(8000 / n_estimators))
 
         for i in range(args.bagged_start, n_estimators):
             try:
@@ -89,13 +89,13 @@ if __name__ == "__main__":
             # print(f"\nSelecting Trial {i} with trajectory choices {choices}")
             # np.savetxt(f"./segmented_pupil/choices/choice_i.txt", choices)
 
-            X_chosen = X_train[i]
+            Y_chosen = Y_train[i]
             with open(f"../data/segmented_pupil_copulas/data_{i}_0.pkl", "wb") as f:
                 pkl.dump(
                     dict(
                         [
-                            ("X", Y_train[i]),
-                            ("Y", X_chosen.cpu().numpy()),
+                            ("X", X_train[i]),
+                            ("Y", Y_chosen.cpu().numpy()),
                         ]
                     ),
                     f,
@@ -128,23 +128,23 @@ if __name__ == "__main__":
 
         BIC_dynamic_vine = bagged_vine(
             vines_data=vines2bag,
-            X=torch.Tensor(Y).to(device)[-2000:],
-            Y=X[-2000:],
+            X=torch.Tensor(X).to(device)[-2000:],
+            Y=Y[-2000:],
             device=device,
         )
 
         BIC_static_vine = bagged_vine(
             vines_data=vines2bag,
-            X=torch.Tensor(Y).to(device)[-2000:],
-            Y=X[-2000:],
+            X=torch.Tensor(X).to(device)[-2000:],
+            Y=Y[-2000:],
             device=device,
             how="BIC static",
         )
 
         R2_meaned_vine = bagged_vine(
             vines_data=vines2bag,
-            X=torch.Tensor(Y).to(device)[-2000:],
-            Y=X[-2000:],
+            X=torch.Tensor(X).to(device)[-2000:],
+            Y=Y[-2000:],
             device=device,
             how="R2",
         )
@@ -187,7 +187,7 @@ if __name__ == "__main__":
         Y_train = Y[-10000:-2000]
         print(X_train.shape)
         print(Y_train.shape)
-        baseline_data = dict([("Y", X_train.cpu().numpy()), ("X", Y_train)])
+        baseline_data = dict([("X", X_train.cpu().numpy()), ("Y", Y_train)])
         with open("../data/segmented_pupil_copulas/baseline_data_0.pkl", "wb") as f:
             pkl.dump(baseline_data, f)
 
@@ -212,10 +212,10 @@ if __name__ == "__main__":
         clean()
         for i, layer in enumerate(baseline_model_data):
             for j, cop_data in enumerate(layer):
-                cop = cop_data.model_init(device).marginalize(torch.Tensor(Y)[-2000:])
+                cop = cop_data.model_init(device).marginalize(torch.Tensor(X)[-2000:])
                 baseline_model_data[i][j] = cop
         baseline_vine = v.CVine(
-            baseline_model_data, torch.Tensor(Y)[-2000:], device=device
+            baseline_model_data, torch.Tensor(X)[-2000:], device=device
         )
         if args.skip_ent_baseline:
             baseline_ent = np.genfromtxt(f"./baseline_{dim}.csv", delimiter=",")
