@@ -52,7 +52,11 @@ if __name__ == "__main__":
             X = torch.linspace(0, 1, 10000)
 
         pupil_vine = get_random_vine(
-            dim, torch.Tensor(X[-10000:]), device=device, max_el=max_el
+            dim,
+            torch.Tensor(X[-10000:]),
+            device=device,
+            min_el=2,
+            max_el=max_el,
         )
         print("True vine: ", [[cop.copulas for cop in l] for l in pupil_vine.layers])
 

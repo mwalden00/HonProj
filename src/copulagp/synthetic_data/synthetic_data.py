@@ -74,16 +74,16 @@ def create_model(mode,likelihoods,n,device=torch.device('cpu')):
 
 # generate a random vine
 
-def _get_random_mixture(max_el=5):
-    m = 1+torch.randint(max_el,(1,))
+def _get_random_mixture(min_el=1,max_el=5):
+    m = 1+min_el+torch.randint(max_el-min_el,(1,))
     return [elements[i] for i in torch.randperm(len(elements))[:m]]
 
-def get_random_vine(N, x, max_el=5, device=torch.device('cpu')):
+def get_random_vine(N, x, min_el=1, max_el=5, device=torch.device('cpu')):
     from copulagp.vine import CVine
     layers = []
     for i in range(N-1):
         layer = []
         for j in range(N-i-1):
-            layer.append(create_model('thetas',_get_random_mixture(max_el=max_el),x.numel(),device=device))
+            layer.append(create_model('thetas',_get_random_mixture(min_el=min_el,max_el=max_el),x.numel(),device=device))
         layers.append(layer)
     return CVine(layers,x,device=device)
