@@ -1,12 +1,9 @@
 import numpy as np
 import torch
 import torch.multiprocessing as mp
-import pandas as pd
-import matplotlib.pyplot as plt
 import numpy as np
 import pickle as pkl
 import copy
-from copulagp.utils import Plot_Fit
 from copulagp import vine as v
 from copulagp.train import train_vine
 from copulagp.bvcopula import MixtureCopula
@@ -54,7 +51,7 @@ if __name__ == "__main__":
         random_vine = get_random_vine(
             dim,
             torch.Tensor(X[-10000:]),
-            device=device,
+            device=torch.device("cpu"),
             min_el=2,
             max_el=max_el,
         )
@@ -278,7 +275,7 @@ if __name__ == "__main__":
         train_vine(
             path_data=lambda x: f"../data/segmented_pupil_copulas/baseline_data_{x}.pkl",
             path_models=lambda x: f"../models/layers/pupil_vine/segments/baseline/layer_{x}.pkl",
-            path_final=f"../models/results/pupil_segments/baseline_res.pkl",
+            path_final=f"../models/results/pupil_segments/baseline_{seed}_{dim}.pkl",
             path_logs=lambda a, b: f"./segmented_pupil/{a}/layer_{b}",
             exp=f"Baseline Vine on {dim} dim random copula data Parametrized in Pupil Area",
             light=light == 1,
