@@ -67,8 +67,8 @@ if __name__ == "__main__":
             for l, layer in enumerate(layers):
                 for n, cop in enumerate(layer):
                     layers[l][n] = MixtureCopula(
-                        theta=cop.theta[:, -2000:],
-                        mix=cop.mix[:, -2000:],
+                        theta=cop.theta[:, -2000:].to(device),
+                        mix=cop.mix[:, -2000:].to(device),
                         copulas=cop.copulas,
                         rotations=cop.rotations,
                     )
@@ -130,7 +130,7 @@ if __name__ == "__main__":
             train_vine(
                 path_data=lambda x: f"../data/segmented_pupil_copulas/{seed}_{dim}_data_{i}_{x}.pkl",
                 path_models=lambda x: f"../models/layers/pupil_vine/segments/seg_{i}/layer_{x}.pkl",
-                path_final=f"../models/results/pupil_segments/{seed}_{dim}_{i}_res.pkl",
+                path_final=f"../models/results/pupil_segments/{seed}_{dim}_{max_el}_{i}_res.pkl",
                 path_logs=lambda a, b: f"./segmented_pupil/{a}/layer_{b}",
                 exp=f"Vine on trial {i} Parametrized in Pupil Area",
                 light=light == 1,
@@ -144,7 +144,8 @@ if __name__ == "__main__":
 
         for i in range(n_estimators):
             with open(
-                f"../models/results/pupil_segments/{seed}_{dim}_{i}_res.pkl", "rb"
+                f"../models/results/pupil_segments/{seed}_{dim}_{max_el}_{i}_res.pkl",
+                "rb",
             ) as f:
                 vines2bag.append(pkl.load(f)["models"])
 
@@ -275,7 +276,7 @@ if __name__ == "__main__":
         train_vine(
             path_data=lambda x: f"../data/segmented_pupil_copulas/baseline_data_{x}.pkl",
             path_models=lambda x: f"../models/layers/pupil_vine/segments/baseline/layer_{x}.pkl",
-            path_final=f"../models/results/pupil_segments/baseline_{seed}_{dim}.pkl",
+            path_final=f"../models/results/pupil_segments/baseline_{seed}_{dim}_{max_el}.pkl",
             path_logs=lambda a, b: f"./segmented_pupil/{a}/layer_{b}",
             exp=f"Baseline Vine on {dim} dim random copula data Parametrized in Pupil Area",
             light=light == 1,
@@ -283,7 +284,9 @@ if __name__ == "__main__":
             device_list=device_list,
         )
 
-        with open("../models/results/pupil_segments/baseline_res.pkl", "rb") as f:
+        with open(
+            f"../models/results/pupil_segments/baseline_{seed}_{dim}_{max_el}.pkl", "rb"
+        ) as f:
             baseline_results = pkl.load(f)
         baseline_model_data = copy.deepcopy(baseline_results["models"])
         print(baseline_model_data)
