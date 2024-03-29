@@ -62,7 +62,7 @@ if __name__ == "__main__":
 
         clean()
         if args.skip_true_ent == 1:
-            ent = np.genfromtxt(f"./true_ent_{dim}.csv", delimiter=",")
+            ent = np.genfromtxt(f"./true_ent_{dim}_{seed}.csv", delimiter=",")
         else:
             layers = copy.deepcopy(pupil_vine.layers)
             for l, layer in enumerate(layers):
@@ -75,7 +75,7 @@ if __name__ == "__main__":
                     )
             pup_vine_ent = v.CVine(layers=layers, inputs=X[-2000:], device=device)
             ent = pup_vine_ent.entropy().detach().cpu().numpy()
-            ent.tofile(f"./true_ent_{dim}.csv", sep=",")
+            ent.tofile(f"./true_ent_{dim}_{seed}.csv", sep=",")
         print(f"Test entropy extraction: {ent.mean()} +/- {2*np.std(ent)}")
 
         n_estimators = args.n_estimators
@@ -109,7 +109,9 @@ if __name__ == "__main__":
             # np.savetxt(f"./segmented_pupil/choices/choice_i.txt", choices)
 
             Y_chosen = Y_train[i]
-            with open(f"../data/segmented_pupil_copulas/data_{i}_0.pkl", "wb") as f:
+            with open(
+                f"../data/segmented_pupil_copulas/{seed}_{dim}_data_{i}_0.pkl", "wb"
+            ) as f:
                 pkl.dump(
                     dict(
                         [
@@ -127,9 +129,9 @@ if __name__ == "__main__":
                 torch.cuda.empty_cache()
 
             train_vine(
-                path_data=lambda x: f"../data/segmented_pupil_copulas/data_{i}_{x}.pkl",
+                path_data=lambda x: f"../data/segmented_pupil_copulas/{seed}_{dim}_data_{i}_{x}.pkl",
                 path_models=lambda x: f"../models/layers/pupil_vine/segments/seg_{i}/layer_{x}.pkl",
-                path_final=f"../models/results/pupil_segments/pupil_{i}_res.pkl",
+                path_final=f"../models/results/pupil_segments/{seed}_{dim}_{i}_res.pkl",
                 path_logs=lambda a, b: f"./segmented_pupil/{a}/layer_{b}",
                 exp=f"Vine on trial {i} Parametrized in Pupil Area",
                 light=light == 1,
@@ -142,7 +144,9 @@ if __name__ == "__main__":
         vines2bag = []
 
         for i in range(n_estimators):
-            with open(f"../models/results/pupil_segments/pupil_{i}_res.pkl", "rb") as f:
+            with open(
+                f"../models/results/pupil_segments/{seed}_{dim}_{i}_res.pkl", "rb"
+            ) as f:
                 vines2bag.append(pkl.load(f)["models"])
 
         AIC_dynamic_vine = bagged_vine(
@@ -189,23 +193,25 @@ if __name__ == "__main__":
         print("Getting Bagged Vine Entropy...")
         if args.skip_ent_bagged == 1:
             ent_AIC_dynamic = np.genfromtxt(
-                f"./{n_estimators}_AIC_dyn_pred_{dim}.csv", delimiter=","
+                f"./{n_estimators}_AIC_dyn_pred_{dim}_{seed}.csv", delimiter=","
             )
         else:
             ent_AIC_dynamic = AIC_dynamic_vine.entropy().detach().cpu().numpy()
-            ent_AIC_dynamic.tofile(f"./{n_estimators}_AIC_dyn_pred_{dim}.csv", sep=",")
+            ent_AIC_dynamic.tofile(
+                f"./{n_estimators}_AIC_dyn_pred_{dim}_{seed}.csv", sep=","
+            )
         print(
             f"Entropy AIC dyn: {ent_AIC_dynamic.mean()} +/- {np.std(ent_AIC_dynamic)}"
         )
 
         if args.skip_ent_bagged == 1:
             ent_AIC_static = np.genfromtxt(
-                f"./{n_estimators}_AIC_static_pred_{dim}.csv", delimiter=","
+                f"./{n_estimators}_AIC_static_pred_{dim}_{seed}.csv", delimiter=","
             )
         else:
             ent_AIC_static = AIC_static_vine.entropy().detach().cpu().numpy()
             ent_AIC_static.tofile(
-                f"./{n_estimators}_AIC_static_pred_{dim}.csv", sep=","
+                f"./{n_estimators}_AIC_static_pred_{dim}_{seed}.csv", sep=","
             )
         print(
             f"Entropy AIC static: {ent_AIC_static.mean()} +/- {np.std(ent_AIC_static)}"
@@ -214,23 +220,25 @@ if __name__ == "__main__":
         print("Getting BIC bagged entropies...")
         if args.skip_ent_bagged == 1:
             ent_BIC_dynamic = np.genfromtxt(
-                f"./{n_estimators}_BIC_dyn_pred_{dim}.csv", delimiter=","
+                f"./{n_estimators}_BIC_dyn_pred_{dim}_{seed}.csv", delimiter=","
             )
         else:
             ent_BIC_dynamic = BIC_dynamic_vine.entropy().detach().cpu().numpy()
-            ent_BIC_dynamic.tofile(f"./{n_estimators}_BIC_dyn_pred_{dim}.csv", sep=",")
+            ent_BIC_dynamic.tofile(
+                f"./{n_estimators}_BIC_dyn_pred_{dim}_{seed}.csv", sep=","
+            )
         print(
             f"Entropy BIC dynamic: {ent_BIC_dynamic.mean()} +/- {np.std(ent_BIC_dynamic)}"
         )
 
         if args.skip_ent_bagged == 1:
             ent_BIC_static = np.genfromtxt(
-                f"./{n_estimators}_BIC_static_pred_{dim}.csv", delimiter=","
+                f"./{n_estimators}_BIC_static_pred_{dim}_{seed}.csv", delimiter=","
             )
         else:
             ent_BIC_static = BIC_static_vine.entropy().detach().cpu().numpy()
             ent_BIC_static.tofile(
-                f"./{n_estimators}_BIC_static_pred_{dim}.csv", sep=","
+                f"./{n_estimators}_BIC_static_pred_{dim}_{seed}.csv", sep=","
             )
         print(
             f"Entropy BIC static: {ent_BIC_static.mean()} +/- {np.std(ent_BIC_static)}"
@@ -238,11 +246,11 @@ if __name__ == "__main__":
 
         if args.skip_ent_bagged == 1:
             ent_R2_mean = np.genfromtxt(
-                f"./{n_estimators}_R2_pred_{dim}.csv", delimiter=","
+                f"./{n_estimators}_R2_pred_{dim}_{seed}.csv", delimiter=","
             )
         else:
             ent_R2_mean = R2_meaned_vine.entropy().detach().cpu().numpy()
-            ent_R2_mean.tofile(f"./{n_estimators}_R2_pred_{dim}.csv", sep=",")
+            ent_R2_mean.tofile(f"./{n_estimators}_R2_pred_{dim}_{seed}.csv", sep=",")
         print(
             f"Entropy mean fits w/ max R2: {ent_R2_mean.mean()} +/- {np.std(ent_R2_mean)}"
         )
@@ -285,10 +293,10 @@ if __name__ == "__main__":
             baseline_model_data, torch.Tensor(X)[-2000:], device=device
         )
         if args.skip_ent_baseline:
-            baseline_ent = np.genfromtxt(f"./baseline_{dim}.csv", delimiter=",")
+            baseline_ent = np.genfromtxt(f"./baseline_{dim}_{seed}.csv", delimiter=",")
         else:
             baseline_ent = baseline_vine.entropy().detach().cpu().numpy()
-            baseline_ent.tofile(f"./baseline_{dim}.csv", sep=",")
+            baseline_ent.tofile(f"./baseline_{dim}_{seed}.csv", sep=",")
 
         print(f"Baseline ent: {baseline_ent.mean()} +/- {2*np.std(baseline_ent)}")
 
