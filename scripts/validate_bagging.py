@@ -81,7 +81,7 @@ if __name__ == "__main__":
         assert 4000 % n_estimators == 0
 
         print(f"Getting {n_estimators} copulaGP estimators...")
-        Y = random_vine.sample()
+        Y = random_vine.sample().to(device)
         Y_train = Y[:-2000].reshape(n_estimators, int(8000 / n_estimators), dim)
 
         if shuffle_sample:
