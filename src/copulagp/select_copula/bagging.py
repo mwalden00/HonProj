@@ -139,6 +139,7 @@ def bagged_copula(
                 [
                     -2 * cop.log_prob(Y.T).mean()
                     + (cop.mix.shape[0] + cop.theta.shape[0]) * 2
+                    for cop in cops
                 ]
             )
             # print("BICs: ", BICs)
