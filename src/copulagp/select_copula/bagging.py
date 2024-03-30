@@ -264,6 +264,7 @@ def bagged_vine(
     """
     n_estimators = len(vines_data)
     dim = len(vines_data[0]) + 1
+
     bagged_copulas = [[[] for j in range(dim - 1 - i)] for i in range(dim - 1)]
 
     for models_i in vines_data:
@@ -271,16 +272,25 @@ def bagged_vine(
             for n, copula in enumerate(layer):
                 bagged_copulas[l][n].append(copula)
 
+    layers = [Y]
     for l, layer in enumerate(bagged_copulas):
+        next_layer = []
         for n, copula_data_list in enumerate(layer):
+            # This is essentially the same thing as is done in copulagp.vine.log_prob
             bagged_copulas[l][n], _ = bagged_copula(
                 copula_data_list,
                 n_estimators,
                 X,
-                Y[:, [l, n]].T,
+                layers[-1][:, [n + 1, 0]].T,
                 device=device,
                 how=how,
             )
+            # We get the CCDF of the bagged copula, and then feed those to the next bagger
+            # This gets the current fit dependant probability.
+            next_layer.append(
+                bagged_copulas[l][n].ccdf(layers[-1][:, [n + 1, 0]]).float()
+            )
+        layers.appedn(torch.stack(next_layer, dim=-1))
 
     mean_vine = CVine(bagged_copulas, torch.Tensor(X).to(device), device=device)
     return mean_vine
