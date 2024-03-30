@@ -17,14 +17,14 @@ loss_av = 25 # average over this number x 2 of epochs is used for early stopping
 # here thetas are mainly constrained by the summation of probabilities in mixture model,
 # which should not become +inf
 Gauss_Safe_Theta = 0.9999	# (-safe,+safe), for safe mode, otherwise (-1,1)
-Frank_Theta_Max = 13.0 		# (-max, max) Reduced due to bad ccdf
-Frank_Theta_Flip = 9.0
-Clayton_Theta_Max = 9.4 	# (0, max)
-Gumbel_Theta_Max = 9.0		# (1, max)
+Frank_Theta_Max = 13.0001 		# (-max, max) Reduced due to bad ccdf
+Frank_Theta_Flip = 9.0001
+Clayton_Theta_Max = 9.4001 	# (0, max)
+Gumbel_Theta_Max = 9.0001		# (1, max)
 # looser limits for sample generation
-Frank_Theta_Sampling_Max = 88.0 	# (-max, max)
-Clayton_Theta_Sampling_Max = 22.5 	# (0, max)
-Gumbel_Theta_Sampling_Max = 16.0 	# (1, max) #no clear critical value here, it is around 16
+Frank_Theta_Sampling_Max = 88.0001 	# (-max, max)
+Clayton_Theta_Sampling_Max = 22.5001 	# (0, max)
+Gumbel_Theta_Sampling_Max = 16.0001 	# (1, max) #no clear critical value here, it is around 16
 
 #Gaussian full dependence
 Gauss_diag = 1e-5 # how far from diagonal the point can be to be considered as u==v
