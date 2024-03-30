@@ -43,20 +43,19 @@ if __name__ == "__main__":
 
         print(f"Getting {n_estimators} copulaGP estimators...")
 
+        perm = torch.arange(10000).cpu()
+        if args.shuffle == 1:
+            perm = torch.randpem(10000).cpu()
+
         X = [
             x.cpu().numpy()
-            for x in torch.chunk(torch.Tensor(pupil_data["X"]), n_estimators)
+            for x in torch.chunk(torch.Tensor(pupil_data["X"][perm]), n_estimators)
         ]
 
         Y = [
             y.cpu().numpy()
-            for y in torch.chunk(torch.Tensor(pupil_data["Y"]), n_estimators)
+            for y in torch.chunk(torch.Tensor(pupil_data["Y"][perm]), n_estimators)
         ]
-
-        if args.shuffle==1:
-            perm = torch.randperm(10000).cpu()
-            X = X[perm]
-            Y = Y[perm]
 
         for i in range(args.bagged_start, n_estimators):
             try:
