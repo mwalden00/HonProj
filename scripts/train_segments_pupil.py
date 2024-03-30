@@ -1,64 +1,160 @@
-import torch
-import gc
-import torch.multiprocessing as mp
-import pandas as pd
-import matplotlib.pyplot as plt
 import numpy as np
-import os
+import torch
+import torch.multiprocessing as mp
+import numpy as np
 import pickle as pkl
+import copy
+from copulagp import vine as v
 from copulagp.train import train_vine
+from copulagp.bvcopula import MixtureCopula
+from copulagp.synthetic_data import get_random_vine
+from copulagp.select_copula import bagged_vine
+import os
+import gc
+from test_helpers import parser, clean, num_vine_params
 
-# tell pandas to show all columns when we display a DataFrame
-pd.set_option("display.max_columns", None)
+
+device = "cpu" if not torch.cuda.is_available() else "cuda:0"
+
 if torch.cuda.is_available():
     device_list = [f"cuda:{n}" for n in range(torch.cuda.device_count())]
 else:
     device_list = ["cpu"]
+
+
 if __name__ == "__main__":
-    print("Devices:", device_list)
+    args = parser().parse_args()
+    if args.seed > 0:
+        seed = args.seed
+    else:
+        seed = torch.seed()
+    print("Seed: ", seed)
+    np.random.seed(seed % (2**32 - 1))
+    torch.manual_seed(seed)
     mp.set_start_method("spawn")
+    light = args.light
 
-    def NormalizeData(data):
-        return ((data - np.min(data)) / (np.max(data) - np.min(data))) * 0.99 + 0.001
+    with torch.device(device):
 
-    with open("../data/processed/pupil_vine_data_partial_0.pkl", "rb") as f:
-        traj_and_pupil_data = pkl.load(f)
+        with open("../data/pupil_vine_data_0.pkl", "rb") as f:
+            pupil_data = pkl.load(f)
 
-    X = traj_and_pupil_data["Y"]
-    Y = traj_and_pupil_data["X"]
+        n_estimators = args.n_estimators
 
-    Y = Y.reshape(100, 100)
-    X = X.reshape(100, 100, 5)
+        print(f"Getting {n_estimators} copulaGP estimators...")
 
-    for i in range(0, 10, 4):
-        choices = np.random.choice(13, 6, replace=False)
-        try:
-            os.mkdir(f"../models/layers/pupil_vine/segments/seg_{i}/")
-            os.mkdir(f"../models/results/pupil_segments/")
-            os.mkdir(f"../data/segmented_pupil_copulas/")
-        except:
-            pass
+        X = [
+            x.cpu().numpy()
+            for x in torch.chunk(torch.Tensor(pupil_data["X"]), n_estimators)
+        ]
+        Y = [
+            y.cpu().numpy()
+            for y in torch.chunk(torch.Tensor(pupil_data["Y"]), n_estimators)
+        ]
 
-        print(f"\nSelecting Trial {i} with trajectory choices {choices}")
-        np.savetxt(f"./segmented_pupil/choices/choice_i.txt", choices)
+        for i in range(args.bagged_start, n_estimators):
+            try:
+                os.mkdir(f"../models/layers/pupil_vine/segments/seg_{i}/")
+                os.mkdir(f"../models/results/pupil_segments/")
+                os.mkdir(f"../data/segmented_pupil_copulas/")
+            except:
+                pass
 
-        X_chosen = np.concatenate(np.stack(X[i : i + 4]))[:, choices]
+            # print(f"\nSelecting Trial {i} with trajectory choices {choices}")
+            # np.savetxt(f"./segmented_pupil/choices/choice_i.txt", choices)
 
-        with open(f"../data/segmented_pupil_copulas/data_{i}_0.pkl", "wb") as f:
-            pkl.dump(dict([("X", np.concatenate(Y[i : i + 4])), ("Y", X_chosen)]), f)
+            Y_i = Y[i]
+            with open(
+                f"../data/segmented_pupil_copulas/pupil_section_data_{i}_0.pkl", "wb"
+            ) as f:
+                pkl.dump(
+                    dict(
+                        [
+                            ("X", X[i]),
+                            ("Y", Y_i),
+                        ]
+                    ),
+                    f,
+                )
 
-        gc.collect()
-        if torch.cuda.is_available():
-            torch.cuda.empty_cache()
+            print(f"Training {i}-th Copula-GP Vine")
 
-        train_vine(
-            path_data=lambda x: f"../data/segmented_pupil_copulas/data_{i}_{x}.pkl",
-            path_models=lambda x: f"../models/layers/pupil_vine/segments/seg_{i}/layer_{x}.pkl",
-            path_final=f"../models/results/pupil_segments/pupil_{i}_res.pkl",
-            path_logs=lambda a, b: f"./segmented_pupil/{a}/layer_{b}",
-            exp=f"Vine on trial {i} 13 trajectories Parametrized in Pupil Area",
-            light=True,
-            device_list=device_list,
+            gc.collect()
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
+
+            train_vine(
+                path_data=lambda x: f"../data/segmented_pupil_copulas/pupil_section_data_{i}_{x}.pkl",
+                path_models=lambda x: f"../models/layers/pupil_vine/segments/seg_{i}/layer_{x}.pkl",
+                path_final=f"../models/results/pupil_segments/pupil_model_{i}_res.pkl",
+                path_logs=lambda a, b: f"./segmented_pupil/{a}/layer_{b}",
+                exp=f"Vine trained on bag {i} param. in pupil area",
+                light=light == 1,
+                device_list=device_list,
+                start=args.bagged_start_layer,
+            )
+
+        print("\n\nGetting Bagged Vine...")
+        vines2bag = []
+
+        for i in range(n_estimators):
+            with open(
+                f"../models/results/pupil_segments/pupil_model_{i}_res.pkl",
+                "rb",
+            ) as f:
+                vines2bag.append(pkl.load(f)["models"])
+
+        BIC_dynamic_vine = bagged_vine(
+            vines_data=vines2bag,
+            X=torch.Tensor(X[0]).to(device),
+            Y=Y[0],
+            device=device,
+            how="BIC dynamic",
         )
 
-        os.remove("../data/segmented_pupil_copulas/*.pkl")
+        BIC_dynamic_entropy = BIC_dynamic_vine.entropy()
+
+        BIC_dynamic_entropy.cpu().numpy().tofile(
+            f"./bagged_pupil_entropy_{n_estimators}_estim_continuous.csv", sep=","
+        )
+
+        perm = torch.randperm(10000).to("cpu")
+        BIC_dynamic_vine_SHUFFLED = bagged_vine(
+            vines_data=vines2bag,
+            X=torch.Tensor(X[perm][:1500]).to(device),
+            Y=Y[:1500],
+            device=device,
+            how="BIC dynamic",
+        )
+
+        BIC_dynamic_entropy_SHUFFLED = BIC_dynamic_vine_SHUFFLED.entropy()
+
+        BIC_dynamic_entropy_SHUFFLED.cpu().numpy().tofile(
+            f"./bagged_pupil_entropy_{n_estimators}_estim_shuffled.csv", sep=","
+        )
+
+        with open(
+            f"../models/results/bagged_pupil_model_{n_estimators}_estimators.pkl", "wb"
+        ) as f:
+            pkl.dump(vines2bag, f)
+
+        print(
+            "Mean uncond cop entropy:",
+            BIC_dynamic_entropy_SHUFFLED.cpu().numpy().mean(),
+        )
+
+        BIC_dynamic_vine_random = bagged_vine(
+            vines_data=vines2bag,
+            X=torch.Tensor(X[:1500]).to(device),
+            Y=np.random.random(1500),
+            device=device,
+            how="BIC dynamic",
+        )
+
+        BIC_dynamic_entropy_random = BIC_dynamic_vine_random.entropy()
+
+        BIC_dynamic_entropy_random.cpu().numpy().tofile(
+            f"./bagged_pupil_entropy_{n_estimators}_estim_continuous.csv", sep=","
+        )
+
+        print("Mean cond cop entropy:", BIC_dynamic_entropy_random.cpu().numpy().mean())
