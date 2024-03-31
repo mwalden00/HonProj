@@ -225,14 +225,11 @@ def bagged_copula(
 
         print(mix_list)
 
-        return (
-            MixtureCopula(
-                theta=thetas,
-                mix=mixes.clamp(0.001, 0.999),
-                copulas=mix_list,
-                rotations=rotations,
-            ),
-            weights,
+        return MixtureCopula(
+            theta=thetas,
+            mix=mixes.clamp(0.001, 0.999),
+            copulas=mix_list,
+            rotations=rotations,
         )
 
 
