@@ -71,7 +71,7 @@ def bagged_copula(
                     torch.Tensor(
                         cop_data.model_init(device)
                         .marginalize(X[buckets[i]])
-                        .ccdf(Y.T[buckets[i]])
+                        .ccdf(torch.Tensor(Y.T[buckets[i]]))
                     )
                     for i in range(20)
                 ]
