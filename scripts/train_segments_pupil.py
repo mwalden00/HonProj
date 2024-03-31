@@ -45,8 +45,8 @@ if __name__ == "__main__":
 
         perm = torch.arange(10000).cpu()
         if args.shuffle == 1:
-            perm = torch.randpem(10000).cpu()
-
+            perm = torch.randperm(10000).cpu()
+        bagged_start_layer = args.bagged_start_layer
         X = [
             x.cpu().numpy()
             for x in torch.chunk(torch.Tensor(pupil_data["X"][perm]), n_estimators)
@@ -96,9 +96,9 @@ if __name__ == "__main__":
                 exp=f"Vine trained on bag {i} param. in pupil area",
                 light=light == 1,
                 device_list=device_list,
-                start=args.bagged_start_layer,
+                start=bagged_start_layer,
             )
-
+            bagged_start_layer = 0
         print("\n\nGetting Bagged Vine...")
         vines2bag = []
 
