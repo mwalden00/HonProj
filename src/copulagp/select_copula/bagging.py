@@ -290,7 +290,7 @@ def bagged_vine(
             next_layer.append(
                 bagged_copulas[l][n].ccdf(layers[-1][:, [n + 1, 0]]).float()
             )
-        layers.appedn(torch.stack(next_layer, dim=-1))
+        layers.append(torch.stack(next_layer, dim=-1))
 
     mean_vine = CVine(bagged_copulas, torch.Tensor(X).to(device), device=device)
     return mean_vine
