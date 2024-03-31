@@ -49,7 +49,7 @@ def bagged_copula(
             for cop_data in cop_datas
         ]
 
-        buckets = torch.arange(X.shape[0]).chunk(20)
+        buckets = torch.arange(X.shape[0]).cpu().chunk(20)
 
         # To get R2 terms, we first find empirical cdf along our points
         # and the empirical copula cdf along one axis of the copula.
@@ -57,19 +57,11 @@ def bagged_copula(
         def ecdf(i):
             """Empirical CDF in bucket i."""
             vals = []
-            for y2 in Y[1][buckets[i]]:
+            for y2 in Y[0][buckets[i]]:
                 vals.append(
-                    len(Y[0][buckets[i]][Y[1][buckets[i]] < y2])
-                    / (len(Y[0][buckets[i]]))
+                    len(Y[1][buckets[i]][Y[0][buckets[i]] < y2])
+                    / (len(Y[1][buckets[i]]))
                 )
-            return vals
-
-        def eccdf(cop, i):
-            """Empirical Copula CDF in bucket i utilizing copula samples."""
-            Y0_sample = cop.sample()[:, 0]
-            vals = []
-            for y2 in Y[1][buckets[i]]:
-                vals.append(len(Y0_sample[Y[1][buckets[i]] < y2]) / (len(Y0_sample)))
             return vals
 
         # Get CCDFs. Involves marginalizing
@@ -77,7 +69,9 @@ def bagged_copula(
             torch.vstack(
                 [
                     torch.Tensor(
-                        eccdf(cop_data.model_init(device).marginalize(X[buckets[i]]), i)
+                        cop_data.model_init(device)
+                        .marginalize(X[buckets[i]])
+                        .ccdf(Y.T[buckets[i]])
                     )
                     for i in range(20)
                 ]
@@ -277,7 +271,7 @@ def bagged_vine(
         next_layer = []
         for n, copula_data_list in enumerate(layer):
             # This is essentially the same thing as is done in copulagp.vine.log_prob
-            bagged_copulas[l][n], _ = bagged_copula(
+            bagged_copulas[l][n] = bagged_copula(
                 copula_data_list,
                 n_estimators,
                 X,
