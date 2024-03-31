@@ -111,11 +111,18 @@ if __name__ == "__main__":
 
         BIC_dynamic_vine = bagged_vine(
             vines_data=vines2bag,
-            X=torch.Tensor(X[0]).to(device),
-            Y=torch.Tensor(Y[0]).to(device),
+            X=torch.Tensor(pupil_data["X"][:1500]).to(device),
+            Y=torch.Tensor(pupil_data["Y"][:1500]).to(device),
             device=device,
             how="BIC dynamic",
         )
+
+        with open("../models/vine2go.pkl", "wb") as f:
+            pkl.dump(BIC_dynamic_vine, f)
+
+        gc.collect()
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
 
         BIC_dynamic_entropy = BIC_dynamic_vine.entropy()
 
@@ -123,43 +130,4 @@ if __name__ == "__main__":
             f"./bagged_pupil_entropy_{n_estimators}_estim_continuous.csv", sep=","
         )
 
-        perm = torch.randperm(10000).to("cpu")
-        BIC_dynamic_vine_SHUFFLED = bagged_vine(
-            vines_data=vines2bag,
-            X=torch.Tensor(X[perm][:1500]).to(device),
-            Y=Y[:1500],
-            device=device,
-            how="BIC dynamic",
-        )
-
-        BIC_dynamic_entropy_SHUFFLED = BIC_dynamic_vine_SHUFFLED.entropy()
-
-        BIC_dynamic_entropy_SHUFFLED.cpu().numpy().tofile(
-            f"./bagged_pupil_entropy_{n_estimators}_estim_shuffled.csv", sep=","
-        )
-
-        with open(
-            f"../models/results/bagged_pupil_model_{n_estimators}_estimators.pkl", "wb"
-        ) as f:
-            pkl.dump(vines2bag, f)
-
-        print(
-            "Mean uncond cop entropy:",
-            BIC_dynamic_entropy_SHUFFLED.cpu().numpy().mean(),
-        )
-
-        BIC_dynamic_vine_random = bagged_vine(
-            vines_data=vines2bag,
-            X=torch.Tensor(X[:1500]).to(device),
-            Y=np.random.random(1500),
-            device=device,
-            how="BIC dynamic",
-        )
-
-        BIC_dynamic_entropy_random = BIC_dynamic_vine_random.entropy()
-
-        BIC_dynamic_entropy_random.cpu().numpy().tofile(
-            f"./bagged_pupil_entropy_{n_estimators}_estim_continuous.csv", sep=","
-        )
-
-        print("Mean cond cop entropy:", BIC_dynamic_entropy_random.cpu().numpy().mean())
+        print("Mean cop entropy:", BIC_dynamic_entropy.cpu().numpy().mean())
