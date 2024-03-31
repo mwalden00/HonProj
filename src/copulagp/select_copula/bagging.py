@@ -68,14 +68,12 @@ def bagged_copula(
         cop_ccdfs = [
             torch.vstack(
                 [
-                    torch.Tensor(
-                        cop_data.model_init(device)
-                        .marginalize(X[buckets[i]])
-                        .ccdf(torch.Tensor(Y.T[buckets[i]]))
-                    )
+                    cop_data.model_init(device)
+                    .marginalize(X[buckets[i]])
+                    .ccdf(torch.Tensor(Y.T[buckets[i]]))
                     for i in range(20)
                 ]
-            )
+            ).to(device)
             for cop_data in cop_datas
         ]
 
@@ -84,7 +82,7 @@ def bagged_copula(
 
         gc.collect()
 
-        ecdfs = torch.vstack([torch.Tensor(ecdf(i)) for i in range(20)])
+        ecdfs = torch.vstack([torch.Tensor(ecdf(i)) for i in range(20)]).to(device)
         R2s = torch.Tensor(
             [
                 (
