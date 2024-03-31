@@ -112,7 +112,7 @@ if __name__ == "__main__":
         BIC_dynamic_vine = bagged_vine(
             vines_data=vines2bag,
             X=torch.Tensor(X[0]).to(device),
-            Y=Y[0],
+            Y=torch.Tensor(Y[0]).to(device),
             device=device,
             how="BIC dynamic",
         )
