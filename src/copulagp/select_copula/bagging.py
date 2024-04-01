@@ -64,13 +64,19 @@ def bagged_copula(
                 )
             return vals
 
+        def eecdf(cop, i):
+            """Empirical CCDF in bucket i."""
+            vals = []
+            Y_samp = cop.sample().T
+            for y2 in Y[0][buckets[i]]:
+                vals.append(len(Y_samp[1][Y[0][buckets[i]] < y2]) / (len(Y_samp[1])))
+            return torch.Tensor(vals).to(device)
+
         # Get CCDFs. Involves marginalizing
         cop_ccdfs = [
             torch.vstack(
                 [
-                    cop_data.model_init(device)
-                    .marginalize(X[buckets[i]])
-                    .ccdf(torch.Tensor(Y.T[buckets[i]]))
+                    eecdf(cop_data.model_init(device).marginalize(X[buckets[i]]), i)
                     for i in range(20)
                 ]
             ).to(device)
@@ -94,6 +100,7 @@ def bagged_copula(
                 for ccdfs in cop_ccdfs
             ]
         )
+        print(R2s)
 
         # If there is a single best fit, we return that.
         R2s = R2s[R2s >= (R2s.max() - R2_atol)]
