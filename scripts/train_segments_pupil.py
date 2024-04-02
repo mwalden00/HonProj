@@ -102,32 +102,64 @@ if __name__ == "__main__":
         print("\n\nGetting Bagged Vine...")
         vines2bag = []
 
-        for i in range(n_estimators):
-            with open(
-                f"../models/results/pupil_segments/pupil_model_{i}_res.pkl",
-                "rb",
-            ) as f:
-                vines2bag.append(pkl.load(f)["models"])
+        if args.bagged_start != 4:
+            for i in range(n_estimators):
+                with open(
+                    f"../models/results/pupil_segments/pupil_model_{i}_res.pkl",
+                    "rb",
+                ) as f:
+                    vines2bag.append(pkl.load(f)["models"])
 
-        BIC_dynamic_vine = bagged_vine(
+            BIC_dynamic_vine = bagged_vine(
+                vines_data=vines2bag,
+                X=torch.Tensor(pupil_data["X"][:1500]).to(device),
+                Y=torch.Tensor(pupil_data["Y"][:1500]).to(device),
+                device=device,
+                how="BIC dynamic",
+            )
+
+            with open("../models/vine2go.pkl", "wb") as f:
+                pkl.dump(BIC_dynamic_vine, f)
+        else:
+            with open("../models/vine2go.pkl", "rb") as f:
+                BIC_dynamic_vine = torch.load(f)
+
+        if args.skip_ent_bagged == 0:
+            gc.collect()
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
+
+            BIC_dynamic_entropy = BIC_dynamic_vine.entropy()
+            BIC_dynamic_entropy.cpu().numpy().tofile(
+                f"./bagged_pupil_entropy_{n_estimators}_estim_continuous.csv", sep=","
+            )
+        else:
+            BIC_dynamic_entropy = np.genfromtxt(
+                f"./bagged_pupil_entropy_{n_estimators}_estim_continuous.csv",
+                delimiter=",",
+            )
+
+        print("Mean cop entropy:", BIC_dynamic_entropy.cpu().numpy().mean())
+
+        BIC_dynamic_random = bagged_vine(
             vines_data=vines2bag,
             X=torch.Tensor(pupil_data["X"][:1500]).to(device),
-            Y=torch.Tensor(pupil_data["Y"][:1500]).to(device),
+            Y=torch.rand(1500).to(device),
             device=device,
             how="BIC dynamic",
         )
 
-        with open("../models/vine2go.pkl", "wb") as f:
+        with open("../models/rand2go.pkl", "wb") as f:
             pkl.dump(BIC_dynamic_vine, f)
 
         gc.collect()
         if torch.cuda.is_available():
             torch.cuda.empty_cache()
 
-        BIC_dynamic_entropy = BIC_dynamic_vine.entropy()
+        BIC_rand_entropy = BIC_dynamic_vine.entropy()
 
-        BIC_dynamic_entropy.cpu().numpy().tofile(
-            f"./bagged_pupil_entropy_{n_estimators}_estim_continuous.csv", sep=","
+        BIC_rand_entropy.cpu().numpy().tofile(
+            f"./bagged_rand_entropy_{n_estimators}_estim_continuous.csv", sep=","
         )
 
-        print("Mean cop entropy:", BIC_dynamic_entropy.cpu().numpy().mean())
+        print("Mean cond. cop entropy:", BIC_dynamic_entropy.cpu().numpy().mean())
