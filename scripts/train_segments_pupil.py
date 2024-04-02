@@ -102,14 +102,14 @@ if __name__ == "__main__":
         print("\n\nGetting Bagged Vine...")
         vines2bag = []
 
-        if args.bagged_start != 4:
-            for i in range(n_estimators):
-                with open(
-                    f"../models/results/pupil_segments/pupil_model_{i}_res.pkl",
-                    "rb",
-                ) as f:
-                    vines2bag.append(pkl.load(f)["models"])
+        for i in range(n_estimators):
+            with open(
+                f"../models/results/pupil_segments/pupil_model_{i}_res.pkl",
+                "rb",
+            ) as f:
+                vines2bag.append(pkl.load(f)["models"])
 
+        if args.bagged_start != 4:
             BIC_dynamic_vine = bagged_vine(
                 vines_data=vines2bag,
                 X=torch.Tensor(pupil_data["X"][:1500]).to(device),
