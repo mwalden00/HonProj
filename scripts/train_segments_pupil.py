@@ -145,7 +145,7 @@ if __name__ == "__main__":
 
         BIC_dynamic_random = bagged_vine(
             vines_data=vines2bag,
-            Y=torch.Tensor(pupil_data["X"][:1500]).to(device),
+            Y=torch.Tensor(pupil_data["Y"][:1500]).to(device),
             X=torch.rand(1500).to(device),
             device=device,
             how="BIC dynamic",
