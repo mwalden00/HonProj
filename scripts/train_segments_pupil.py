@@ -134,9 +134,11 @@ if __name__ == "__main__":
                 f"./bagged_pupil_entropy_{n_estimators}_estim_continuous.csv", sep=","
             )
         else:
-            BIC_dynamic_entropy = np.genfromtxt(
-                f"./bagged_pupil_entropy_{n_estimators}_estim_continuous.csv",
-                delimiter=",",
+            BIC_dynamic_entropy = torch.Tensor(
+                np.genfromtxt(
+                    f"./bagged_pupil_entropy_{n_estimators}_estim_continuous.csv",
+                    delimiter=",",
+                )
             )
 
         print("Mean cop entropy:", BIC_dynamic_entropy.cpu().numpy().mean())
