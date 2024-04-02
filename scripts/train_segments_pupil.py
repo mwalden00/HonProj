@@ -122,7 +122,7 @@ if __name__ == "__main__":
                 pkl.dump(BIC_dynamic_vine, f)
         else:
             with open("../models/vine2go.pkl", "rb") as f:
-                BIC_dynamic_vine = torch.load(f)
+                BIC_dynamic_vine = pkl.load(f)
 
         if args.skip_ent_bagged == 0:
             gc.collect()
