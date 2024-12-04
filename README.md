@@ -1,6 +1,11 @@
 # Honours Project: Copula-GPFA framework
 
 This is the main directory for the Copula-GPFA framework for neuronal spike data analysis. 
+If something doesn't work, please email me at M.Walden@sms.ed.ac.uk!
+
+Culminated in submition to TMLR: [OpenReview](https://openreview.net/forum?id=hQIs1CHF6H)
+
+
 
 # Installing Copula-GP from Github repo
 
@@ -14,7 +19,7 @@ This will install the local implementation of Copula-GP with bagging and bug fix
 
 # Reproducability
 
-For bagging validation test reproducibiltiy, use the `scripts/validate_bagging.py` script. For pupil dilation copula extraction, first download the data via `scripts/ecephys-download.pu`. Then, apply GPFA via `scripts/trajectory-extraction.py`. For unbagged pupil dilation entropy extraction, first run the `scripts/train_copulas.py` file and extract entropies with the `scripts/extract_entropies.py` file. For bagged pupil dilation entropy extraction, use the `scripts/train_segments_pupil.py` file, which trains, aggregates, and extracts entropies all in one. 
+For bagging validation test reproducibiltiy, use the `scripts/validate_bagging.py` script. For pupil dilation copula extraction, first download the data via `scripts/ecephys-download.pu`. Then, apply GPFA via `scripts/trajectory-extraction.py`. For unbagged pupil dilation entropy extraction, first run the `scripts/train_copulas.py` file and extract entropies with the `scripts/extract_entropies.py` file. For bagged pupil dilation entropy extraction, use the `scripts/train_segments_pupil.py` file, which trains, aggregates, and extracts entropies all in one.
 
 # Citation of Copula-GP
 
