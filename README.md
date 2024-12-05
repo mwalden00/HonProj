@@ -3,7 +3,7 @@
 This is the main directory for the Copula-GPFA framework for neuronal spike data analysis. 
 If something doesn't work, please email me at M.Walden@sms.ed.ac.uk!
 
-Culminated in submition to TMLR: [OpenReview](https://openreview.net/forum?id=hQIs1CHF6H)
+Culminated in submition to TMLR (Accepted, yipee!): [OpenReview](https://openreview.net/forum?id=hQIs1CHF6H)
 
 
 
